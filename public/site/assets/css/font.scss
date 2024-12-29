@@ -1,0 +1,47 @@
+// variables
+$fontPath: '../fonts/iransans';
+$fontPathX: '../fonts/iransans-x';
+
+// font css
+@mixin initFontX($fontWeight, $fontType)
+{
+  font-family: 'IranSansX';
+  font-style: normal;
+  font-weight: $fontWeight;
+  //src: url($fontPath + '/eot/iransans-' + $fontType + '.eot');
+  //src: url($fontPath + '/eot/iransans-' + $fontType + '.eot?#iefix') format('embedded-opentype'),
+  //url($fontPath + '/woff2/iransans-' + $fontType + '.woff2') format('woff2'),
+  //url($fontPath + '/woff/iransans-' + $fontType + '.woff') format('woff'),
+  src: url($fontPathX + '/otf/iransans-x-' + $fontType + '.otf') format('woff'),
+  url($fontPathX + '/ttf/iransans-x-' + $fontType + '.ttf')  format('truetype');
+}
+
+@mixin initFont($fontWeight, $fontType)
+{
+  font-family: 'IranSans';
+  font-style: normal;
+  font-weight: $fontWeight;
+  src: url($fontPath + '/eot/iransans-' + $fontType + '.eot');
+  src: url($fontPath + '/eot/iransans-' + $fontType + '.eot?#iefix') format('embedded-opentype'),
+  url($fontPath + '/woff2/iransans-' + $fontType + '.woff2') format('woff2'),
+  url($fontPath + '/woff/iransans-' + $fontType + '.woff') format('woff'),
+  url($fontPath + '/ttf/iransans-' + $fontType + '.ttf')  format('truetype');
+}
+
+@font-face
+{
+  @include initFontX(400, 'regular')
+}
+@font-face
+{
+  @include initFontX(700, 'bold')
+}
+
+@font-face
+{
+  @include initFont(400, 'regular')
+}
+@font-face
+{
+  @include initFont(700, 'bold')
+}

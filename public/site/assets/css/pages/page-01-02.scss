@@ -1,0 +1,149 @@
+@import '../global';
+
+/* *** page-sign-in */
+
+.page-sign-in
+{
+    text-align: center;
+
+    .container-sign-in
+    {
+        background-image: url("../../image/bg-sign-up-in.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: auto;
+
+        .sign-in-box
+        {
+            width: 100%;
+            height: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            .logo
+            {
+                img
+                {
+                    width: 100%;
+                    max-width: 180px;
+                }
+            }
+
+            .form
+            {
+                background-color: $colorWhite;
+                width: 100%;
+                max-width: 500px;
+                text-align: center;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                padding: 40px;
+                margin: 30px auto 0 auto;
+                position: relative;
+                z-index: 1;
+
+                .form-input
+                {
+                    border-radius: 10px;
+                }
+
+                .input-check-box
+                {
+                    display: inline-flex;
+                    justify-content: space-between;
+
+                    .form-check-label
+                    {
+                        font-size: 12px;
+                    }
+
+                    .link-forgotten
+                    {
+                        color: $colorBlack;
+                        font-size: 12px;
+                        border-bottom: 1px solid $colorBlack;
+
+                        &:hover
+                        {
+                            color: $colorDarkRed;
+                            border-bottom: 1px solid $colorDarkRed;
+                        }
+                    }
+                }
+
+                .title
+                {
+                    color: $colorBlack;
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+
+                .des
+                {
+                    color: $colorBlack;
+                    font-size: 12px;
+                    font-weight: 400;
+                    margin: 10px 0 20px 0;
+                }
+
+                .btn-custom
+                {
+                    width: 150px;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px)
+{
+    .page-sign-in
+    {
+        .container-sign-in
+        {
+            .sign-in-box
+            {
+                height: auto;
+
+                .form
+                {
+                    padding: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 568px)
+{
+    .page-sign-in
+    {
+        .container-sign-in
+        {
+            .sign-in-box
+            {
+                .form
+                {
+                    .input-check-box
+                    {
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,205 @@
+@import '../global';
+
+/* *** page-reseller */
+
+.page-reseller
+{
+    .container-bread-crumb
+    {
+        background-image: url("../../image/bc/bg-bread-crumb-reseller.jpg");
+    }
+}
+
+.page-reseller .container-reseller
+{
+    .select-box-select2 + .select2-container
+    {
+        margin-bottom: 20px;
+
+        .select2-selection--single
+        {
+            border: 1px solid $colorBlack3;
+            border-radius: 10px;
+        }
+    }
+
+    .reseller-data-box
+    {
+        height: 100%;
+        max-height: 500px;
+        overflow-y: hidden;
+
+        .mCSB_scrollTools .mCSB_draggerContainer
+        {
+            &:before
+            {
+                background-color: $colorGrayLight2;
+                width: 6px;
+                height: 100%;
+                border-radius: 2px;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar
+        {
+            background-color: $colorDarkRed;
+            border-radius: 2px;
+        }
+
+        .mCSB_scrollTools .mCSB_draggerRail
+        {
+            background-color: transparent;
+        }
+
+        .item
+        {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid $colorGrayLight7;
+            border-radius: 5px;
+
+            .icon
+            {
+                width: 40px;
+                color: $colorBlack;
+                font-size: 20px;
+            }
+
+            .data-box
+            {
+                flex: 1;
+                color: $colorBlack;
+                font-size: 14px;
+                font-weight: 400;
+
+                .data
+                {
+                    margin-bottom: 15px;
+
+                    &:last-child
+                    {
+                        margin-bottom: 0;
+                    }
+
+                    .city-name
+                    {
+                        background-color: $colorDarkBlue;
+                        color: $colorWhite;
+                        font-size: 14px;
+                        padding: 5px 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    #IranMap
+    {
+        width: 100%;
+        display: block;
+        position: relative;
+        direction: rtl;
+        text-align: right;
+        padding: 0;
+        margin: 0 auto;
+
+        .show-title
+        {
+            display: none;
+            position: absolute;
+            background-color: $colorBlack;
+            color: $colorWhite;
+            font-size: 14px;
+            margin: 0 !important;
+            padding: 0 5px;
+            text-align: center;
+            line-height: 26px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            opacity: 0.8;
+        }
+
+        .map
+        {
+            display: block;
+            float: left;
+            width: 100%;
+            text-align: left;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            position: relative;
+
+            &:before
+            {
+                background-color: $colorGrayLight11;
+                width: 100%;
+                height: 100%;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 100%;
+                z-index: -1;
+            }
+
+            svg
+            {
+                height: auto !important;
+                width: 100% !important;
+            }
+            .border path
+            {
+                fill: $colorGrayLight6;
+            }
+            .island path
+            {
+                fill: $colorWhite;
+            }
+            .province path
+            {
+                fill: $colorWhite;
+            }
+            .sea path, .lake path
+            {
+                fill: #6caed8;
+            }
+            .province path:hover, .island path:hover, .province path.hover, .island path.hover
+            {
+                fill: $colorDarkBlue !important;
+                cursor: pointer;
+            }
+        }
+
+        .list
+        {
+            display: none;
+        }
+    }
+}
+
+
+@media (max-width: 768px)
+{
+    .page-reseller .container-reseller
+    {
+        .row-cols
+        {
+            flex-direction: column-reverse;
+        }
+
+        .section-title
+        {
+            margin-top: 20px;
+        }
+    }
+}

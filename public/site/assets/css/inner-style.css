@@ -1,0 +1,204 @@
+.post{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: justify;
+    margin-top: 40px;
+}
+.form .text-danger{
+    text-align: right !important;
+}
+.form .input-box{
+    display: flex;
+    flex-direction: column;
+}
+.numberCode{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+.page-sign-in .container-sign-in .sign-in-box .form .input-check-box .link-forgotten{
+    border: none !important;
+}
+#ui-datepicker-div{
+    z-index: 999 !important;
+}
+.ui-widget-content{
+    border-radius: 0;
+}
+.ui-datepicker{
+    width: 260px;
+}
+.ui-datepicker .ui-datepicker-header{
+    background-color: #2abdc4;
+    height: 40px;
+    line-height: 38px;
+    padding: 0;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+    color: #fff !important;
+}
+.ui-datepicker-title .select2-container{
+    text-align: right;
+}
+.ui-datepicker-title .select2-container.ui-datepicker-month{
+    width: 105px;
+    margin-left: 10px;
+}
+.ui-datepicker-title .select2-container.ui-datepicker-year{
+    width: 75px;
+}
+.ui-datepicker-title .select2-container .select2-choice .select2-arrow{
+    width: 20px;
+}
+.ui-datepicker-title .select2-container .select2-choice .select2-arrow b{
+    border-width: 5px 5px 0;
+    top: 14px;
+}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{
+    text-shadow: none;
+    font-size: 20px;
+    top: 1px;
+    text-decoration: none !important;
+}
+.aui .ui-datepicker-prev.btn,
+.aui .ui-datepicker-next.btn{
+    height: 35px;
+    line-height: 35px;
+    padding: 0 7px;
+    margin: 0;
+    width: auto;
+}
+.ui-datepicker .ui-datepicker-prev i,
+.ui-datepicker .ui-datepicker-next i{
+    vertical-align: middle;
+}
+.ui-datepicker .ui-datepicker-title{
+    font-weight: normal;
+    line-height: inherit;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 16px;
+    padding: 0 25px;
+}
+.ui-datepicker th{
+    font-weight: normal;
+    color: #00508F;
+}
+.ui-datepicker td{
+    text-align: center;
+    padding: 5px 0;
+}
+.ui-datepicker-calendar thead tr{
+    border-bottom: 1px solid #ddd;
+}
+.ui-datepicker-today .ui-state-default{
+    background-color: #FCAF17;
+    color: #fff !important;
+    border-radius: 0;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default{
+    color: #808285;
+    font-size: 14px;
+    border-radius: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+.ui-widget-header {
+    border: 1px solid transparent;
+    background: transparent;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    width: 25px;
+    height: 25px;
+}
+
+/* .ui-datepicker {
+    width: 300px !important;
+} */
+.ui-datepicker .ui-datepicker-title {
+    padding: 0 30px !important;
+}
+
+.ui-datepicker-prev {
+    padding: 2px 4px;
+}
+
+.ui-datepicker-next {
+    padding: 2px 4px;
+}
+
+.ui-datepicker-header .btn {
+    background-color: transparent!important;
+    min-width: unset !important;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    white-space: nowrap;
+    padding: 0px 5px !important;
+    font-size: 20px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ui-datepicker .ui-datepicker-title .select2 {
+    width: 49% !important;
+    min-width: 49% !important;
+    max-width: 49% !important;
+    margin-bottom: 0 !important;
+}
+.ui-datepicker .ui-datepicker-title .select2.select2-container--default .select2-selection--single .select2-selection__arrow,
+.ui-datepicker .ui-datepicker-title .select2.select2-container--default .select2-selection--single{
+    height: 28px;
+    line-height: 28px;
+}
+.ui-datepicker .ui-datepicker-title .select2.select2-container--default .select2-selection--single .select2-selection__rendered{
+    height: 28px;
+    line-height: 28px;
+}
+.ui-datepicker .ui-datepicker-title .select2.select2-container--default .select2-selection--single .select2-selection__arrow::after {
+    line-height: 30px;
+    font-size: 21px;
+    color: #4d4d4d;
+}
+
+.text-danger {
+    color:rgb(185 26 41) !important;
+}
+
+.note_employment{
+    color: #000;
+    font-size:14px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: justify;
+    margin-top: 40px;
+}

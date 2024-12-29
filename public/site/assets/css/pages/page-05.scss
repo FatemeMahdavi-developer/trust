@@ -1,0 +1,202 @@
+@import '../global';
+
+/* *** page-about */
+
+.page-about
+{
+    .container-bread-crumb
+    {
+        background-image: url("../../image/bc/bg-bread-crumb-about.jpg");
+    }
+
+    .container-footer
+    {
+        margin-top: 0;
+    }
+}
+
+.page-about .container-about
+{
+    .section-des
+    {
+        margin-bottom: 50px;
+
+        .title
+        {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .des
+        {
+            line-height: 30px;
+            font-size: 14px;
+            text-align: justify;
+        }
+    }
+
+    &.container-about-vision
+    {
+        background-color: $colorDarkBlue;
+        background-image: url("../../image/about/bg-about-vision-03.png");
+        background-size: 350px;
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        padding-top: 80px;
+        padding-bottom: 160px;
+        margin-bottom: 50px;
+
+        .title
+        {
+            color: $colorWhite;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 60px 0;
+        }
+
+        img
+        {
+            width: 100%;
+        }
+
+        .list
+        {
+            width: 100%;
+            padding: 0 100px;
+            margin-top: 50px;
+            column-count: 2;
+            -moz-column-count: 2;
+            -webkit-column-count: 2;
+            column-gap: 30px;
+            -webkit-column-gap: 30px;
+            -moz-column-gap: 30px;
+
+            li
+            {
+                line-height: 24px;
+                color: $colorWhite;
+                font-size: 14px;
+                text-align: justify;
+                padding-right: 15px;
+                margin-bottom: 30px;
+                position: relative;
+
+                &:before
+                {
+                    background-color: $colorWhite;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 100%;
+                    content: '';
+                    position: absolute;
+                    top: 10px;
+                    right: 0;
+                }
+            }
+        }
+    }
+
+    &.container-about-standard
+    {
+        background-image: url("../../image/about/bg-about-standard.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right top;
+        padding-top: 70px;
+        padding-bottom: 120px;
+
+        .title
+        {
+            color: $colorWhite;
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        ul
+        {
+            li
+            {
+                color: $colorWhite;
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 30px;
+
+                &:last-child
+                {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1199px)
+{
+    .page-about .container-about
+    {
+        &.container-about-vision
+        {
+            .list
+            {
+                padding: 0 50px;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px)
+{
+    .page-about .container-about
+    {
+        &.container-about-vision
+        {
+            .list
+            {
+                padding: 0 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px)
+{
+    .page-about .container-about
+    {
+        &.container-about-vision
+        {
+            .title
+            {
+                margin-top: 0;
+            }
+
+            .image-01
+            {
+                margin-bottom: 50px;
+            }
+
+            .list
+            {
+                padding: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 568px)
+{
+    .page-about .container-about
+    {
+        &.container-about-vision
+        {
+            .list
+            {
+                column-count: 1;
+                -moz-column-count: 1;
+                -webkit-column-count: 1;
+            }
+        }
+    }
+}

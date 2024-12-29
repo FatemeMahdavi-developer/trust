@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,0BAA0B;AAItB,wCACA;EACI,gBAAgB,EAAE,oDAAoD;;AAM1E,0DACA;EACI,aAAa,EAAE,IAAI",
+"sources": ["page-06.scss"],
+"names": [],
+"file": "page-06.css"
+}

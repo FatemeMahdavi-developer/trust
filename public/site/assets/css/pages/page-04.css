@@ -1,0 +1,66 @@
+/* *** page-contact */
+.page-contact .container-bread-crumb {
+  background-image: url("../../image/bc/bg-bread-crumb-contact.jpg"); }
+
+.page-contact .container-contact .contact-data {
+  background-color: #302C83;
+  padding: 50px 15px;
+  margin-bottom: 50px;
+  border-radius: 10px; }
+  .page-contact .container-contact .contact-data .contact-data-box {
+    text-align: center; }
+    .page-contact .container-contact .contact-data .contact-data-box img {
+      width: 100%;
+      max-width: 50px; }
+    .page-contact .container-contact .contact-data .contact-data-box .des {
+      line-height: 30px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 20px; }
+.page-contact .container-contact .form {
+  width: 100%;
+  margin: 0;
+  position: relative; }
+  .page-contact .container-contact .form .title {
+    color: #000000;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px; }
+  .page-contact .container-contact .form .des {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 20px; }
+  .page-contact .container-contact .form .form-input, .page-contact .container-contact .form .form-select, .page-contact .container-contact .form .form-textarea {
+    border-radius: 10px; }
+  .page-contact .container-contact .form .form-textarea {
+    height: 120px; }
+  .page-contact .container-contact .form .form-select + .select2-container .select2-selection--single {
+    border-radius: 10px; }
+  .page-contact .container-contact .form .col-btn {
+    text-align: left;
+    margin-top: 10px; }
+.page-contact .container-contact .map {
+  background-color: #F7F7F7;
+  width: 100%;
+  height: 100%;
+  min-height: 300px; }
+.page-contact .container-contact .leaflet-touch .leaflet-control-attribution,
+.page-contact .container-contact .leaflet-touch .leaflet-control-layers,
+.page-contact .container-contact .leaflet-touch .leaflet-bar {
+  display: none; }
+
+@media (max-width: 768px) {
+  .page-contact .container-contact .form {
+    margin-top: 50px; }
+    .page-contact .container-contact .form .form-textarea {
+      margin-top: 15px; } }
+@media (max-width: 568px) {
+  .page-contact .container-contact .contact-data-box {
+    margin-bottom: 30px; }
+    .page-contact .container-contact .contact-data-box.last {
+      margin-bottom: 0; } }
+
+/*# sourceMappingURL=page-04.css.map */

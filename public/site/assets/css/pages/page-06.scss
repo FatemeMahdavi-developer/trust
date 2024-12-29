@@ -1,0 +1,19 @@
+@import '../global';
+
+/* *** page-certificate */
+
+.page-certificate
+{
+    .container-bread-crumb
+    {
+        background-image: url("../../image/bc/bg-bread-crumb-certificate.jpg");
+    }
+}
+
+.page-certificate .container-certificate
+{
+    .certificate-item
+    {
+        margin-bottom: 20px;
+    }
+}

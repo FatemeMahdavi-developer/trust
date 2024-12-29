@@ -1,0 +1,702 @@
+@import '../global';
+
+/* *** page-products -  */
+
+.page-products
+{
+    .container-bread-crumb
+    {
+        background-image: url("../../image/bc/bg-bread-crumb-products.jpg");
+    }
+}
+
+.page-products .container-products
+{
+    //margin-top: 30px;
+
+    .col-right
+    {
+        .filter-box
+        {
+            background-color: $colorWhite;
+            padding: 20px 20px 0 20px;
+            border: 1px solid $colorGrayLight2;
+            //border-radius: 10px;
+            overflow: auto;
+            z-index: 10;
+
+            .filter-section
+            {
+                margin-bottom: 20px;
+                border-bottom: 1px solid $colorGrayLight2;
+
+                .filter-section-title
+                {
+                    width: 100%;
+                    color: $colorBlack;
+                    font-size: 16px;
+                    font-weight: 700;
+                    text-align: right;
+                    display: inline-flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    position: relative;
+                    cursor: pointer;
+
+                    &:before
+                    {
+                        color: $colorBlack;
+                        font-size: 16px;
+                        content: '\f114';
+                        font-family: uicons-regular-rounded !important;
+                        font-style: normal;
+                        font-weight: normal !important;
+                        font-variant: normal;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+
+                &.show
+                {
+                    .filter-section-title
+                    {
+                        &:before
+                        {
+                            content: '\f10d';
+                        }
+                    }
+
+                    .filter-content
+                    {
+                        height: auto;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                &:nth-last-child(2)
+                {
+                    margin-bottom: 0;
+                    border-bottom: 0;
+                }
+
+                .filter-content
+                {
+                    height: 0;
+                    overflow: hidden;
+                    transition: height 0.1s linear;
+
+                    .has-scrollbar
+                    {
+                        max-height: 265px;
+
+                        .mCSB_scrollTools .mCSB_draggerContainer
+                        {
+                            &:before
+                            {
+                                background-color: $colorGrayLight2;
+                                width: 6px;
+                                height: 100%;
+                                border-radius: 2px;
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 50%;
+                                transform: translateX(-50%);
+                            }
+                        }
+
+                        .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar
+                        {
+                            background-color: $colorDarkRed;
+                            border-radius: 2px;
+                        }
+
+                        .mCSB_scrollTools .mCSB_draggerRail
+                        {
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+
+            .menu-category
+            {
+                padding: 0;
+
+                li
+                {
+                    position: relative;
+
+                    a
+                    {
+                        background-color: transparent;
+                        width: 100%;
+                        color: $colorBlack;
+                        font-size: 14px;
+                        font-weight: 400;
+                        display: inline-block;
+                        padding: 10px 0;
+
+                        &:hover, &.active
+                        {
+                            color: $colorDarkRed;
+                        }
+                    }
+                }
+
+                ul
+                {
+                    display: none;
+                    margin: 0 20px 0 0;
+                    border: 0;
+
+                    &.open
+                    {
+                        display: block;
+                    }
+
+                    li
+                    {
+                        a
+                        {
+                            color: $colorGrayLight6;
+                            padding-right: 10px;
+
+                            &:before
+                            {
+                                background-color: $colorGrayLight6;
+                                width: 4px;
+                                height: 4px;
+                                display: inline-block;
+                                margin-left: 5px;
+                                border-radius: 100%;
+                                content: '';
+                            }
+
+                            &:hover, &.active
+                            {
+                                color: $colorDarkRed;
+
+                                &:before
+                                {
+                                    background-color: $colorDarkRed;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .nav-dropdown-toggle
+                {
+                    &:after
+                    {
+                        font-size: 16px;
+                        font-family: uicons-regular-rounded !important;
+                        font-style: normal;
+                        font-weight: normal !important;
+                        font-variant: normal;
+                        content: '\f114';
+                        position: absolute;
+                        left: 0;
+                        vertical-align: unset;
+                        margin: 0;
+                        border: 0;
+                    }
+
+                    &.open:after
+                    {
+                        content: '\f10d';
+                    }
+                }
+            }
+
+            .filter-label-checkbox
+            {
+                width: 100%;
+                margin-bottom: 7px;
+                position: relative;
+
+                .color-box
+                {
+                    background-color: $colorGrayLight;
+                    width: 12px;
+                    height: 12px;
+                    display: inline-block;
+                    border: 1px solid $colorGrayLight2;
+                    border-radius: 100%;
+                    position: absolute;
+                    left: 0;
+                }
+            }
+
+            .form-search
+            {
+                width: 100%;
+                height: 50px;
+                margin-bottom: 20px;
+                position: relative;
+
+                input
+                {
+                    background-color: $colorWhite;
+                    width: 100%;
+                    height: 50px;
+                    color: $colorBlack;
+                    font-size: 14px;
+                    font-weight: 400;
+                    text-align: right;
+                    padding: 10px 0 10px 40px;
+                    border: 0;
+                    border-bottom: 1px solid $colorGrayLight5;
+                    //border-radius: 10px;
+                    outline: unset;
+
+                    &:focus
+                    {
+                        border-color: $colorDarkRed;
+                    }
+                }
+
+                ::placeholder
+                {
+                    color: $colorGrayLight4;
+                }
+                :-ms-input-placeholder
+                {
+                    color: $colorGrayLight4;
+                }
+                ::-ms-input-placeholder
+                {
+                    color: $colorGrayLight4;
+                }
+
+                button
+                {
+                    background-color: transparent;
+                    width: 40px;
+                    height: 40px;
+                    color: $colorBlack;
+                    font-size: 24px;
+                    text-align: left;
+                    border: 0;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+
+                    &:hover
+                    {
+                        color: $colorDarkRed;
+                    }
+
+                    .icon-search
+                    {
+                        background-image: url(strReplace($searchIconUrl, 'color', strReplace('' + $colorBlack, '#', '%23')));
+                        width: 24px;
+                        height: 24px;
+                        display: inline-flex;
+                    }
+                }
+            }
+
+            .filter-price-slider-box
+            {
+                .ui-widget-content
+                {
+                    background-color: $colorGrayLight2;
+                    width: calc(100% - 20px);
+                    height: 3px;
+                    margin: 10px auto 0 auto;
+                    border: 0;
+                }
+
+                .ui-widget-header
+                {
+                    background-color: $colorDarkRed;
+                    height: 3px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                .ui-slider-horizontal .ui-slider-handle
+                {
+                    background-color: $colorWhite;
+                    border: 2px solid $colorGrayLight4;
+                    border-radius: 100%;
+                }
+
+                .filter-price-data
+                {
+                    width: 100%;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 10px;
+
+                    .price-box
+                    {
+                        font-family: 'IranSans';
+                        font-size: 12px;
+                        display: inline-flex;
+                        flex-direction: column;
+
+                        &:last-child
+                        {
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+
+            .btn-filter-done-box
+            {
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                right: -150%;
+                transition: all 0.3s ease-in-out;
+
+                .btn-filter-done
+                {
+                    background-color: $colorBlack;
+                    width: 60%;
+                    height: 40px;
+                    color: $colorWhite;
+                    font-size: 14px;
+                    text-align: center;
+                    float: right;
+                    padding: 10px 0;
+                }
+                .btn-filter-close
+                {
+                    background-color: $colorGrayLight6;
+                    width: 40%;
+                    height: 40px;
+                    color: $colorWhite;
+                    font-size: 14px;
+                    text-align: center;
+                    float: left;
+                    padding: 10px 0;
+                }
+            }
+        }
+    }
+
+    .col-left
+    {
+        .btn-filter-view-box
+        {
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+            margin: 0 0 20px 0;
+            border: 2px solid $colorGrayLight2;
+            border-right: 0;
+            border-left: 0;
+
+            .btn-filter-view
+            {
+                color: $colorBlack;
+                display: inline-block;
+                padding: 10px 0;
+
+                .icon
+                {
+                    margin-left: 5px;
+                }
+
+                &:hover
+                {
+                    color: $colorDarkRed;
+                }
+            }
+        }
+    }
+}
+
+.page-products .container-product-list-des
+{
+    margin-top: 40px;
+
+    .des-box
+    {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid $colorGrayLight2;
+        border-radius: 10px;
+
+        .section-title
+        {
+            margin-bottom: 20px;
+
+            .title
+            {
+                font-size: 18px;
+                text-align: right;
+            }
+        }
+
+        .des
+        {
+            height: 120px;
+            line-height: 24px;
+            font-size: 14px;
+            text-align: justify;
+            overflow: hidden;
+        }
+
+        .btn-des-change
+        {
+            color: $colorDarkRed;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+
+            &:hover
+            {
+                color: $colorDarkRedHover;
+            }
+
+            .icon
+            {
+                width: 14px;
+                height: 14px;
+                font-size: 14px;
+                display: inline-block;
+                margin-right: 5px;
+            }
+            .icon-up
+            {
+                display: none;
+            }
+
+            .title-2
+            {
+                display: none;
+            }
+        }
+
+        &.full-height
+        {
+            .des
+            {
+                height: auto;
+            }
+
+            .btn-des-change
+            {
+                .icon-up
+                {
+                    display: inline-block;
+                }
+                .icon-down
+                {
+                    display: none;
+                }
+
+                .title-2
+                {
+                    display: inline-block;
+                }
+                .title
+                {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+.container-compare-product
+{
+    background-color: $colorWhite;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid $colorGrayLight2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+
+    .title
+    {
+        padding: 0 30px;
+    }
+
+    .product-items
+    {
+        flex: 1;
+        display: inline-flex;
+        padding: 5px 0;
+
+        .item
+        {
+            border: 1px solid $colorGrayLight2;
+            padding: 5px;
+            margin-left: 20px;
+            position: relative;
+
+            &:hover
+            {
+                border: 1px solid $colorBlack;
+            }
+
+            .image-box
+            {
+                display: inline-block;
+
+                img
+                {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+
+            .btn-delete
+            {
+                background-color: $colorBlack;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                color: $colorWhite;
+                font-size: 20px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100%;
+                position: absolute;
+                top: -5px;
+                left: -10px;
+
+                &:hover
+                {
+                    background-color: $colorRed;
+                }
+
+                .icon
+                {
+                    font-size: 10px;
+                    display: inline-flex;
+                }
+            }
+        }
+    }
+
+    .btn-box
+    {
+        background-color: $colorGrayLight;
+        display: inline-flex;
+        align-self: stretch;
+
+        a
+        {
+            height: 100%;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+
+            &.btn-delete
+            {
+                background-color: $colorGrayLight;
+                color: $colorRed;
+
+                .icon
+                {
+                    font-size: 12px;
+                    display: inline-flex;
+                    margin-left: 5px;
+                }
+            }
+
+            &.btn-compare
+            {
+                background-color: $colorDarkBlue;
+                color: $colorWhite;
+
+                &:hover
+                {
+                    background-color: $colorDarkRed;
+                }
+            }
+        }
+    }
+}
+
+.compare-product-popover
+{
+    img
+    {
+        width: 160px;
+    }
+
+    .title
+    {
+        width: 100%;
+        color: $colorBlack;
+        font-size: 14px;
+        text-align: center;
+        display: -webkit-box;
+        margin-top: 10px;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+
+@media (max-width: 768px)
+{
+    .page-products .container-products
+    {
+        .col-right
+        {
+            .filter-box
+            {
+                width: 100%;
+                height: calc(100% - 40px);
+                border: 0;
+                position: fixed;
+                top: 0;
+                right: -150%;
+                transition: all 0.3s ease-in-out;
+
+                &.show
+                {
+                    right: 0;
+
+                    .btn-filter-done-box
+                    {
+                        right: 0;
+                    }
+                }
+            }
+
+            .advertise-box
+            {
+                display: none;
+            }
+        }
+
+        .col-left
+        {
+
+            .btn-filter-view-box
+            {
+                display: inline-block;
+            }
+        }
+    }
+
+    .container-compare-product
+    {
+        display: none;
+    }
+}

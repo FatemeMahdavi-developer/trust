@@ -1,0 +1,335 @@
+@import '../global';
+
+/* *** page-blog-post */
+
+.page-blog-post
+{
+    .container-bread-crumb
+    {
+        background-image: url("../../image/bc/bg-bread-crumb-blog.jpg");
+    }
+}
+
+.page-blog-post .container-blog-post
+{
+    margin-top: 30px;
+
+    .post-header
+    {
+        width: 100%;
+        display: inline-flex;
+        align-items: stretch;
+
+        .image-box
+        {
+            width: 50%;
+            height: 96.23%;
+            min-height: 400px;
+            display: inline-block;
+            position: relative;
+
+            img
+            {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                object-fit: cover;
+                -o-object-fit: cover;
+            }
+
+            &:before
+            {
+                content: '';
+                padding-top: 96.23%;
+                display: block;
+            }
+        }
+
+        .post-data-box
+        {
+            width: 50%;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-left: 20px;
+
+            .category-date-box
+            {
+                .date
+                {
+                    background-color: $colorDarkBlue;
+                    color: $colorWhite;
+                    font-size: 14px;
+                    padding: 5px 15px;
+                }
+
+                .category-link
+                {
+                    color: $colorBlack;
+                    font-size: 14px;
+                    font-weight: 400;
+                    display: inline-block;
+                    margin-right: 30px;
+
+                    &:hover
+                    {
+                        color: $colorDarkRed;
+                    }
+                }
+            }
+
+            .link-title
+            {
+                display: inline-block;
+                margin-top: 40px;
+
+                .title
+                {
+                    line-height: 30px;
+                    color: $colorBlack;
+                    font-size: 18px;
+                    font-weight: 700;
+
+                    &:hover
+                    {
+                        color: $colorDarkRed;
+                    }
+                }
+            }
+
+            .print-share-box
+            {
+                margin-top: 40px;
+
+                .item
+                {
+                    color: $colorBlack;
+                    font-size: 12px;
+                    font-weight: 400;
+                    display: inline-flex;
+                    align-items: center;
+                    margin-left: 30px;
+
+                    &:last-child
+                    {
+                        margin-left: 0;
+                    }
+                }
+
+                a.item
+                {
+                    .icon-share
+                    {
+                        background-image: url(strReplace($shareIconUrl, 'color', strReplace('' + $colorBlack, '#', '%23')));
+                        width: 20px;
+                        height: 21px;
+                        display: inline-flex;
+                        margin-left: 5px;
+                    }
+
+                    .icon-print
+                    {
+                        background-image: url(strReplace($printIconUrl, 'color', strReplace('' + $colorBlack, '#', '%23')));
+                        width: 20px;
+                        height: 21px;
+                        display: inline-flex;
+                        margin-left: 5px;
+                    }
+
+                    &:hover
+                    {
+                        color: $colorDarkRed;
+
+                        .icon-share
+                        {
+                            background-image: url(strReplace($shareIconUrl, 'color', strReplace('' + $colorDarkRed, '#', '%23')));
+                        }
+
+                        .icon-print
+                        {
+                            background-image: url(strReplace($printIconUrl, 'color', strReplace('' + $colorDarkRed, '#', '%23')));
+                        }
+                    }
+                }
+            }
+
+            .next-prv-post-box
+            {
+                width: 100%;
+                display: inline-flex;
+                align-items: stretch;
+                justify-content: space-between;
+                padding: 15px 0;
+                margin-top: 20px;
+                border: 1px solid $colorGrayLight2;
+
+                .post-item
+                {
+                    width: 40%;
+                    flex-basis: 40%;
+                    display: inline-flex;
+                    align-items: center;
+
+                    .icon-box
+                    {
+                        width: 100%;
+                        color: $colorBlack;
+                        font-size: 12px;
+                        font-weight: 700;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: right;
+
+                        .icon
+                        {
+                            width: 30px;
+                            color: $colorDarkBlue;
+                            font-size: 12px;
+                            text-align: center;
+                        }
+
+                        &:hover
+                        {
+                            color: $colorDarkRed;
+                        }
+
+                        &.prv
+                        {
+                            justify-content: left;
+                        }
+                    }
+                }
+
+                .divider
+                {
+                    background-color: $colorGrayLight2;
+                    width: 1px;
+                    flex-basis: 1px;
+                }
+            }
+        }
+    }
+
+    .des-box
+    {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 30px;
+        text-align: justify;
+        margin-top: 40px;
+
+        p
+        {
+            margin-bottom: 10px;
+
+            &:last-child
+            {
+                margin-bottom: 0;
+            }
+        }
+
+        .quote
+        {
+            background-color: $colorGrayLight;
+            padding: 40px 30px 30px 30px;
+            margin: 30px 0;
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+            .quote-title
+            {
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            &:before
+            {
+                display: inline-block;
+                color: $colorDarkRed;
+                font-size: 70px;
+                font-family: uicons-regular-rounded !important;
+                font-style: normal;
+                font-weight: normal !important;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                vertical-align: -0.125em;
+                -webkit-font-smoothing: antialiased;
+                content: '\f258';
+                position: absolute;
+                top: -30px;
+                left: 30px;
+                text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            }
+        }
+    }
+
+    .tag-box
+    {
+        margin-top: 30px;
+
+        .title
+        {
+            width: 100%;
+            color: $colorBlack;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        ul
+        {
+            width: 100%;
+            display: inline-flex;
+            flex-wrap: wrap;
+            margin-top: 15px;
+
+            li
+            {
+                margin: 0 0 10px 10px;
+
+                a
+                {
+                    background-color: $colorDarkBlue;
+                    color: $colorWhite;
+                    font-size: 14px;
+                    font-weight: 400;
+                    display: inline-block;
+                    padding: 5px 15px;
+
+                    &:hover
+                    {
+                        background-color: $colorDarkRed;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px)
+{
+    .page-blog-post .container-blog-post
+    {
+        .post-header
+        {
+            align-items: center;
+            flex-direction: column-reverse;
+
+            .image-box
+            {
+                width: 100%;
+            }
+
+            .post-data-box
+            {
+                width: 100%;
+                justify-content: unset;
+                padding-left: 0;
+                margin-top: 30px;
+            }
+        }
+    }
+}

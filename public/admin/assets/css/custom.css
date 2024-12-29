@@ -1,0 +1,75 @@
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY3VzdG9tLmNzcyIsInNvdXJjZXMiOlsiY3VzdG9tLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiJ9 */
+
+/*# sourceMappingURL=custom.css.map */
+
+
+.input-order {
+    text-align: center;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    color: #036FAF;
+    font-family: Tahoma;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 7px;
+    border-color: #dedede;
+    width: 100px;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title){
+    font-size: 22px !important;
+}
+.swal2-popup.swal2-toast .swal2-title {
+
+    font-size: 20px !important;
+
+}
+
+
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 39px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+    left: 11px !important;
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice, .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder, .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-search--inline {
+    color: #6c757d;
+}
+.selectNews{
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+}
+
+
+.contact_table  td:first-child {
+    text-align: center !important;
+    background-color: #e3e3e340 !important;
+}
+.contact_table tr td{
+    border: 1px solid #00000024;
+    text-align:right; 
+    background-color: #eee;
+}
+
+.contact_table:not(.table-sm):not(.table-md):not(.dataTable) td{
+    height:35px !important;
+}
+
+
+.alert-not-found{
+    color: #484e54 !important;
+    background-color: #eee !important;
+    border-color: #ddd !important;
+}

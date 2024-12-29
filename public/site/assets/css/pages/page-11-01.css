@@ -1,0 +1,52 @@
+/* *** page-profile -  */
+.page-profile .container-profile .col-side-bar-menu {
+  height: 100%; }
+.page-profile .container-profile .section-content-box .content-box {
+  margin-top: 10px; }
+  .page-profile .container-profile .section-content-box .content-box .title {
+    color: #999999;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 20px 0 10px 0; }
+  .page-profile .container-profile .section-content-box .content-box .value {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400; }
+.page-profile .container-profile .link-box {
+  background-color: #ffffff;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid #D9D9D9;
+  border-radius: 5px; }
+  .page-profile .container-profile .link-box .icon {
+    width: 40px;
+    height: 40px;
+    color: #302C83;
+    font-size: 40px; }
+  .page-profile .container-profile .link-box .title {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 15px; }
+  .page-profile .container-profile .link-box .count {
+    color: #000000;
+    font-size: 14px;
+    margin-top: 10px; }
+  .page-profile .container-profile .link-box:hover {
+    background-color: #302C83; }
+    .page-profile .container-profile .link-box:hover .icon {
+      color: #ffffff; }
+    .page-profile .container-profile .link-box:hover .title {
+      color: #ffffff; }
+    .page-profile .container-profile .link-box:hover .count {
+      color: #ffffff; }
+
+@media (max-width: 768px) {
+  .page-profile .container-profile .link-box {
+    margin-bottom: 20px; } }
+
+/*# sourceMappingURL=page-11-01.css.map */

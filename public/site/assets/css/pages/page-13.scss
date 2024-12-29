@@ -1,0 +1,91 @@
+@import '../global';
+
+/* *** page-magazine */
+
+.page-magazine
+{
+    .container-bread-crumb
+    {
+        background-image: url("../../image/bc/bg-bread-crumb-magazine.jpg");
+    }
+}
+
+.page-magazine .container-magazine-filter
+{
+    .magazine-filter + .select2-container
+    {
+        .select2-selection--single
+        {
+            border-radius: 0;
+        }
+    }
+}
+
+.page-magazine .container-magazine
+{
+    margin-top: 20px;
+    position: relative;
+
+    .magazine-item
+    {
+        margin-bottom: 20px;
+    }
+}
+
+.magazine-item
+{
+    width: 100%;
+    display: inline-block;
+
+    .image-box
+    {
+        height: 121.16%;
+        border: 1px solid $colorGrayLight2;
+        position: relative;
+
+        img
+        {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            object-fit: cover;
+            -o-object-fit: cover;
+        }
+
+        &:before
+        {
+            content: '';
+            padding-top: 121.16%;
+            display: block;
+        }
+    }
+
+    .title
+    {
+        width: 100%;
+        color: $colorBlack;
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &:hover
+    {
+        .image-box
+        {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .title
+        {
+            color: $colorDarkRed;
+        }
+    }
+}

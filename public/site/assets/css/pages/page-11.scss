@@ -1,0 +1,198 @@
+@import '../global';
+
+/* *** page-profile -  */
+
+.page-profile
+{
+    .container-bread-crumb
+    {
+        background-image: url("../../image/bc/bg-bread-crumb-profile.jpg");
+    }
+
+    .container-profile
+    {
+        margin-top: 30px;
+    }
+}
+
+.col-side-bar-menu
+{
+    background-color: $colorWhite;
+    padding: 25px 15px;
+    border: 1px solid $colorGrayLight2;
+    border-radius: 5px;
+
+    .user-data-box
+    {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        //padding: 0 25px;
+        margin-bottom: 30px;
+
+        .image-box
+        {
+            width: 72px;
+            height: 72px;
+            padding: 10px;
+            //border-radius: 10px;
+            //position: relative;
+            //z-index: 1;
+
+            img
+            {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                -o-object-fit: contain;
+            }
+        }
+
+        .content-box
+        {
+            padding-right: 10px;
+
+            .name-family
+            {
+                color: $colorBlack;
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .des
+            {
+                color: $colorBlack;
+                font-size: 12px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .menu
+    {
+        li
+        {
+            margin-bottom: 20px;
+
+            &:last-child
+            {
+                margin-bottom: 0;
+            }
+
+            a
+            {
+                width: 100%;
+                color: $colorBlack;
+                display: inline-flex;
+                align-items: center;
+                padding: 10px 20px;
+                position: relative;
+
+                //svg, svg path
+                //{
+                //    width: 18px;
+                //    height: 18px;
+                //    margin-left: 10px;
+                //    fill: $colorDarkBlue !important;
+                //}
+                .icon
+                {
+                    width: 18px;
+                    height: 18px;
+                    color: $colorDarkBlue;
+                    font-size: 18px;
+                    margin-left: 10px;
+                }
+
+                &:hover, &.active
+                {
+                    background-color: $colorGrayLight;
+                    color: $colorDarkBlue;
+                    border-radius: 10px;
+
+                    &:before
+                    {
+                        color: $colorDarkBlue;
+                        font-size: 12px;
+                        content: '\f10e';
+                        font-family: uicons-regular-rounded !important;
+                        font-style: normal;
+                        font-weight: normal !important;
+                        font-variant: normal;
+                        position: absolute;
+                        top: 50%;
+                        left: 20px;
+                        transform: translateY(-50%);
+                    }
+
+                    //svg, svg path
+                    //{
+                    //    fill: $colorGreenLight !important;
+                    //}
+                }
+
+                &.sign-out:hover
+                {
+                    background-color: transparent;
+                    color: $colorDarkRed;
+
+                    .icon
+                    {
+                        color: $colorDarkRed;
+                    }
+
+                    &:before
+                    {
+                        content: '';
+                    }
+                }
+            }
+        }
+    }
+}
+
+.section-content-box
+{
+    padding: 40px 20px;
+    margin-bottom: 20px;
+    border: 1px solid $colorGrayLight2;
+    border-radius: 5px;
+
+    .section-title
+    {
+        justify-content: space-between;
+        margin: 0;
+
+        .title
+        {
+            font-size: 18px;
+        }
+
+        .btn-custom
+        {
+            width: 150px;
+        }
+    }
+
+    .content-box
+    {
+        margin-top: 30px;
+    }
+}
+
+
+@media (max-width: 768px)
+{
+    .page-profile
+    {
+        .container-profile
+        {
+            .col-side-bar-menu
+            {
+                height: unset !important;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

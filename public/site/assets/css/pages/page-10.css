@@ -1,0 +1,89 @@
+/* *** page-faq */
+.page-faq .container-bread-crumb {
+  background-image: url("../../image/bc/bg-bread-crumb-faq.jpg"); }
+
+.page-faq .container-faq .title-bar {
+  font-size: 20px;
+  font-weight: 700; }
+.page-faq .container-faq .faq-tab {
+  margin-top: 30px; }
+  .page-faq .container-faq .faq-tab li {
+    margin-bottom: 20px; }
+    .page-faq .container-faq .faq-tab li:last-child {
+      margin-bottom: 0; }
+    .page-faq .container-faq .faq-tab li button {
+      background-color: #F7F7F7;
+      width: 100%;
+      color: #000000;
+      font-size: 16px;
+      text-align: right;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      border: 0;
+      border-radius: 10px; }
+      .page-faq .container-faq .faq-tab li button .title {
+        flex: 1;
+        margin-right: 10px; }
+      .page-faq .container-faq .faq-tab li button .icon-user {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath id='_086-user' data-name='086-user' d='M27.621 19.044A14.052 14.052 0 0 0 24.036 16.8a1.172 1.172 0 0 0-.952 2.142A11.72 11.72 0 0 1 26.074 20.8a4.673 4.673 0 0 1 1.583 3.512v2.168a1.173 1.173 0 0 1-1.172 1.172H3.516a1.173 1.173 0 0 1-1.172-1.172V24.317A4.673 4.673 0 0 1 3.927 20.8c1.184-1.041 4.634-3.46 11.073-3.46a8.682 8.682 0 1 0-5.282-1.8 16.292 16.292 0 0 0-7.338 3.5A7.017 7.017 0 0 0 0 24.317v2.168A3.519 3.519 0 0 0 3.516 30H26.485A3.519 3.519 0 0 0 30 26.485V24.317a7.017 7.017 0 0 0-2.38-5.273ZM8.672 8.672A6.328 6.328 0 1 1 15 15 6.335 6.335 0 0 1 8.672 8.672Zm0 0' transform='translate(0 0)' fill='%23000000'/%3E%3C/svg%3E");
+        width: 30px;
+        height: 30px; }
+      .page-faq .container-faq .faq-tab li button .icon-arrow {
+        font-size: 15px;
+        display: inline-flex; }
+      .page-faq .container-faq .faq-tab li button.active {
+        background-color: #302C83;
+        color: #ffffff; }
+        .page-faq .container-faq .faq-tab li button.active .icon-user {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath id='_086-user' data-name='086-user' d='M27.621 19.044A14.052 14.052 0 0 0 24.036 16.8a1.172 1.172 0 0 0-.952 2.142A11.72 11.72 0 0 1 26.074 20.8a4.673 4.673 0 0 1 1.583 3.512v2.168a1.173 1.173 0 0 1-1.172 1.172H3.516a1.173 1.173 0 0 1-1.172-1.172V24.317A4.673 4.673 0 0 1 3.927 20.8c1.184-1.041 4.634-3.46 11.073-3.46a8.682 8.682 0 1 0-5.282-1.8 16.292 16.292 0 0 0-7.338 3.5A7.017 7.017 0 0 0 0 24.317v2.168A3.519 3.519 0 0 0 3.516 30H26.485A3.519 3.519 0 0 0 30 26.485V24.317a7.017 7.017 0 0 0-2.38-5.273ZM8.672 8.672A6.328 6.328 0 1 1 15 15 6.335 6.335 0 0 1 8.672 8.672Zm0 0' transform='translate(0 0)' fill='%23ffffff'/%3E%3C/svg%3E"); }
+.page-faq .container-faq .faq-tab-content {
+  margin-top: 30px; }
+  .page-faq .container-faq .faq-tab-content .faq-item {
+    padding: 20px 30px;
+    border-top: 1px solid #D9D9D9;
+    position: relative; }
+    .page-faq .container-faq .faq-tab-content .faq-item:last-child {
+      border-bottom: 1px solid #D9D9D9; }
+    .page-faq .container-faq .faq-tab-content .faq-item .question {
+      line-height: 24px;
+      font-size: 14px;
+      text-align: justify;
+      padding: 0 0 0 40px;
+      margin: 0;
+      position: relative; }
+      .page-faq .container-faq .faq-tab-content .faq-item .question:before {
+        color: #000000;
+        font-size: 15px;
+        font-family: uicons-regular-rounded !important;
+        font-style: normal;
+        font-weight: normal !important;
+        font-variant: normal;
+        content: '\f10d';
+        position: absolute;
+        left: 0;
+        cursor: pointer; }
+    .page-faq .container-faq .faq-tab-content .faq-item .answer {
+      line-height: 24px;
+      font-size: 14px;
+      text-align: justify;
+      display: none;
+      padding: 0;
+      margin: 15px 0 0 0; }
+    .page-faq .container-faq .faq-tab-content .faq-item.open {
+      background-color: #F7F7F7;
+      border-top-color: #302C83; }
+      .page-faq .container-faq .faq-tab-content .faq-item.open:before {
+        background-color: #302C83;
+        width: 100%;
+        height: 1px;
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        z-index: 1; }
+      .page-faq .container-faq .faq-tab-content .faq-item.open .question:before {
+        content: '\f114'; }
+
+/*# sourceMappingURL=page-10.css.map */

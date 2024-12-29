@@ -1,0 +1,118 @@
+@import '../global';
+
+/* *** page-profile -  */
+
+.page-profile
+{
+    .container-profile
+    {
+        .col-side-bar-menu
+        {
+            height: 100%;
+        }
+
+        .section-content-box
+        {
+            .content-box
+            {
+                margin-top: 10px;
+
+                .title
+                {
+                    color: $colorGrayLight6;
+                    font-size: 14px;
+                    font-weight: 400;
+                    margin: 20px 0 10px 0;
+                }
+
+                .value
+                {
+                    color: $colorBlack;
+                    font-size: 14px;
+                    font-weight: 400;
+                    //padding: 10px 20px;
+                    //border: 1px solid $colorGrayLight6;
+                    //border-radius: 10px;
+                }
+            }
+        }
+
+        .link-box
+        {
+            background-color: $colorWhite;
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+            //margin-bottom: 20px;
+            border: 1px solid $colorGrayLight2;
+            border-radius: 5px;
+
+            //svg, svg path
+            //{
+            //    width: 48px;
+            //    height: 48px;
+            //    margin-left: 10px;
+            //    fill: $colorDarkBlue !important;
+            //}
+            .icon
+            {
+                width: 40px;
+                height: 40px;
+                color: $colorDarkBlue;
+                font-size: 40px;
+            }
+
+            .title
+            {
+                color: $colorBlack;
+                font-size: 18px;
+                font-weight: 700;
+                margin-top: 15px;
+            }
+
+            .count
+            {
+                color: $colorBlack;
+                font-size: 14px;
+                margin-top: 10px;
+            }
+
+            &:hover
+            {
+                background-color: $colorDarkBlue;
+
+                .icon
+                {
+                    color: $colorWhite;
+                }
+
+                .title
+                {
+                    color: $colorWhite;
+                }
+
+                .count
+                {
+                    color: $colorWhite;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px)
+{
+    .page-profile
+    {
+        .container-profile
+        {
+            .link-box
+            {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

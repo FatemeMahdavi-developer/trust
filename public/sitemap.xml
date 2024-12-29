@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+        <loc>http://localhost/news/لورم۱</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>لورم۱</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/news/لورم۲</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>لورم۲</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/news/1</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>1</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/news/q</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>q</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/news/cat/اخبار</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>اخبار</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/news/cat/مقالات</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>مقالات</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/news/cat/دسته-بندی-۱</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>دسته بندی ۱</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/news/cat/دسته-بندی-2</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>دسته بندی 2</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/پنبه-توپک-بهداشتی-گل</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1/product/17223206221673247832-toopak-2.jpg</image:loc>
+    <image:caption>پنبه توپک بهداشتی گل</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/پد-الکلی</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1/product/1722320499۲.png</image:loc>
+    <image:caption>پد الکلی</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/ماسک</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1/product/1722323604۱۱.webp</image:loc>
+    <image:caption>ماسک</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/پنبه-بهداشتی</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1/product/17223180811673169815-panbe.png</image:loc>
+    <image:caption>پنبه بهداشتی</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/cat/باند</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>باند</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/cat/پنبه</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>پنبه</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/cat/ماسک</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>ماسک</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/cat/پانسمان-پنبه-ای</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>پانسمان پنبه ای</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/product/cat/پانسمان-ضدآب</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>پانسمان ضدآب</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/photo/cat/دسته-بندی-۱-گالری</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1/photo_cat/1719521987HeaderS-6.jpg</image:loc>
+    <image:caption>alt تصویر ۱</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/photo/cat/زیر-دسته-بندی-۱-گالری</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>زیر دسته بندی ۱ گالری</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/photo/cat/دسته-بندی-۲-گالری</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>دسته بندی ۲ گالری</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/video/cat/دسته-بندی-۱-ویدیو</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1/video_cat/1719529885Screenshot 2024-06-28 at 2.40.36 AM.png</image:loc>
+    <image:caption>دسته بندی ۱ ویدیو</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/video/cat/زیر-دسته-بندی-۱-ویدیو</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>زیر دسته بندی ۱ ویدیو</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/video/cat/زیر-دسته-بندی۲-ویدیو</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1/video_cat/17195310655c72f1d76b296674b73e344dbaf83e44.jpg</image:loc>
+    <image:caption>زیر دسته بندی۲ ویدیو</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/photo/cat/زیر-دسته-بندی-2-گالری</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1/photo_cat/1719649494۳.jpg</image:loc>
+    <image:caption>زیر دسته بندی 2 گالری</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/photo/cat/زیر-دسته-بندی3-گالری</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>زیر دسته بندی3 گالری</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/photo/cat/دسته-بندی-سطح-۱</loc>
+        <lastmod>2024-08-06T00:00:00+03:30</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.9</priority>
+    <image:image>
+    <image:loc>http://localhost/upload/thumb1</image:loc>
+    <image:caption>دسته بندی سطح ۱</image:caption>
+</image:image>
+        </url>
+</urlset>

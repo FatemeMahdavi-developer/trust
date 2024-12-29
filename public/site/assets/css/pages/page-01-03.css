@@ -1,0 +1,73 @@
+/* *** page-sign-up */
+.page-sign-up {
+  text-align: center; }
+  .page-sign-up .container-sign-up {
+    background-image: url("../../image/bg-sign-up-in.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto; }
+    .page-sign-up .container-sign-up .sign-up-box {
+      width: 100%;
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column; }
+      .page-sign-up .container-sign-up .sign-up-box .logo img {
+        width: 100%;
+        max-width: 180px; }
+      .page-sign-up .container-sign-up .sign-up-box .form {
+        background-color: #ffffff;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 40px;
+        margin: 30px auto 0 auto;
+        position: relative;
+        z-index: 1; }
+        .page-sign-up .container-sign-up .sign-up-box .form .form-input {
+          border-radius: 10px; }
+        .page-sign-up .container-sign-up .sign-up-box .form .input-check-box {
+          display: inline-flex;
+          justify-content: space-between; }
+          .page-sign-up .container-sign-up .sign-up-box .form .input-check-box label a {
+            color: #000000;
+            margin-left: 5px; }
+            .page-sign-up .container-sign-up .sign-up-box .form .input-check-box label a:hover {
+              color: #9D1A15; }
+        .page-sign-up .container-sign-up .sign-up-box .form .title {
+          color: #000000;
+          font-size: 18px;
+          font-weight: 700; }
+        .page-sign-up .container-sign-up .sign-up-box .form .des {
+          color: #000000;
+          font-size: 12px;
+          font-weight: 400;
+          margin: 10px 0 20px 0; }
+        .page-sign-up .container-sign-up .sign-up-box .form .btn-custom {
+          width: 150px;
+          margin-top: 20px; }
+
+@media (max-width: 768px) {
+  .page-sign-up .container-sign-up .sign-up-box {
+    height: auto; }
+    .page-sign-up .container-sign-up .sign-up-box .form {
+      padding: 20px; } }
+@media (max-width: 568px) {
+  .page-sign-up .container-sign-up .sign-up-box .form .input-check-box {
+    flex-direction: column; } }
+
+/*# sourceMappingURL=page-01-03.css.map */

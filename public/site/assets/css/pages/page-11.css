@@ -1,0 +1,98 @@
+/* *** page-profile -  */
+.page-profile .container-bread-crumb {
+  background-image: url("../../image/bc/bg-bread-crumb-profile.jpg"); }
+.page-profile .container-profile {
+  margin-top: 30px; }
+
+.col-side-bar-menu {
+  background-color: #ffffff;
+  padding: 25px 15px;
+  border: 1px solid #D9D9D9;
+  border-radius: 5px; }
+  .col-side-bar-menu .user-data-box {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 30px; }
+    .col-side-bar-menu .user-data-box .image-box {
+      width: 72px;
+      height: 72px;
+      padding: 10px; }
+      .col-side-bar-menu .user-data-box .image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        -o-object-fit: contain; }
+    .col-side-bar-menu .user-data-box .content-box {
+      padding-right: 10px; }
+      .col-side-bar-menu .user-data-box .content-box .name-family {
+        color: #000000;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px; }
+      .col-side-bar-menu .user-data-box .content-box .des {
+        color: #000000;
+        font-size: 12px;
+        font-weight: 400; }
+  .col-side-bar-menu .menu li {
+    margin-bottom: 20px; }
+    .col-side-bar-menu .menu li:last-child {
+      margin-bottom: 0; }
+    .col-side-bar-menu .menu li a {
+      width: 100%;
+      color: #000000;
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative; }
+      .col-side-bar-menu .menu li a .icon {
+        width: 18px;
+        height: 18px;
+        color: #302C83;
+        font-size: 18px;
+        margin-left: 10px; }
+      .col-side-bar-menu .menu li a:hover, .col-side-bar-menu .menu li a.active {
+        background-color: #F7F7F7;
+        color: #302C83;
+        border-radius: 10px; }
+        .col-side-bar-menu .menu li a:hover:before, .col-side-bar-menu .menu li a.active:before {
+          color: #302C83;
+          font-size: 12px;
+          content: '\f10e';
+          font-family: uicons-regular-rounded !important;
+          font-style: normal;
+          font-weight: normal !important;
+          font-variant: normal;
+          position: absolute;
+          top: 50%;
+          left: 20px;
+          transform: translateY(-50%); }
+      .col-side-bar-menu .menu li a.sign-out:hover {
+        background-color: transparent;
+        color: #9D1A15; }
+        .col-side-bar-menu .menu li a.sign-out:hover .icon {
+          color: #9D1A15; }
+        .col-side-bar-menu .menu li a.sign-out:hover:before {
+          content: ''; }
+
+.section-content-box {
+  padding: 40px 20px;
+  margin-bottom: 20px;
+  border: 1px solid #D9D9D9;
+  border-radius: 5px; }
+  .section-content-box .section-title {
+    justify-content: space-between;
+    margin: 0; }
+    .section-content-box .section-title .title {
+      font-size: 18px; }
+    .section-content-box .section-title .btn-custom {
+      width: 150px; }
+  .section-content-box .content-box {
+    margin-top: 30px; }
+
+@media (max-width: 768px) {
+  .page-profile .container-profile .col-side-bar-menu {
+    height: unset !important;
+    margin-bottom: 20px; } }
+
+/*# sourceMappingURL=page-11.css.map */

@@ -1,0 +1,23 @@
+/* *** page-survey */
+.page-survey .container-bread-crumb {
+  background-image: url("../../image/bc/bg-bread-crumb-survey.jpg"); }
+
+.page-survey .container-survey .form-survey .question {
+  line-height: 30px;
+  font-size: 16px;
+  text-align: justify; }
+.page-survey .container-survey .form-survey .items-box {
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 30px; }
+  .page-survey .container-survey .form-survey .items-box label {
+    font-size: 14px;
+    margin-bottom: 20px; }
+    .page-survey .container-survey .form-survey .items-box label:last-child {
+      margin-bottom: 0; }
+.page-survey .container-survey .form-survey .btn-box {
+  margin-top: 40px; }
+  .page-survey .container-survey .form-survey .btn-box .btn-custom {
+    margin-left: 20px; }
+
+/*# sourceMappingURL=page-12.css.map */

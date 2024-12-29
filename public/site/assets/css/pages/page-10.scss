@@ -1,0 +1,156 @@
+@import '../global';
+
+/* *** page-faq */
+
+.page-faq
+{
+    .container-bread-crumb
+    {
+        background-image: url("../../image/bc/bg-bread-crumb-faq.jpg");
+    }
+}
+
+.page-faq .container-faq
+{
+    .title-bar
+    {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .faq-tab
+    {
+        margin-top: 30px;
+
+        li
+        {
+            margin-bottom: 20px;
+
+            &:last-child
+            {
+                margin-bottom: 0;
+            }
+
+            button
+            {
+                background-color: $colorGrayLight;
+                width: 100%;
+                color: $colorBlack;
+                font-size: 16px;
+                text-align: right;
+                display: inline-flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 15px 20px;
+                border: 0;
+                border-radius: 10px;
+
+                .title
+                {
+                    flex: 1;
+                    margin-right: 10px;
+                }
+
+                .icon-user
+                {
+                    background-image: url(strReplace($userIconUrl, 'color', strReplace('' + $colorBlack, '#', '%23')));
+                    width: 30px;
+                    height: 30px;
+                }
+                .icon-arrow
+                {
+                    font-size: 15px;
+                    display: inline-flex;
+                }
+
+                &.active
+                {
+                    background-color: $colorDarkBlue;
+                    color: $colorWhite;
+
+                    .icon-user
+                    {
+                        background-image: url(strReplace($userIconUrl, 'color', strReplace('' + $colorWhite, '#', '%23')));
+                    }
+                }
+            }
+        }
+    }
+
+    .faq-tab-content
+    {
+        margin-top: 30px;
+
+        .faq-item
+        {
+            padding: 20px 30px;
+            border-top: 1px solid $colorGrayLight2;
+            position: relative;
+
+            &:last-child
+            {
+                border-bottom: 1px solid $colorGrayLight2;
+            }
+
+            .question
+            {
+                line-height: 24px;
+                font-size: 14px;
+                text-align: justify;
+                padding: 0 0 0 40px;
+                margin: 0;
+                position: relative;
+
+                &:before
+                {
+                    color: $colorBlack;
+                    font-size: 15px;
+                    font-family: uicons-regular-rounded !important;
+                    font-style: normal;
+                    font-weight: normal !important;
+                    font-variant: normal;
+                    content: '\f10d';
+                    position: absolute;
+                    left: 0;
+                    cursor: pointer;
+                }
+            }
+
+            .answer
+            {
+                line-height: 24px;
+                font-size: 14px;
+                text-align: justify;
+                display: none;
+                padding: 0;
+                margin: 15px 0 0 0;
+            }
+
+            &.open
+            {
+                background-color: $colorGrayLight;
+                border-top-color: $colorDarkBlue;
+
+                &:before
+                {
+                    background-color: $colorDarkBlue;
+                    width: 100%;
+                    height: 1px;
+                    content: '';
+                    position: absolute;
+                    bottom: -1px;
+                    left: 0;
+                    z-index: 1;
+                }
+
+                .question
+                {
+                    &:before
+                    {
+                        content: '\f114';
+                    }
+                }
+            }
+        }
+    }
+}

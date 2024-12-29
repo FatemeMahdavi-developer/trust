@@ -1,0 +1,49 @@
+/* *** page-magazine */
+.page-magazine .container-bread-crumb {
+  background-image: url("../../image/bc/bg-bread-crumb-magazine.jpg"); }
+
+.page-magazine .container-magazine-filter .magazine-filter + .select2-container .select2-selection--single {
+  border-radius: 0; }
+
+.page-magazine .container-magazine {
+  margin-top: 20px;
+  position: relative; }
+  .page-magazine .container-magazine .magazine-item {
+    margin-bottom: 20px; }
+
+.magazine-item {
+  width: 100%;
+  display: inline-block; }
+  .magazine-item .image-box {
+    height: 121.16%;
+    border: 1px solid #D9D9D9;
+    position: relative; }
+    .magazine-item .image-box img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px 10px 0 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      object-fit: cover;
+      -o-object-fit: cover; }
+    .magazine-item .image-box:before {
+      content: '';
+      padding-top: 121.16%;
+      display: block; }
+  .magazine-item .title {
+    width: 100%;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden; }
+  .magazine-item:hover .image-box {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); }
+  .magazine-item:hover .title {
+    color: #9D1A15; }
+
+/*# sourceMappingURL=page-13.css.map */
