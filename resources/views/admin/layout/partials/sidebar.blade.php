@@ -1,8 +1,8 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand" style="height:40px">
-            {{-- <a href="javascript:void(0)"> 
-                <img alt="تصویر" src="{{asset("admin/assets/img/logo.png")}}" class="header-logo"> 
+            {{-- <a href="javascript:void(0)">
+                <img alt="تصویر" src="{{asset("admin/assets/img/logo.png")}}" class="header-logo">
                 <span class="logo-name">اجیس</span>
             </a> --}}
         </div>
@@ -65,7 +65,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>محل شما روی نقشه</span></a>
                 <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'contactmap')) d-block @endif">
                     @can("update_contactmap")
-                    <li><a class="nav-link" href="{{route("admin.contactmap.edit")}}">لوکیشن</a></li> 
+                    <li><a class="nav-link" href="{{route("admin.contactmap.edit")}}">لوکیشن</a></li>
                     @endcan
                 </ul>
             </li>
@@ -99,7 +99,33 @@
                 </ul>
             </li>
             @endcanany
-            @canany(permission_access("user"))
+            @canany(permission_access("size"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>سایز کمد</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'size')) d-block @endif">
+                    @can("create_size")
+                    <li><a class="nav-link" href="{{route("admin.size.create")}}">سایز جدید</a></li>
+                    @endcan
+                    @can("read_size")
+                    <li><a class="nav-link" href="{{route("admin.size.index")}}">لیست سایز ها</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
+            @canany(permission_access("box"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>کمد</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'box')) d-block @endif">
+                    @can("create_box")
+                    <li><a class="nav-link" href="{{route("admin.box.create")}}">کمد جدید</a></li>
+                    @endcan
+                    @can("read_box")
+                    <li><a class="nav-link" href="{{route("admin.box.index")}}">لیست کمد ها</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
+            {{-- @canany(permission_access("user"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-edit"></i><span>کاربران</span></a>
                 <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'user')) d-block @endif">
@@ -284,7 +310,7 @@
                     @endcan
                 </ul>
             </li>
-            @endcanany
+            @endcanany --}}
         </ul>
     </aside>
 </div>

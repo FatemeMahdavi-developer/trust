@@ -22,7 +22,8 @@
                                 @endforeach
                             </ul>
                         </div> --}}
-                        <a href="javascript:void(0);" class="link-box" data-bs-toggle="modal" data-bs-target="#modal-search"><span class="icon fi fi-rr-search"></span></a>
+                        <a href="javascript:void(0);" class="link-box">رزرو کمد</a>
+
                         <div class="dropdown link-box link-box-user">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fi fi-rr-user sign-in-up-icon"></i><span class="sign-in-up-title">ورود | ثبت نام</span></button>
                             <ul class="dropdown-menu">
@@ -35,6 +36,12 @@
                                 @endauth
                             </ul>
                         </div>
+                        <a  @auth href="javascript:void(0);"   @else href="{{route('auth.login')}}"  @endauth class="link-box"  id="cd_cart_trigger">
+                            <img src="{{asset("site/assets/image/shopping-cart.svg")}}">
+                            <i class="basket-num">
+                                0
+                            </i>
+                        </a>
                     </div>
                 </header>
             </div>

@@ -174,8 +174,8 @@
         <!--/ banner -->
 
 
-        <!-- blog -->    
-        @if(isset($news[0]))
+        <!-- blog -->
+        {{-- @if(isset($news[0]))
             <div class="container-fluid container-blog">
                 <div class="container-custom">
                     <div class="row">
@@ -229,11 +229,11 @@
                     </div>
                 </div>
             </div>
-    @endif
+    @endif --}}
 
 
     <!-- certificate -->
-        <div class="container-fluid container-certificate">
+        {{-- <div class="container-fluid container-certificate">
             <div class="container-custom">
                 <div class="row">
                     <div class="col-12">
@@ -317,12 +317,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!--/ certificate -->
 
 
         <!-- instagram -->
-        @if(isset($instagram_posts[0]))
+        {{-- @if(isset($instagram_posts[0]))
             <div class="container-fluid container-instagram">
                 <div class="container-custom">
                     <div class="row">
@@ -353,7 +353,7 @@
                     </div>
                 </div>
             </div>
-        @endif
+        @endif --}}
         <!--/ instagram -->
     </div>
 @endsection

@@ -40,7 +40,8 @@
         },
         "files": [
             "app/Base/HelperClass.php",
-            "app/Base/resize_image.php"
+            "app/Base/resize_image.php",
+            "app/Helpers/admin/helpers.php"
         ]
     },
     "autoload-dev": {

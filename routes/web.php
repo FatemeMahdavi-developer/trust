@@ -9,7 +9,9 @@ use App\Http\Controllers\site\MultimediaController;
 use App\Http\Controllers\site\newsController;
 use App\Http\Controllers\site\PhotoController;
 use App\Http\Controllers\site\productController;
+use App\Http\Controllers\site\ReservationController;
 use App\Http\Controllers\site\searchController;
+use App\Http\Controllers\site\select_box_controller;
 use App\Http\Controllers\site\VideoController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +31,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 // Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])->group(function () {
-    
+
     require __DIR__ . '/auth.php';
-    
+
     Route::any('search',searchController::class)->name('search');
 
     Route::get('', [\App\Http\Controllers\site\HomeController::class, 'main'])->name('main');
@@ -61,10 +63,15 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     Route::get('pages/{pages}', [\App\Http\Controllers\site\pageController::class, 'page'])->name("page");
     //Route::get('/show/{model}',[\App\Http\Controllers\site\user\commentController::class,'show'])->name('comment.show');
 
-    Route::get('contact', [ContactController::class,'contact'])->name('contact');
+    // Route::get('contact', [ContactController::class,'contact'])->name('contact');
 
 
-    Route::post("contact",[ContactController::class,'store'])->name('contact.store');
+    // Route::post("contact",[ContactController::class,'store'])->name('contact.store');
+
+    Route::get('reservation', [ReservationController::class,'reservation'])->name('reservation');
+    Route::post('reservation', [ReservationController::class,'store'])->name('reservation.store');
+
+    Route::post("select_box",select_box_controller::class)->name("select_box");
 
 
     Route::get('/multimedia', [MultimediaController::class,'index'])->name('multimedia.index');
@@ -81,11 +88,4 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
     Route::post("province_city", province_city_controller::class)->name("province_city");
 
-
-    Route::get('/employment', [EmploymentController::class,'show'])->name('employment.show');
-    Route::post('/employment', [EmploymentController::class,'store'])->name('employment.store');
-
-    // Route::get('/sitemap.xml');
-
-    
 // });

@@ -25,7 +25,10 @@ return [
         'video_cat' => 'دسته بندی ویدیو',
         'video' => 'ویدیو',
         'employment_section'=>'بخش استخدام',
-        'employment'=>'استخدام'
+        'employment'=>'استخدام',
+        'size'=>'سایز',
+        'box'=>'کمد',
+        'reservation'=>'رزرو کمد'
     ],
     'module_name_site' => [
         'news' => 'اخبار',
@@ -45,6 +48,9 @@ return [
         'like'=>'لیست علاقه مندی ها',
         'contact'=>'تماس با ما',
         'employment'=>'استخدام',
+        'size'=>'سایز',
+        'box'=>'کمد',
+        'reservation'=>'رزرو کمد'
     ],
     'crud'=>[
         "create"=>"ایجاد",

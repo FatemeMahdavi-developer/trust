@@ -80,11 +80,9 @@ class admin_controller
             $module->update([$request->column_name => '1']);
         } else {
             $module->update([$request->column_name => '0']);
-
         }
         return true;
     }
-
 
 }
 
