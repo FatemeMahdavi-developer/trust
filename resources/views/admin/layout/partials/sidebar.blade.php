@@ -125,6 +125,19 @@
                 </ul>
             </li>
             @endcanany
+            @canany(permission_access("account_number"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>شماره حساب</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'account_number')) d-block @endif">
+                    @can("create_account_number")
+                    <li><a class="nav-link" href="{{route("admin.account_number.create")}}">شماره حساب جدید</a></li>
+                    @endcan
+                    @can("read_account_number")
+                    <li><a class="nav-link" href="{{route("admin.account_number.index")}}">لیست شماره حساب ها</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
             {{-- @canany(permission_access("user"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-edit"></i><span>کاربران</span></a>

@@ -21,74 +21,50 @@
 <div class="container-fluid container-contact">
     <div class="container-custom">
         <div class="row">
-            {{-- <div class="col-12">
-                <div class="contact-data">
-                    <div class="row">
-                        @if($tell)
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
-                                <div class="contact-data-box">
-                                    <img src="{{asset("site/assets/image/icon-phone.png")}}">
-                                    <div class="des">
-                                        <a href="tel:{{$tell}}" style="color: #fff">{{$tell}}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                        @if($address)
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
-                                <div class="contact-data-box">
-                                    <img src="{{asset("site/assets/image/icon-marker.png")}}">
-                                    <div class="des">{{$address}}</div>
-                                </div>
-                            </div>
-                        @endif
-                        @if($email)
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
-                                <div class="contact-data-box last">
-                                    <img src="{{asset("site/assets/image/icon-envelope.png")}}">
-                                    <div class="des">
-                                        <a href="mailto:{{$email}}" style="color: #fff"> {{$email}}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div> --}}
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12 show_here">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-12 show_here">
                 <form action="{{route("reservation.store")}}" method="post" class="form">
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <div class="title">فرم تماس با ما</div>
-                            <div class="des">کاربران گرامی، شما می توانید از طریق فرم زیر تمامی نقطه نظرات انتقادات و پیشنهادات خود را برای ما ارسال کنید</div>
+                            <div class="title">فرم درخواست کمد آنلاین</div>
                         </div>
                     </div>
-                    @if(session()->has('success'))
-                        <div class="alert alert-success">{{session()->get('success')}}</div>
+                    @if(session()->has('order_error'))
+                        <div class="alert alert-danger">{{session()->get('order_error')}}</div>
                     @endif
-                    <div class="row">
-                        {{-- @auth
-                            @component('site.components.input',['name'=>'user_id','value'=>Auth::user()->id])@endcomponent
-                        @endauth --}}
-                        @guest
-                            @component('site.components.input',['name'=>'name','placeholder'=>'نام و نام خانوادگی','value'=>old('name')])@endcomponent
-                            @component('site.components.input',['name'=>'mobile','placeholder'=>'شماره تماس','value'=>old('mobile')])@endcomponent
-                        @endguest
-                    </div>
                     <div class="row">
                         @component("site.components.select_recursive",['name'=>'size_id','placeholder'=>'سایز','options'=>$sizes,'value'=>old('size_id'),'choose'=>true])@endcomponent
                         @component("site.components.select",['name'=>'box_id','placeholder'=>'باکس','items'=>[]])@endcomponent
                     </div>
                     <div class="row">
-                        @component("site.components.textarea",['name'=>'note','placeholder'=>'متن پیام','value'=>old('note')])@endcomponent
-                    </div>
-                    <div class="row">
                         <div class="col-md-12 col-sm-12 col-btn">
-                            <button type="submit" class="btn-custom">ارسال پیام</button>
+                            <button type="submit" class="btn-custom">ادامه</button>
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                @if(isset($prices[0]))
+                <div class="form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="title">جدول تعرفه قیمت ساعتی </div>
+                        </div>
+                    </div>
+                    <div class="rowGrid basketLastStepRow">
+                    <div class="colGrid2">
+                        <ul class="list-unstyled basketFinalBill"  style="background: #c0e6d3">
+                            @foreach($prices as $price)
+                            <li>
+                                <div class="basketFinalBill__title">سایز {{$price->title}}</div>
+                                <div class="basketFinalBill__value">{{$price->price}} <span>تومان</span></div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -132,11 +108,4 @@
         }).trigger("change");
     })
 </script>
-@if(Session::get('success') || $errors->count())
-    <script>
-         $('html, body').animate({
-            scrollTop: $(".show_here").offset().top
-         },100);
-    </script>
-@endif
 @endsection

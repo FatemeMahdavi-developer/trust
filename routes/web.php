@@ -3,10 +3,13 @@
 use App\Http\Controllers\admin\product_controller;
 use App\Http\Controllers\admin\province_city_controller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\site\bank_account_controller;
 use App\Http\Controllers\site\ContactController;
 use App\Http\Controllers\site\EmploymentController;
 use App\Http\Controllers\site\MultimediaController;
 use App\Http\Controllers\site\newsController;
+use App\Http\Controllers\site\order_controller;
+use App\Http\Controllers\site\order_success_controller;
 use App\Http\Controllers\site\PhotoController;
 use App\Http\Controllers\site\productController;
 use App\Http\Controllers\site\ReservationController;
@@ -68,11 +71,18 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
     // Route::post("contact",[ContactController::class,'store'])->name('contact.store');
 
-    Route::get('reservation', [ReservationController::class,'reservation'])->name('reservation');
-    Route::post('reservation', [ReservationController::class,'store'])->name('reservation.store');
+    Route::get('reservation', [ReservationController::class,'reservation'])->name('reservation')->middleware('auth');
+    Route::post('reservation', [ReservationController::class,'store'])->name('reservation.store')->middleware('auth');
+
+    Route::get("order",[order_controller::class,'order'])->name("order")->middleware('auth');
+    Route::post("order",[order_controller::class,'store'])->name("order.store")->middleware('auth');
+
+    Route::post("bank_account",bank_account_controller::class)->name("bank_account");
+
+    Route::get("order_success",[order_success_controller::class,'order_success'])->name("order_success")->middleware('auth');
+
 
     Route::post("select_box",select_box_controller::class)->name("select_box");
-
 
     Route::get('/multimedia', [MultimediaController::class,'index'])->name('multimedia.index');
 

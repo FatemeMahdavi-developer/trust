@@ -1,6 +1,6 @@
-@props(['title'=>'','name'=>'','items'=>[],'key'=>'','value'=>'','value_old'=>'','placeholder'=>'انتخاب کنید','class'=>''])
-<div class="col-md-6 col-sm-12">
-    <div class="input-box {{$class}}">
+@props(['title'=>'','name'=>'','items'=>[],'key'=>'','value'=>'','value_old'=>'','placeholder'=>'انتخاب کنید','class'=>'col-md-6 col-sm-12'])
+<div class="{{$class}}">
+    <div class="input-box">
         @if($title)
         <label>{{$title}}</label>
         @endif

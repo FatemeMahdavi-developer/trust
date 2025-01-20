@@ -202,3 +202,20 @@
     text-align: justify;
     margin-top: 40px;
 }
+
+
+
+.basketLastStepRow{
+    border: 1px solid #ddd;
+    border-radius:15px;
+}
+.basketFinalBill li{
+    display: flex;
+    justify-content: space-between;
+}
+.basketFinalBill li div{
+    padding: 15px;
+}
+.basketFinalBill3{
+    background-color: #c0e6d3;
+}

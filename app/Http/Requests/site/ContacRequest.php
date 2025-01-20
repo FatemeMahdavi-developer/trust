@@ -3,6 +3,7 @@
 namespace App\Http\Requests\site;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ContacRequest extends FormRequest
 {
@@ -22,20 +23,8 @@ class ContacRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>['required','string','max:255'],
-            'mobile'=>['required','string','max:11','regex:/[0]{1}[0-9]{10}/'],
-            'email'=>['required','email'],
-            'catid'=>['required','integer'],
-            'note'=>['required','string']
-        ];
-    }
-
-
-    public function messages()
-    {
-        return[
-            'catid' => 'فیلد واحد مربوطه اجباری است',
-            'note' => 'فیلد متن پیام اجباری است'
+            'box_id'=>['required','integer','exists:boxes,id'],
+            'size_id'=>['required','integer','exists:sizes,id'],
         ];
     }
 }

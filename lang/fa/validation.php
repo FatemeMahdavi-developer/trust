@@ -307,6 +307,12 @@ return [
         'price'=>'قیمت',
         'number_box'=>'کد محصول',
         'state'=>'وضعیت',
-        'size_id'=>'سایز'
+        'size_id'=>'سایز',
+        'box_id'=>'کمد',
+        'bank'=>'بانک',
+        'account_number'=>'شماره حساب',
+        'card_number'=>'شماره کارت',
+        'account_number_id'=>'شماره حساب',
+        'fish_number'=>'شماره فیش'
         ]
 ];

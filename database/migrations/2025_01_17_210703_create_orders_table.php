@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('basket_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('size_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
-            // $table->foreignId('payment_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('payment_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
             $table->string('type');
             $table->string('size_title');
             $table->string('price');
-            $table->string('box_number');
+            $table->string('number_box');
             $table->string('kind_payment');
             $table->string('state');
             $table->softDeletes();

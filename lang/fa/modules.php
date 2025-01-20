@@ -28,7 +28,9 @@ return [
         'employment'=>'استخدام',
         'size'=>'سایز',
         'box'=>'کمد',
-        'reservation'=>'رزرو کمد'
+        'reservation'=>'رزرو کمد',
+        'order'=>'سفارش',
+        'account_number'=>'شماره حساب'
     ],
     'module_name_site' => [
         'news' => 'اخبار',
@@ -50,7 +52,9 @@ return [
         'employment'=>'استخدام',
         'size'=>'سایز',
         'box'=>'کمد',
-        'reservation'=>'رزرو کمد'
+        'reservation'=>'رزرو کمد',
+        'order'=>'سفارش',
+        'account_number'=>'شماره حساب'
     ],
     'crud'=>[
         "create"=>"ایجاد",

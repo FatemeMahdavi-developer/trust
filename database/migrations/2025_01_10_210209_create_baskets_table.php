@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('baskets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('box_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('size_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('state');
+            $table->string('ip');
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\accountNumberController;
 use App\Http\Controllers\admin\bannerController;
 use App\Http\Controllers\admin\boxController;
 use App\Http\Controllers\admin\comment_controller;
@@ -121,5 +122,9 @@ Route::middleware("auth:admin")->group(function () {
 
     Route::resource("box",boxController::class)->except("show");
     Route::post("box/action_all", [boxController::class, "action_all"])->name("box.action_all");
+
+    Route::resource("account_number",accountNumberController::class)->except("show");
+    Route::post("account_number/action_all", [accountNumberController::class, "action_all"])->name("account_number.action_all");
+
 
 });

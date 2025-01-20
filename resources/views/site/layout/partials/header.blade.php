@@ -22,8 +22,11 @@
                                 @endforeach
                             </ul>
                         </div> --}}
-                        <a href="javascript:void(0);" class="link-box">رزرو کمد</a>
-
+                        @auth
+                            <a href="{{route('reservation')}}" class="link-box">رزرو کمد</a>
+                        @else
+                            <a href="{{route('auth.login')}}" class="link-box">رزرو کمد</a>
+                        @endif
                         <div class="dropdown link-box link-box-user">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fi fi-rr-user sign-in-up-icon"></i><span class="sign-in-up-title">ورود | ثبت نام</span></button>
                             <ul class="dropdown-menu">
