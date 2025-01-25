@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\message_cat_controller;
 use App\Http\Controllers\admin\message_controller;
 use App\Http\Controllers\admin\news_cat_controller;
 use App\Http\Controllers\admin\news_controller;
+use App\Http\Controllers\admin\order_controller;
 use App\Http\Controllers\admin\permission_controller;
 use App\Http\Controllers\admin\premission;
 use App\Http\Controllers\admin\product_cat_controller;
@@ -126,5 +127,7 @@ Route::middleware("auth:admin")->group(function () {
     Route::resource("account_number",accountNumberController::class)->except("show");
     Route::post("account_number/action_all", [accountNumberController::class, "action_all"])->name("account_number.action_all");
 
+    Route::resource("order",order_controller::class)->except(["create","store","show"]);
+    Route::post("order/action_all",[order_controller::class,"action_all"])->name("order.action_all");
 
 });

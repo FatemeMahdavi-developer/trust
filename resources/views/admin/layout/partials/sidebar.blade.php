@@ -138,6 +138,16 @@
                 </ul>
             </li>
             @endcanany
+            @canany(permission_access("order"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>سفارشات</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'order')) d-block @endif">
+                    @can("read_order")
+                    <li><a class="nav-link" href="{{route("admin.order.index")}}">لیست سفارش ها</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
             {{-- @canany(permission_access("user"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-edit"></i><span>کاربران</span></a>

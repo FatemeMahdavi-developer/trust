@@ -10,8 +10,16 @@
     </div>
     <ul class="menu">
         <li><a href="{{route('user.panel')}}" @if(str_contains($view_name,"-user-panel"))class="active"@endif><i class="fi fi-rr-apps icon"></i>{{__("msg.panel.dashbord")}}</a></li>
-        <li><a href="#"><i class="fi fi-rr-heart icon"></i>{{__("msg.panel.favorites_list")}}</a></li>
-        <li><a href="{{route('user.comment')}}" @if(str_contains($view_name,"-user-comment"))class="active"@endif><i class="fi fi-rr-comment icon"></i> {{__("msg.panel.comment")}}</a></li>
+        <li>
+            <a href="{{route('user.invoice')}}" @if(str_contains($view_name,"invoice"))class="active"@endif>
+                <i class="fi fi-rr-heart icon"></i>
+                لیست سفارشات
+            </a>
+        </li>
+        <li><a href=""><i class="fi fi-rr-heart icon"></i>باز کردن کمد</a></li>
+        <li><a href=""><i class="fi fi-rr-heart icon"></i>تحویل کمد</a></li>
+        {{-- <li><a href="#"><i class="fi fi-rr-heart icon"></i>{{__("msg.panel.favorites_list")}}</a></li> --}}
+        {{-- <li><a href="{{route('user.comment')}}" @if(str_contains($view_name,"-user-comment"))class="active"@endif><i class="fi fi-rr-comment icon"></i> {{__("msg.panel.comment")}}</a></li> --}}
         <li><a href="#" data-bs-toggle="modal" data-bs-target="#change-password"><i class="fi fi-rr-edit icon"></i>{{__("msg.panel.change_password")}}</a></li>
         <li><a href="{{route('user.logout')}}" class="sign-out"><i class="fi fi-rr-sign-out icon"></i> {{__("msg.panel.logout")}}</a></li>
     </ul>

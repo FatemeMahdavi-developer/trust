@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\site\user;
 
+use App\base\Entities\Enums\OrderType;
+use App\base\Entities\Enums\PaymentType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\site\change_profile_user_request;
+use App\Models\order;
+use App\Models\payment;
 use App\Models\product;
 use App\Trait\seo_site;
 use Illuminate\Http\Request;
@@ -12,6 +16,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Morilog\Jalali\Jalalian;
+
+use function App\Helpers\admin\enumAsOptions;
 
 class panelController extends Controller
 {
@@ -73,6 +79,33 @@ class panelController extends Controller
         }
     }
 
+    public function like(){
+        $module="like";
+        $module_title=app("setting")->get($module."_title") ?  : trans("modules.module_name_site.".$module);
+        $module_pic=app('setting')->get($module."_pic");
+        $product='';
+        return view("site.auth.user.like",compact('module_title','module_pic'));
+
+    }
+
+
+    public function  invoice(Request $request){
+        $orders =order::where('user_id',auth::user()->id)->orderBy('id','desc')->get();
+
+        $kind_payment=collect(enumAsOptions(OrderType::cases(),app(order::class)->enumsLang()))->pluck('label','value')->toArray();
+
+        $state_payment=collect(enumAsOptions(PaymentType::cases(),app(payment::class)->enumsLang()))->pluck('label','value')->toArray();
+
+        return  view('site.auth.user.invoice',compact(['orders','kind_payment','state_payment']));
+    }
+
+    public function unlocker(){
+        return  view('site.auth.user.unlocker'
+        // ,compact(['orders'])
+    );
+    }
+
+
     public function logout(Request $request)
     {
         Auth::logout();
@@ -81,15 +114,5 @@ class panelController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('main');
-    }
-
-
-    public function like(){
-        $module="like";
-        $module_title=app("setting")->get($module."_title") ?  : trans("modules.module_name_site.".$module);
-        $module_pic=app('setting')->get($module."_pic");
-        $product='';
-        return view("site.auth.user.like",compact('module_title','module_pic'));
-
     }
 }

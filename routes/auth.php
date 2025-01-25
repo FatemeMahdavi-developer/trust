@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\site\InvoiceController;
 use App\Http\Controllers\site\LikeController;
 use App\Http\Controllers\site\RateController;
+use App\Http\Controllers\site\user\panelController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->as('auth.')->group(function () {
@@ -23,15 +25,19 @@ Route::middleware('guest')->as('auth.')->group(function () {
 });
 
 Route::middleware('auth')->as('user.')->group(function () {
-    Route::get('change_profile',[\App\Http\Controllers\site\user\panelController::class,'change_profile'])->name('change_profile');
-    Route::post('change_profile',[\App\Http\Controllers\site\user\panelController::class,'change_profile_store'])->name('change_profile_store');
-    Route::get('panel',[\App\Http\Controllers\site\user\panelController::class,'index'])->name('panel');
-    Route::get('comment',[\App\Http\Controllers\site\user\panelController::class,'comment'])->name('comment');
-    Route::post('change_pass',[\App\Http\Controllers\site\user\panelController::class,'change_pass'])->name('change_pass');
-    Route::get('like',[\App\Http\Controllers\site\user\panelController::class,'like'])->name('like');
+    Route::get('change_profile',[panelController::class,'change_profile'])->name('change_profile');
+    Route::post('change_profile',[panelController::class,'change_profile_store'])->name('change_profile_store');
+    Route::get('panel',[panelController::class,'index'])->name('panel');
+    Route::get('comment',[panelController::class,'comment'])->name('comment');
+    Route::post('change_pass',[panelController::class,'change_pass'])->name('change_pass');
+    Route::get('like',[panelController::class,'like'])->name('like');
     Route::post('like/{type}/{type_id?}',[LikeController::class,'store'])->name('like.store')->middleware(['access_like','auth']);
     Route::post('rate/{type}/{type_id}',[RateController::class,'store'])->name('rate.store');   //->middleware('access_rate')
-    Route::get('logout',[\App\Http\Controllers\site\user\panelController::class,'logout'])->name('logout');
+
+    Route::get('invoice',[panelController::class,'invoice'])->name('invoice');
+    Route::get('unlocker',[panelController::class,'unlocker'])->name('unlocker');
+
+    Route::get('logout',[panelController::class,'logout'])->name('logout');
 });
 
 
