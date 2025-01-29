@@ -16,7 +16,8 @@ class payment extends Model
         'name',
         'bank',
         'account_number_id',
-        'fish_number'
+        'fish_number',
+        'state'
     ];
 
     protected $casts = [
@@ -26,5 +27,9 @@ class payment extends Model
     public function enumsLang(): array
     {
         return __('enums');
+    }
+
+    public function accountNumber(){
+        return $this->belongsTo(account_number::class,'account_number_id');
     }
 }

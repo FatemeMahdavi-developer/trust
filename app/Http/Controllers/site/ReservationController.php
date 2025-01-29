@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\site\ContacRequest;
 use App\Models\basket;
 use App\Models\size;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Morilog\Jalali\Jalalian;
 
 class ReservationController extends Controller
 {
@@ -34,8 +36,14 @@ class ReservationController extends Controller
 
     public function store(ContacRequest $request){
         $inputs=$request->validated();
+
+        $gregorianDate=Jalalian::fromFormat('Y/m/d',$inputs['expired_at'][0])->toCarbon();
+        $carbonDateTime=$gregorianDate->setTime((int)$inputs['expired_at'][1],(int)$inputs['expired_at'][2]);
+        $inputs['expired_at'] = $carbonDateTime->format('Y-m-d H:i:s');
+
         if(!empty($this->basket())){
             $basket_id=$this->basket()->id;
+            $inputs['created_at']=Carbon::now()->format('Y-m-d H:i:s');
             basket::find($basket_id)->update($inputs);
         }else{
             $inputs["ip"]=$request->ip();

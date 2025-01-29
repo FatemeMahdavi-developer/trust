@@ -7,7 +7,7 @@
     <section class="section">
         <div class="section-body">
             <div class="row">
-                <div class="col-12 col-sm-12 col-lg-9">
+                <div class="col-12 col-sm-12 col-lg-8">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
@@ -93,46 +93,41 @@
                         </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-12 col-lg-3">
+                  <div class="col-12 col-sm-12 col-lg-4">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="card card-info">
-                            <div class="card-header">
-                                <h4>وضعیت سفارش</h4>
-                            </div>
-                                <div class="card-body">
-                                    @component($prefix_component.".form",['action'=>route('admin.order.update',['order'=>$order['id']]),'method'=>'post'])
-                                    @slot("content")
-                                        @method("put")
-                                        @component($prefix_component."select",['name'=>'status','title'=>'وضعیت','class'=>'w-100','items'=>$state_payment,'value_old'=>$order->payment->state->value])@endcomponent
-                                        @component($prefix_component."button",['title'=>'ارسال'])@endcomponent
-                                    @endslot
-                                    @endcomponent
-                                </div>
-                            </div>
-                        </div>
-                        {{-- <div class="col-12">
-                            <div class="card card-info">
-                            <div class="card-header">
-                            <h4>وضعیت سفارش</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="alert alert-danger text-center">{{$order->type}}</div>
-                            </div>
-                            </div>
-                        </div> --}}
                         <div class="col-12">
                             <div class="card card-info">
                               <div class="card-header">
                                 <h4>زمان تحویل کمد</h4>
                               </div>
                               <div class="card-body">
-                                  {{-- @if($order->receive_date)
-                                    <div class="alert alert-success showDate text-center">{{$order->dateConvert('receive_date')}}</div>
-                                  @endif --}}
+                                  @if($order->basket->expired_at)
+                                    <div class="alert alert-success showDate text-center">{{$order->basket->date_convert('expired_at','H:i:s Y/m/d')}}</div>
+                                  @endif
                               </div>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <h4>جزییات پرداخت</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert text-center d-flex justify-content-between"> <span>نام واریز کننده :</span> {{$order->payment->name}}</div>
+                                    <div class="alert text-center d-flex justify-content-between"> <span>نام بانک :</span> {{$order->payment->bank}}</div>
+                                    <div class="alert text-center d-flex justify-content-between"> <span>واریز به حساب :</span> {{$order->payment->accountNumber->name}}</div>
+                                    <div class="alert text-center d-flex justify-content-between"> <span>شماره فیش :</span> {{$order->payment->fish_number}}</div>
+                                    @component($prefix_component.".form",['action'=>route('admin.order.update',['order'=>$order['id']]),'method'=>'post'])
+                                        @slot("content")
+                                            @method("put")
+                                            @component($prefix_component."select",['name'=>'state','title'=>'وضعیت','class'=>'w-100','items'=>$state_payment,'value_old'=>$order->payment->state->value])@endcomponent
+                                            @component($prefix_component."button",['title'=>'ارسال'])@endcomponent
+                                        @endslot
+                                    @endcomponent
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                   </div>
               </div>

@@ -1,18 +1,24 @@
 <?php
 
-namespace App\Http\Requests\site;
+namespace App\Http\Requests\admin;
 
+use App\base\Entities\Enums\PaymentType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rules\Enum;
 
-class ContacRequest extends FormRequest
+class order_request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        if(Gate::any(["create_order","update_order"])){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -23,10 +29,7 @@ class ContacRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'box_id'=>['required','integer','exists:boxes,id'],
-            'size_id'=>['required','integer','exists:sizes,id'],
-            'expired_at'=>['required'],  // todo 'regex:/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/'
-            'created_at'=>['nullable'],
+            'state'=>['required', new Enum(PaymentType::class)]
         ];
     }
 }

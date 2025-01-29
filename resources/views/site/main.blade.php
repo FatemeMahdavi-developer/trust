@@ -9,13 +9,13 @@
         <div class="container-fluid container-page-slider">
             <div class="page-slider-items" dir="rtl">
                 <a href="" class="item">
-                    <div class="image-box"><img src="{{asset("site/assets/image/slider-01.jpg")}}" alt=""/></div>
+                    <div class="image-box"><img src="{{asset("site/assets/image/closet.jpg")}}" alt=""/></div>
                     <h3 class="title">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
                         گرافیک است</h3></a>
-                <a href="" class="item">
+                {{-- <a href="" class="item">
                     <div class="image-box"><img src="{{asset("site/assets/image/slider-02.jpg")}}" alt=""/></div>
                     <h3 class="title">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                        گرافیک است</h3></a>
+                        گرافیک است</h3></a> --}}
             </div>
 
             <div class="slick-counter-button">

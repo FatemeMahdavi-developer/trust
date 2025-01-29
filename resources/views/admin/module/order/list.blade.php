@@ -25,8 +25,8 @@
                                                         <th scope="col">ردیف</th>
                                                         <th scope="col">عنوان</th>
                                                         <th scope="col">سایز</th>
+                                                        <th scope="col">وضعیت</th>
                                                         <th scope="col">کاربر</th>
-                                                        {{-- <th scope="col">وضعیت نمایش</th> --}}
                                                         <th scope="col">کد پیگیری</th>
                                                         <th scope="col">تاریخ</th>
                                                         @canany(["delete_order","update_order"])
@@ -41,10 +41,10 @@
                                                             <td>{{ $loop->iteration + $order->firstItem() - 1 }}
                                                             <td>{{$item->basket->box->title}}</td>
                                                             <td>{{$item->size->title}}</td>
-                                                            <td>{{$item->user->fullname}}</td>
-                                                            {{-- <td>
+                                                            <td>
                                                                 {{$status[$item->state->value]}}
-                                                            </td> --}}
+                                                            </td>
+                                                            <td>{{$item->user->fullname}}</td>
                                                             <td>{{$item->ref_number}}</td>
                                                             <td>{{$item->date_convert()}}</td>
                                                             <td>
@@ -66,7 +66,6 @@
                                                         @can("delete_order")
                                                         <button class="btn btn-danger btn-sm" type="submit" name="action_all" value="delete_all">حذف کلی</button>
                                                         @endcan
-                                                        <button class="btn btn-primary btn-sm" type="submit" name="action_all" value="change_order">تفییر ترتیب</button>
                                                     </div>
                                                     <div class="col-7 d-flex justify-content-end">
                                                         {{$order->links()}}

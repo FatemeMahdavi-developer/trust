@@ -6,6 +6,7 @@ use App\base\Entities\Enums\BoxState;
 use App\base\Entities\Enums\OrderType;
 use App\base\Entities\Enums\PaymentType;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\order_request;
 use App\Http\Requests\admin\product_request;
 use App\Models\basket;
 use App\Models\order;
@@ -57,7 +58,7 @@ class order_controller extends Controller
 
         $state_payment=collect(enumAsOptions(PaymentType::cases(),app(payment::class)->enumsLang()))->pluck('label','value')->toArray();
 
-        return view($this->view . "edit", [
+        return view($this->view."edit",[
             'module_title' => $this->module_title,
             'order' => $order,
             'status' => $status,
@@ -70,23 +71,11 @@ class order_controller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(product_request $request, order $order)
+    public function update(order_request $request,order $order)
     {
-        DB::beginTransaction();
-        $pic=$this->upload_file($this->module,'pic');
-        $pic_banner = $this->upload_file($this->module,'pic_banner');
         $inputs=$request->validated();
-        $inputs['pic']=$pic;
-        $inputs['pic_banner']=$pic_banner;
-        $inputs['status']=$request->status ?? '2';
-        if(empty($request->price)){
-            $inputs['price']=0;
-        }
-        $order->update($inputs);
-        DB::commit();
-        return back()->with('success', __('common.messages.success_edit', [
-            'module' => $this->module_title
-        ]));
+        $order->payment->update($inputs);
+        return back()->with('success','وضیعت سفارش تغییر کرد');
     }
 
     /**

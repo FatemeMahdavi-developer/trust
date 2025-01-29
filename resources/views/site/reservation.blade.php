@@ -35,6 +35,7 @@
                     <div class="row">
                         @component("site.components.select_recursive",['name'=>'size_id','placeholder'=>'سایز','options'=>$sizes,'value'=>old('size_id'),'choose'=>true])@endcomponent
                         @component("site.components.select",['name'=>'box_id','placeholder'=>'باکس','items'=>[]])@endcomponent
+                        @component("site.components.datepicker",['name'=>'expired_at','title'=>'تاریخ تحویل','value'=>old('expired_at')])@endcomponent
                     </div>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-btn">
@@ -107,5 +108,16 @@
             }
         }).trigger("change");
     })
+    $(".datepicker-input").datepicker({
+        dateFormat: "yy/mm/dd",
+        changeYear : true,
+        changeMonth : true,
+        yearRange: '1403:1500',
+        prevHTML: '<i class="zmdi zmdi-caret-right-circle"></i>',
+        nextHTML: '<i class="zmdi zmdi-caret-left-circle"></i>',
+        onSelect: function(dateText, inst) {
+            $(this).parent().addClass('visited');
+        }
+    });
 </script>
 @endsection

@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use App\base\Entities\Enums\BasketState;
+use App\Trait\date_convert;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class basket extends Model
 {
-    use HasFactory;
+    use HasFactory,date_convert;
 
     const UPDATED_AT=null;
-    
+
     protected $fillable=[
         'user_id',
         'box_id',
@@ -19,7 +20,9 @@ class basket extends Model
         'name',
         'mobile',
         'ip',
-        'state'
+        'state',
+        'expired_at',
+        'created_at'
     ];
 
 

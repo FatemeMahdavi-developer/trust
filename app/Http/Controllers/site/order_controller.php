@@ -12,6 +12,7 @@ use App\Models\basket;
 use App\Models\box;
 use App\Models\order;
 use App\Models\payment;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,14 @@ class order_controller extends Controller
     public function order()
     {
         $basket=basket::where(['user_id'=>Auth::user()->id,'state'=>BasketState::REGISTRATION])->first();
+
+        $expiredDate = new DateTime($basket->created_at);
+        $createdDate = new DateTime($basket->expired_at);
+        $interval = $expiredDate->diff($createdDate);
+        $totalHours = ($interval->days * 24) + $interval->h + ($interval->i / 60);
+        if($totalHours <= 1){
+            $totalHours=1;
+        }
         if(!is_null($basket)){
             $kind_payment=collect(enumAsOptions(OrderType::cases(),app(order::class)->enumsLang()))->pluck('label','value');
             $account_numbers=account_number::pluck('name','id')->toArray();
@@ -36,7 +45,7 @@ class order_controller extends Controller
                 'module_title'=>$this->module_title,
                 'module_pic'=>$this->module_pic,
                 'kind_payment'=>$kind_payment,
-                'price'=>$basket->size->price,
+                'price'=>$basket->size->price * round($totalHours),
                 'account_numbers'=>$account_numbers
             ]);
         }else{
@@ -58,13 +67,19 @@ class order_controller extends Controller
         $basket=basket::where(['user_id'=>Auth::user()->id,'state'=>BasketState::REGISTRATION])->first();
         $inputs=$request->validated();
         $payment=payment::create($inputs);
+
+        $expiredDate = new DateTime($basket->created_at);
+        $createdDate = new DateTime($basket->expired_at);
+        $interval = $expiredDate->diff($createdDate);
+        $totalHours = ($interval->days * 24) + $interval->h + ($interval->i / 60);
+
         $inputs['type']='new';
         $inputs['basket_id']=$basket->id;
         $inputs['size_id']=$basket->size_id;
         $inputs['user_id']=$basket->user_id;
         $inputs['payment_id']=$payment->id;
         $inputs['size_title']=$basket->size->title;
-        $inputs['price']=$basket->size->price;
+        $inputs['price']=$basket->size->price * $totalHours;
         $inputs['number_box']=$basket->box->number_box;
         $inputs['state']=OrderType::BANK_FISH;
         $inputs['ref_number'] =$this->randomDigits(6);
