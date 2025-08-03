@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\site;
 
-use App\base\Entities\Enums\OrderType;
+use App\Base\Entities\Enums\OrderType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

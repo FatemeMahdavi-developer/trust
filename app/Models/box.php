@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\base\Entities\Enums\BoxState;
+use App\Base\Entities\Enums\BoxState;
 use App\Trait\date_convert;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

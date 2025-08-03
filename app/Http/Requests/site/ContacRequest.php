@@ -25,7 +25,9 @@ class ContacRequest extends FormRequest
         return [
             'box_id'=>['required','integer','exists:boxes,id'],
             'size_id'=>['required','integer','exists:sizes,id'],
-            'expired_at'=>['required'],  // todo 'regex:/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/'
+            "expired_at.0" => ['required','date_format:Y/m/d'],
+            "expired_at.1" => ['required','integer','min:0','max:23'],
+            "expired_at.2" => ['required','integer','min:0','max:59'],
             'created_at'=>['nullable'],
         ];
     }

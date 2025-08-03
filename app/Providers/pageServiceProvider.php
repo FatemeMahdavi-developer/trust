@@ -14,9 +14,9 @@ class pageServiceProvider extends ServiceProvider
     public function register(): void
     {
 
-//        View::composer(["site.*"],function(){
-//            global $page;
-//        });
+        View::composer(["site.*"],function(){
+            global $page;
+        });
     }
 
     /**

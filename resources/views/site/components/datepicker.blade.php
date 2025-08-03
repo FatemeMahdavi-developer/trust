@@ -1,5 +1,6 @@
 @props(['title'=>'','value'=>'','name'=>'','class'=>'','class'=>'','hour_minute'=>true,'placeholder'=>''])
 <div class="col-md-6 col-sm-12">
+
     @if($title)<label>{{$title}}</label>@endif
     <div class="input-box flex-row">
         <input type="text" name="{{$name}}[0]" class="form-input datepicker-input" @if($placeholder)placeholder="{{$placeholder}}" @endif  @if(isset($value[0])) value="{{$value[0]}}" @endif autocomplete="off" @if($hour_minute)name="{{$name}}[0]"@else name="{{$name}}" @endif/>
@@ -20,7 +21,9 @@
         </div>
         @endif
     </div>
-    @error($name)<span class="text text-danger">{{$errors->first($name)}}</span>@enderror
+    @error("{$name}.0")<div class="text text-danger">{{$message}}</div>@enderror
+    @error("{$name}.1")<div class="text text-danger">{{$message}}</div>@enderror
+    @error("{$name}.2")<div class="text text-danger">{{$message}}</div>@enderror
 </div>
 
 @if(isset($value[1]))

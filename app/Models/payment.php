@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\base\Entities\Enums\PaymentType;
+use App\Base\Entities\Enums\PaymentType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\base\Entities\Enums\OrderType;
+use App\Base\Entities\Enums\OrderType;
 use App\Trait\date_convert;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -46,7 +46,7 @@ class order extends Model
     }
 
     public function user(){
-        return $this->belongsTo(user::class,'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function size(){

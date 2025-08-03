@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+
+use function App\Helpers\admin\sms;
 use function redirect;
 use function view;
 
@@ -41,7 +43,15 @@ class AuthenticatedSessionController extends Controller
             }
             $user->update(['confirm_code'=>rand(10000, 99999),'expire_confirm_at'=>Carbon::now()->addSeconds(env('EXPIRE_DATE_CONFIRM_CODE'))]);
             $fullname = $user['name'] . " " . $user['lastname'];
-            Mail::to($user['username'])->send(new confirmActive($fullname, $user['confirm_code']));
+
+            $replacements = [
+                '#fullname#'=>$fullname,
+                '#code#'=>$user['confirm_code'],
+            ];
+            $text=str_replace(array_keys($replacements),array_values($replacements),app("setting")["confirm_msg_pattern_sms"]);
+            sms($user['username'],$text);
+            // Mail::to($user['username'])->send(new confirmActive($fullname, $user['confirm_code']));
+
             return redirect()->route('auth.active', ['username' => code_string($request->username)]);
         } else {
 //            throw ValidationException::withMessages([

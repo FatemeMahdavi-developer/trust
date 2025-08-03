@@ -25,7 +25,7 @@
                         @error('lastname') <span class="text text-danger">{{$errors->first('lastname')}}</span> @enderror
                     </div>
                     <div class="input-box">
-                        <input type="text" name="username" value="{{old('username')}}" class="form-input" placeholder="ایمیل"/>
+                        <input type="text" name="username" value="{{old('username')}}" class="form-input" placeholder="موبایل"/>
                         @error('username') <span class="text text-danger">{{$errors->first('username')}}</span> @enderror
                     </div>
                     <div class="input-box">

@@ -18,7 +18,7 @@
                         <div class="alert alert-success">{{session()->get('user_login')}}</div>
                     @endif
                     <div class="input-box">
-                        <input type="text" name="username" value="{{old('username')}}" class="form-input" placeholder="ایمیل" />
+                        <input type="text" name="username" value="{{old('username')}}" class="form-input" placeholder="موبایل" />
                         @error('username')
                         <span class="text text-danger">{{$errors->first('username')}}</span>
                         @enderror

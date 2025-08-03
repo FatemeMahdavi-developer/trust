@@ -36,7 +36,8 @@ Route::middleware('auth')->as('user.')->group(function () {
 
     Route::get('invoice',[panelController::class,'invoice'])->name('invoice');
     Route::get('unlocker',[panelController::class,'unlocker'])->name('unlocker');
-
+    Route::get('unlocker/{box}',[panelController::class,'unlocker_info'])->name('unlocker_info');
+    Route::post('unlocker/data',[panelController::class,'opendoor'])->name('unlocker.door');
     Route::get('logout',[panelController::class,'logout'])->name('logout');
 });
 

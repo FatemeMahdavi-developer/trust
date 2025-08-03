@@ -1,5 +1,5 @@
 <?php
-namespace App\base\Entities\Enums;
+namespace App\Base\Entities\Enums;
 
 enum state :string
 {

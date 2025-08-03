@@ -16,7 +16,7 @@
                 لیست سفارشات
             </a>
         </li>
-        <li><a href=""><i class="fi fi-rr-heart icon"></i>باز کردن کمد</a></li>
+        <li><a href="{{route("user.unlocker")}}"><i class="fi fi-rr-heart icon"></i>باز کردن کمد</a></li>
         <li><a href=""><i class="fi fi-rr-heart icon"></i>تحویل کمد</a></li>
         {{-- <li><a href="#"><i class="fi fi-rr-heart icon"></i>{{__("msg.panel.favorites_list")}}</a></li> --}}
         {{-- <li><a href="{{route('user.comment')}}" @if(str_contains($view_name,"-user-comment"))class="active"@endif><i class="fi fi-rr-comment icon"></i> {{__("msg.panel.comment")}}</a></li> --}}

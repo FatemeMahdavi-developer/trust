@@ -1,6 +1,6 @@
 <?php
 
-namespace App\base\Entities\Enums;
+namespace App\Base\Entities\Enums;
 
 enum PaymentType: int
 {

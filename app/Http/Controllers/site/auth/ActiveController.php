@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
+use function App\Helpers\admin\sms;
+
 class ActiveController extends Controller
 {
     public function active()
@@ -22,7 +24,7 @@ class ActiveController extends Controller
         //     if(!Session::has('errors')){
         //         return redirect()->route('auth.login');
         //     }
-        // } 
+        // }
         $module="active";
         $module_title=app('setting')->get($module."_title") ? app('setting')->get($module."_title") : trans("modules.module_name_site.".$module);
         $module_pic=app('setting')->get($module."_pic");
@@ -51,7 +53,14 @@ class ActiveController extends Controller
         $user=User::where('username',decode_string($request->username))->where('state','0')->first();
         $user->update(['confirm_code'=>rand(10000, 99999),'expire_confirm_at'=>Carbon::now()->addSeconds(env('EXPIRE_DATE_CONFIRM_CODE'))]);
         $fullname = $user['name'] . " " . $user['lastname'];
-        Mail::to($user['username'])->send(new confirmActive($fullname, $user['confirm_code']));
+
+        $replacements = [
+            '#fullname#'=>$fullname,
+            '#code#'=>$user['confirm_code'],
+        ];
+        $text=str_replace(array_keys($replacements),array_values($replacements),app("setting")["confirm_msg_pattern_sms"]);
+        sms($user['username'],$text);
+        // Mail::to($user['username'])->send(new confirmActive($fullname, $user['confirm_code']));
         return response()->json($user);
     }
 

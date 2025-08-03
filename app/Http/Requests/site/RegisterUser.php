@@ -26,13 +26,13 @@ class RegisterUser extends FormRequest
         $rules= [
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255','regex:/^09\d{9}$/'],
             'password' => ['required', 'string', 'min:8', 'max:255'],
             'rule' => ['required'],
         ];
-        if(filter_var($this->username, FILTER_VALIDATE_EMAIL)){
-            $rules['username']=['required', 'string','email', 'max:255'];
-        }
+        // if(filter_var($this->username, FILTER_VALIDATE_EMAIL)){
+        //     $rules['username']=['required', 'string','email', 'max:255'];
+        // }
 //        dd(check_mobile($this->username));
         return $rules;
     }

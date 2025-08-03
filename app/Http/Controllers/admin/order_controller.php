@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Controllers\admin;
 
-use App\base\class\admin_controller;
-use App\base\Entities\Enums\BoxState;
-use App\base\Entities\Enums\OrderType;
-use App\base\Entities\Enums\PaymentType;
+use App\Base\class\admin_controller;
+use App\Base\Entities\Enums\BoxState;
+use App\Base\Entities\Enums\OrderType;
+use App\Base\Entities\Enums\PaymentType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\order_request;
 use App\Http\Requests\admin\product_request;

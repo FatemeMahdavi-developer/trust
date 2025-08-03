@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
+
+use function App\Helpers\admin\sms;
 use function back;
 
 class ForgetPasswordController extends Controller
@@ -31,7 +33,7 @@ class ForgetPasswordController extends Controller
         return view(
             'site.auth.forget-password',
             compact('username'),
-            ['module_pic'=>$this->module_pic,'module_title'=>$this->module_title] 
+            ['module_pic'=>$this->module_pic,'module_title'=>$this->module_title]
         );
     }
 
@@ -44,12 +46,27 @@ class ForgetPasswordController extends Controller
         if(!$user["state"]){
             $user->update(['confirm_code'=>rand(10000, 99999),'expire_confirm_at'=>Carbon::now()->addSeconds(env('EXPIRE_DATE_CONFIRM_CODE'))]);
             $fullname = $user['name'] . " " . $user['lastname'];
-            Mail::to($user['username'])->send(new confirmActive($fullname, $user['confirm_code']));
+
+            $replacements = [
+                '#fullname#'=>$fullname,
+                '#code#'=>$user['confirm_code'],
+            ];
+            $text=str_replace(array_keys($replacements),array_values($replacements),app("setting")["confirm_msg_pattern_sms"]);
+            sms($user['username'],$text);
+            // Mail::to($user['username'])->send(new confirmActive($fullname, $user['confirm_code']));
             return redirect()->route('auth.active',['username'=>code_string($request->username)]);
         }
         $code = rand(10000, 99999);
         $fullname = $user['name'] . " " . $user['lastname'];
-        Mail::to($request->username)->send(new forget_pass($fullname, $code));
+
+        $replacements=[
+            '#fullname#'=>$fullname,
+            '#code#'=>$code,
+        ];
+        $text=str_replace(array_keys($replacements),array_values($replacements),app("setting")["confirm_msg_pattern_sms"]);
+        sms($request->username,$text);
+        // Mail::to($request->username)->send(new forget_pass($fullname, $code));
+
         $user->update(['confirm_code' => $code, 'expire_confirm_at' => Carbon::now()->addSeconds(env('EXPIRE_DATE_CONFIRM_CODE'))]);
         return redirect()->route('auth.recovery-password', ['username' => code_string($request->get('username'))]);
     }
@@ -58,9 +75,9 @@ class ForgetPasswordController extends Controller
     {
         $username = decode_string(request()->get('username')) ?? '';
         return view(
-            'site.auth.recovery_password', 
+            'site.auth.recovery_password',
             compact('username'),
-            ['module_pic'=>$this->module_pic,'module_title'=>$this->module_title] 
+            ['module_pic'=>$this->module_pic,'module_title'=>$this->module_title]
         );
     }
 

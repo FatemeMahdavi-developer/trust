@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\site;
 
-use App\base\Entities\Enums\BasketState;
-use App\base\Entities\Enums\BoxState;
-use App\base\Entities\Enums\OrderType;
+use App\Base\Entities\Enums\BasketState;
+use App\Base\Entities\Enums\BoxState;
+use App\Base\Entities\Enums\OrderType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\site\OrderRequest;
 use App\Models\account_number;
@@ -12,7 +12,7 @@ use App\Models\basket;
 use App\Models\box;
 use App\Models\order;
 use App\Models\payment;
-use DateTime;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,14 +30,6 @@ class order_controller extends Controller
     public function order()
     {
         $basket=basket::where(['user_id'=>Auth::user()->id,'state'=>BasketState::REGISTRATION])->first();
-
-        $expiredDate = new DateTime($basket->created_at);
-        $createdDate = new DateTime($basket->expired_at);
-        $interval = $expiredDate->diff($createdDate);
-        $totalHours = ($interval->days * 24) + $interval->h + ($interval->i / 60);
-        if($totalHours <= 1){
-            $totalHours=1;
-        }
         if(!is_null($basket)){
             $kind_payment=collect(enumAsOptions(OrderType::cases(),app(order::class)->enumsLang()))->pluck('label','value');
             $account_numbers=account_number::pluck('name','id')->toArray();
@@ -45,7 +37,7 @@ class order_controller extends Controller
                 'module_title'=>$this->module_title,
                 'module_pic'=>$this->module_pic,
                 'kind_payment'=>$kind_payment,
-                'price'=>$basket->size->price * round($totalHours),
+                'price'=>$basket->size->price,
                 'account_numbers'=>$account_numbers
             ]);
         }else{
@@ -67,19 +59,13 @@ class order_controller extends Controller
         $basket=basket::where(['user_id'=>Auth::user()->id,'state'=>BasketState::REGISTRATION])->first();
         $inputs=$request->validated();
         $payment=payment::create($inputs);
-
-        $expiredDate = new DateTime($basket->created_at);
-        $createdDate = new DateTime($basket->expired_at);
-        $interval = $expiredDate->diff($createdDate);
-        $totalHours = ($interval->days * 24) + $interval->h + ($interval->i / 60);
-
         $inputs['type']='new';
         $inputs['basket_id']=$basket->id;
         $inputs['size_id']=$basket->size_id;
         $inputs['user_id']=$basket->user_id;
         $inputs['payment_id']=$payment->id;
         $inputs['size_title']=$basket->size->title;
-        $inputs['price']=$basket->size->price * $totalHours;
+        $inputs['price']=$basket->size->price;
         $inputs['number_box']=$basket->box->number_box;
         $inputs['state']=OrderType::BANK_FISH;
         $inputs['ref_number'] =$this->randomDigits(6);
@@ -93,6 +79,8 @@ class order_controller extends Controller
         order::create($inputs);
         $basket->update(['state'=>BasketState::PREPARATION]);
         box::find($basket->box_id)->update(['state'=>BoxState::RESERVED]);
+        // TODO:
+        User::find(Auth::user()->id)->update(['have_box'=>1]);
         return redirect()->route('order_success')->with(['success'=>__('common.order_success'),'ref_number'=>$inputs['ref_number']]);
     }
 }

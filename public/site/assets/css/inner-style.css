@@ -233,3 +233,18 @@ tbody, td, tfoot, th, thead, tr {
     background-color:#302c83;
     color: #fff;
 }
+.title-size{
+    font-size: 20px;
+}
+
+.ui-datepicker{
+    width: 330px;
+}
+@media (max-width: 400px) {
+    .dateepickerWrapper tbody, td, tfoot, th, thead, tr{
+        padding: 5px !important;
+    }
+    #ui-datepicker-div{
+        left: 88px;
+    }
+}

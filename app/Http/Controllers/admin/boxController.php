@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\base\class\admin_controller;
-use App\base\Entities\Enums\BoxState;
+use App\Base\Entities\Enums\BoxState;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\box_request;
 use App\Models\box;

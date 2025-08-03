@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\site;
 
-use App\base\Entities\Enums\BoxState;
+use App\Base\Entities\Enums\BoxState;
 use App\Http\Controllers\Controller;
 use App\Models\box;
 

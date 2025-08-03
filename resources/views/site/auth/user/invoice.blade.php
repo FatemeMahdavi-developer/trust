@@ -53,7 +53,7 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$order->basket->box->title}}</td>
                                                         <td>{{$order->size->title}}</td>
-                                                        <td>{{$order->price}} تومان</td>
+                                                        <td>{{number_format($order->price)}} تومان</td>
                                                         <td>{{$kind_payment[$order->state->value]}}</td>
                                                         <td>{{$state_payment[$order->payment->state->value]}}</td>
                                                         <td>{{$order->ref_number}}</td>

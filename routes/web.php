@@ -17,6 +17,7 @@ use App\Http\Controllers\site\searchController;
 use App\Http\Controllers\site\select_box_controller;
 use App\Http\Controllers\site\VideoController;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -41,6 +42,45 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
     Route::get('', [\App\Http\Controllers\site\HomeController::class, 'main'])->name('main');
 
+    Route::get('reservation', [ReservationController::class,'reservation'])->name('reservation')->middleware('auth');
+    Route::post('reservation', [ReservationController::class,'store'])->name('reservation.store')->middleware('auth');
+
+    Route::get("order",[order_controller::class,'order'])->name("order")->middleware('auth');
+    Route::post("order",[order_controller::class,'store'])->name("order.store")->middleware('auth');
+
+    Route::post("bank_account",bank_account_controller::class)->name("bank_account");
+    Route::get("order_success",[order_success_controller::class,'order_success'])->name("order_success")->middleware('auth');
+
+    Route::post("select_box",select_box_controller::class)->name("select_box");
+    Route::post("province_city", province_city_controller::class)->name("province_city");
+
+    // Route::get('test',function(){
+        // $response=Http::withoutVerifying()->baseUrl('https://console.melipayamak.com/api/send/simple/'.env('api_key'))->post('', [
+        //     'from' =>  env('api_number'),
+        //     'to' => '09331875799',
+        //     'text' => 'okoolo',
+        // ]);
+
+        // return $response->body();
+    // });
+
+    // Route::get('test',function(){
+    //     $url = 'https://console.melipayamak.com/api/send/simple/'.env('api_key');
+    //     $data = array('from' => env('api_number'), 'to' => '09331875799', 'text' => 'oko');
+    //     $data_string = json_encode($data);
+    //     $ch = curl_init($url);
+    //     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    //     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //     curl_setopt($ch, CURLOPT_HTTPHEADER,
+    //       array('Content-Type: application/json',
+    //             'Content-Length: ' . strlen($data_string))
+    //       );
+    //     $result = curl_exec($ch);
+    //     curl_close($ch);
+    // });
+
     Route::get('about', [\App\Http\Controllers\site\HomeController::class, 'about'])->name('about');
 
     Route::prefix('/news')->as('news.')->group(function () {
@@ -64,25 +104,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     });
     Route::post('rate/{module}/{item_id}', [\App\Http\Controllers\site\RateController::class, 'store'])->name("rate")->middleware('auth');
     Route::get('pages/{pages}', [\App\Http\Controllers\site\pageController::class, 'page'])->name("page");
-    //Route::get('/show/{model}',[\App\Http\Controllers\site\user\commentController::class,'show'])->name('comment.show');
+    Route::get('/show/{model}',[\App\Http\Controllers\site\user\commentController::class,'show'])->name('comment.show');
 
-    // Route::get('contact', [ContactController::class,'contact'])->name('contact');
-
-
-    // Route::post("contact",[ContactController::class,'store'])->name('contact.store');
-
-    Route::get('reservation', [ReservationController::class,'reservation'])->name('reservation')->middleware('auth');
-    Route::post('reservation', [ReservationController::class,'store'])->name('reservation.store')->middleware('auth');
-
-    Route::get("order",[order_controller::class,'order'])->name("order")->middleware('auth');
-    Route::post("order",[order_controller::class,'store'])->name("order.store")->middleware('auth');
-
-    Route::post("bank_account",bank_account_controller::class)->name("bank_account");
-
-    Route::get("order_success",[order_success_controller::class,'order_success'])->name("order_success")->middleware('auth');
-
-
-    Route::post("select_box",select_box_controller::class)->name("select_box");
+    Route::get('contact', [ContactController::class,'contact'])->name('contact');
+    Route::post("contact",[ContactController::class,'store'])->name('contact.store');
 
     Route::get('/multimedia', [MultimediaController::class,'index'])->name('multimedia.index');
 
@@ -95,7 +120,5 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
         Route::get('/cat/{video_cat:seo_url}',[VideoController::class,'index'])->name('index_cat');
         Route::get('/{video:seo_url}', [VideoController::class,'show'])->name('show');
     });
-
-    Route::post("province_city", province_city_controller::class)->name("province_city");
 
 // });

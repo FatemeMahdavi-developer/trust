@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\base\Entities\Enums\BasketState;
+use App\Base\Entities\Enums\BasketState;
 use App\Trait\date_convert;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

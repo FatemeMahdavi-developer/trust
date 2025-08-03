@@ -1,9 +1,9 @@
 <?php
 
-use App\base\Entities\Enums\BoxState;
-use App\base\Entities\Enums\BasketState;
-use App\base\Entities\Enums\OrderType;
-use App\base\Entities\Enums\PaymentType;
+use App\Base\Entities\Enums\BoxState;
+use App\Base\Entities\Enums\BasketState;
+use App\Base\Entities\Enums\OrderType;
+use App\Base\Entities\Enums\PaymentType;
 
 return [
     BoxState::class => [

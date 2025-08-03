@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\site;
 
-use App\base\Entities\Enums\BasketState;
+use App\Base\Entities\Enums\BasketState;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\site\ContacRequest;
 use App\Models\basket;
+use App\Models\order;
 use App\Models\size;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Morilog\Jalali\Jalalian;
+use Morilog\Jalali\CalendarUtils;
 
 class ReservationController extends Controller
 {
@@ -18,6 +18,7 @@ class ReservationController extends Controller
         $this->module_title=app("setting")[$this->module."_title"] ?? __("modules.module_name_site.".$this->module);
         $this->module_pic=app("setting")[$this->module."_pic"] ?? '';
     }
+
     public function basket(){
         return basket::where(['user_id'=>Auth::user()->id,'state'=>BasketState::REGISTRATION])->get('id')->first() ?? [];
     }
@@ -36,14 +37,13 @@ class ReservationController extends Controller
 
     public function store(ContacRequest $request){
         $inputs=$request->validated();
-
-        $gregorianDate=Jalalian::fromFormat('Y/m/d',$inputs['expired_at'][0])->toCarbon();
-        $carbonDateTime=$gregorianDate->setTime((int)$inputs['expired_at'][1],(int)$inputs['expired_at'][2]);
-        $inputs['expired_at'] = $carbonDateTime->format('Y-m-d H:i:s');
-
+        if(Auth::user()->have_box==1){
+            return back()->with('order_error','شما درحال حاضر کمد دارید');
+        }
+       $expired_date=CalendarUtils::createCarbonFromFormat('Y/m/d',$request->expired_at[0])->format('Y-m-d');
+       $inputs["expired_at"]=$expired_date.' '.$request->expired_at[1].':'.$request->expired_at[2].':00';
         if(!empty($this->basket())){
             $basket_id=$this->basket()->id;
-            $inputs['created_at']=Carbon::now()->format('Y-m-d H:i:s');
             basket::find($basket_id)->update($inputs);
         }else{
             $inputs["ip"]=$request->ip();

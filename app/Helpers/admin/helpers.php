@@ -87,4 +87,32 @@ if (!function_exists('stringReplacer')) {
 }
 
 
+
+if (!function_exists('sms')) {
+    /**
+     * @param string|null $subject
+     * @param array $replace
+     * @return string|int|null
+     */
+    function sms(string $mobile, string $text ='')
+    {
+        $url = 'https://console.melipayamak.com/api/send/simple/2430fa09f85c406ab995197e30ad2db2';
+        $data = array('from' => '50002710075799', 'to' =>$mobile, 'text' =>$text);
+        $data_string = json_encode($data);
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,
+          array('Content-Type: application/json',
+                'Content-Length: ' . strlen($data_string))
+          );
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return '';
+    }
+}
+
+
 ?>

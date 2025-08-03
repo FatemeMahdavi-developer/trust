@@ -315,5 +315,8 @@ return [
         'account_number_id'=>'شماره حساب',
         'fish_number'=>'شماره فیش',
         'expired_at'=>'تاریخ تحویل',
+        'expired_at.0'=>'تاریخ تحویل',
+        'expired_at.1'=>'ساعت تاریخ تحویل',
+        'expired_at.2'=>'دقیقه تاریخ تحویل',
         ]
 ];

@@ -43,6 +43,7 @@ class User extends Authenticatable
         'city',
         'address',
         'tell',
+        'have_box'
     ];
 
     /**

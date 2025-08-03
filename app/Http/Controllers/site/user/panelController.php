@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers\site\user;
 
-use App\base\Entities\Enums\OrderType;
-use App\base\Entities\Enums\PaymentType;
+use App\Base\Entities\Enums\OrderType;
+use App\Base\Entities\Enums\PaymentType;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\openluckRequest;
+use App\Http\Requests\otpRequest;
 use App\Http\Requests\site\change_profile_user_request;
+use App\Models\box;
+use App\Models\OpenLock;
 use App\Models\order;
 use App\Models\payment;
 use App\Models\product;
 use App\Trait\seo_site;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -23,21 +28,22 @@ class panelController extends Controller
 {
 
     use seo_site;
+
     public function index()
     {
-        $module="panel";
-        $module_title=app("setting")->get($module."_title") ?  : trans("modules.module_name_site.".$module);
-        $module_pic=app('setting')->get($module."_pic");
-        return view('site.auth.user.panel',compact('module_title','module_pic'));
+        $module = "panel";
+        $module_title = app("setting")->get($module . "_title") ?: trans("modules.module_name_site." . $module);
+        $module_pic = app('setting')->get($module . "_pic");
+        return view('site.auth.user.panel', compact('module_title', 'module_pic'));
     }
 
     public function change_profile()
     {
-        $module="change_profile";
-        $module_title=app("setting")->get($module."_title") ?  : trans("modules.module_name_site.".$module);
-        $module_pic=app('setting')->get($module."_pic");
+        $module = "change_prchange_profileofile";
+        $module_title = app("setting")->get($module . "_title") ?: trans("modules.module_name_site." . $module);
+        $module_pic = app('setting')->get($module . "_pic");
 
-        return view("site.auth.user.change_profile",compact('module_title','module_pic'));
+        return view("site.auth.user.change_profile", compact('module_title', 'module_pic'));
     }
 
     public function change_profile_store(change_profile_user_request $request)
@@ -69,42 +75,85 @@ class panelController extends Controller
         }
         if (Hash::check($request->before_password, auth()->user()->password)) {
             auth()->user()->update([
-                'password'=>Hash::make($request->get("new_password"))
+                'password' => Hash::make($request->get("new_password"))
             ]);
             Auth::logout();
             return response()->json("ok");
 
         } else {
-            return response()->json(['errors'=>['before_password'=>['رمز عبور قبلی معتبر نیست']]]);
+            return response()->json(['errors' => ['before_password' => ['رمز عبور قبلی معتبر نیست']]]);
         }
     }
 
-    public function like(){
-        $module="like";
-        $module_title=app("setting")->get($module."_title") ?  : trans("modules.module_name_site.".$module);
-        $module_pic=app('setting')->get($module."_pic");
-        $product='';
-        return view("site.auth.user.like",compact('module_title','module_pic'));
+    public function like()
+    {
+        $module = "like";
+        $module_title = app("setting")->get($module . "_title") ?: trans("modules.module_name_site." . $module);
+        $module_pic = app('setting')->get($module . "_pic");
+        $product = '';
+        return view("site.auth.user.like", compact('module_title', 'module_pic'));
 
     }
 
 
-    public function  invoice(Request $request){
-        $orders =order::where('user_id',auth::user()->id)->orderBy('id','desc')->get();
+    public function invoice(Request $request)
+    {
+        $orders = order::where('user_id', auth::user()->id)->orderBy('id', 'desc')->get();
+        $kind_payment = collect(enumAsOptions(OrderType::cases(), app(order::class)->enumsLang()))->pluck('label', 'value')->toArray();
 
-        $kind_payment=collect(enumAsOptions(OrderType::cases(),app(order::class)->enumsLang()))->pluck('label','value')->toArray();
+        $state_payment = collect(enumAsOptions(PaymentType::cases(), app(payment::class)->enumsLang()))->pluck('label', 'value')->toArray();
 
-        $state_payment=collect(enumAsOptions(PaymentType::cases(),app(payment::class)->enumsLang()))->pluck('label','value')->toArray();
-
-        return  view('site.auth.user.invoice',compact(['orders','kind_payment','state_payment']));
+        return view('site.auth.user.invoice', compact(['orders', 'kind_payment', 'state_payment']));
     }
 
-    public function unlocker(){
-        return  view('site.auth.user.unlocker'
-        // ,compact(['orders'])
-    );
+    public function unlocker()
+    {
+        $module = "unlocker";
+        $orders = order::where('user_id', auth::user()->id)->whereHas("payment", function ($pay) {
+            $pay->where("state", PaymentType::SUCCESS);
+        })->orderBy('id', 'desc')->get();
+        $module_title = app("setting")->get($module . "_title") ?: trans("modules.module_name_site." . $module);
+        $module_pic = app('setting')->get($module . "_pic");
+        session()->put("refresh", false);
+        return view('site.auth.user.unlocker', compact("module_title", "module_pic", "orders"));
     }
 
+
+    public function unlocker_info(box $box)
+    {
+//        if (!session()->get("validationerror") === true) {
+//            if (session()->get('refresh') === false) {
+//                session()->put("refresh", true);
+//            } else {
+//                session()->put("refresh", false);
+//            }
+//            if (session()->get('refresh') === false) {
+//                return redirect()->route("user.unlocker");
+//            }
+//        }
+        $module = "unlocker_info";
+        $module_title = app("setting")->get($module . "_title") ?: trans("modules.module_name_site." . $module);
+        $module_pic = app('setting')->get($module . "_pic");
+        OpenLock::updateOrCreate([
+            "mobile" => auth()->user()->username,
+        ], [
+            "mobile" => auth()->user()->username,
+            "attempt" => "1",
+            "code" => rand(1000, 9999),
+            "expired_at" => Carbon::now()->addSecond(env("EXPIRE_DATE_CONFIRM_CODE"))
+        ]);
+        return view("site.auth.user.unlocker_info", compact('module_pic', 'module_title', 'box'));
+    }
+
+    public function opendoor(openluckRequest $request)
+    {
+        if(OpenLock::where("expired_at",">=",Carbon::now())->where("code",$request->confirm_code)->count()){
+            $msg=sprintf("%s باز شود",$request->title);
+            return response()->json(["msg"=>$msg]);
+        }else{
+            return response()->json(["error"=>"خطا در انجام عملیات"]);
+        }
+    }
 
     public function logout(Request $request)
     {

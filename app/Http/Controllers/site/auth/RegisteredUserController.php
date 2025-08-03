@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
+use function App\Helpers\admin\sms;
 
 class RegisteredUserController extends Controller
 {
@@ -28,7 +29,6 @@ class RegisteredUserController extends Controller
         $module="register";
         $module_title=app('setting')->get($module."_title") ? app('setting')->get($module."_title") : trans("modules.module_name_site.".$module);
         $module_pic=app('setting')->get($module."_pic");
-
         return view('site.auth.register',compact(['module_title','module_pic']));
     }
 
@@ -45,7 +45,15 @@ class RegisteredUserController extends Controller
                 return redirect()->route('auth.login')->with(['user_login' => trans('auth.user_login')]);
             }
             $fullname = $user['name'] . " " . $user['lastname'];
-            Mail::to($user['username'])->send(new confirmActive($fullname, $user['confirm_code']));
+
+            $replacements = [
+                '#fullname#'=>$fullname,
+                '#code#'=>$user['confirm_code'],
+            ];
+            $text=str_replace(array_keys($replacements),array_values($replacements),app("setting")["confirm_msg_pattern_sms"]);
+            sms($user['username'],$text);
+            // Mail::to($user['username'])->send(new confirmActive($fullname, $user['confirm_code']));
+
             $user->update(['expire_confirm_at'=>Carbon::now()->addSeconds(env('EXPIRE_DATE_CONFIRM_CODE'))]);
             return redirect()->route('auth.active', ['username' => code_string($user['username'])])->with(['state_active' => trans('auth.state_active')]);
         }
@@ -59,7 +67,15 @@ class RegisteredUserController extends Controller
             'confirm_code' => $code,
         ]);
         $fullname = $request->name . " " . $request->lastname;
-        Mail::to($request->username)->send(new confirmActive($fullname, $code));
+
+        $replacements = [
+            '#fullname#' => $fullname,
+            '#code#'     => $code,
+        ];
+        $text=str_replace(array_keys($replacements),array_values($replacements),app("setting")["confirm_msg_pattern_sms"]);
+        sms($request->username,$text);
+        // Mail::to($request->username)->send(new confirmActive($fullname, $code));
+
         return redirect()->route('auth.active', ['username' => code_string($request->username)]);
     }
 
