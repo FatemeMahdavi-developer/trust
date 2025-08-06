@@ -30,7 +30,8 @@ return [
         'box'=>'کمد',
         'reservation'=>'رزرو کمد',
         'order'=>'سفارش',
-        'account_number'=>'شماره حساب'
+        'account_number'=>'شماره حساب',
+        'branch'=>'شعبه'
     ],
     'module_name_site' => [
         'news' => 'اخبار',

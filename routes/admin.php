@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\accountNumberController;
 use App\Http\Controllers\admin\bannerController;
 use App\Http\Controllers\admin\boxController;
+use App\Http\Controllers\admin\BranchController;
 use App\Http\Controllers\admin\comment_controller;
 use App\Http\Controllers\admin\ContactMapController;
 use App\Http\Controllers\admin\content_controller;
@@ -129,5 +130,8 @@ Route::middleware("auth:admin")->group(function () {
 
     Route::resource("order",order_controller::class)->except(["create","store","show"]);
     Route::post("order/action_all",[order_controller::class,"action_all"])->name("order.action_all");
+
+    Route::resource("branch",BranchController::class)->except(["show"]);
+    Route::post("branch/action_all",[BranchController::class,"action_all"])->name("branch.action_all");
 
 });

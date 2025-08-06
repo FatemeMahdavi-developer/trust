@@ -143,7 +143,7 @@ function resize_image()
                     '695'=>'333'
                 ]
             ],
-        ], 
+        ],
         'content_product' => [
             // 'pic' => [
             //     [

@@ -70,6 +70,19 @@
                 </ul>
             </li>
             @endcanany
+            @canany(permission_access("branch"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fab fa-instagram"></i><span>شعب</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'branch')) d-block @endif">
+                    @can("create_branch")
+                    <li><a class="nav-link" href="{{route("admin.branch.create")}}">شعبه جدید</a></li>
+                    @endcan
+                    @can("read_branch")
+                    <li><a class="nav-link" href="{{route("admin.branch.index")}}">لیست شعب</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
             @canany(permission_access("message"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-phone"></i><span>تماس با ما</span></a>
