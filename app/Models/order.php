@@ -60,4 +60,6 @@ class order extends Model
     public function payment(){
         return $this->belongsTo(payment::class,'payment_id');
     }
+
+
 }

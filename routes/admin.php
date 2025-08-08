@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\content_controller;
 use App\Http\Controllers\admin\employment_controller;
 use App\Http\Controllers\admin\employment_section_controller;
 use App\Http\Controllers\admin\instagramController;
+use App\Http\Controllers\admin\LockerBankController;
 use App\Http\Controllers\admin\manager_controller;
 use App\Http\Controllers\admin\menuController;
 use App\Http\Controllers\admin\message_cat_controller;
@@ -133,5 +134,8 @@ Route::middleware("auth:admin")->group(function () {
 
     Route::resource("branch",BranchController::class)->except(["show"]);
     Route::post("branch/action_all",[BranchController::class,"action_all"])->name("branch.action_all");
+
+    Route::resource("locker-bank",LockerBankController::class)->except(["show"]);
+    Route::post("locker-bank/action_all",[LockerBankController::class,"action_all"])->name("locker-bank.action_all");
 
 });

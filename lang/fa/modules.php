@@ -31,7 +31,8 @@ return [
         'reservation'=>'رزرو کمد',
         'order'=>'سفارش',
         'account_number'=>'شماره حساب',
-        'branch'=>'شعبه'
+        'branch'=>'شعبه',
+        'locker_bank'=>'دسته بندی کد'
     ],
     'module_name_site' => [
         'news' => 'اخبار',
