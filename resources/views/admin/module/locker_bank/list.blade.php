@@ -37,15 +37,12 @@
                                                     <tbody>
                                                     @foreach($lockerBank as $item)
                                                         <tr>
-                                                            <th scope="row"><input type="checkbox" name="item[]"
-                                                                                   class="checkbox_item"
-                                                                                   value="{{$item['id']}}"></th>
+                                                            <th scope="row"><input type="checkbox" name="item[]" class="checkbox_item" value="{{$item['id']}}"></th>
                                                             <td>{{ $loop->iteration + $lockerBank->firstItem() - 1 }}</td>
                                                             <td>{{$item["code"]}}</td>
                                                             <td>{{$item->branch->name ?? ""}}</td>
-                                                            <td>{{$item["size"]}}</td>
-                                                            <td><a href="/{{$item['qrcode']}}" target="_blank">نمایش
-                                                                    بارکد</a></td>
+                                                            <td>{{$size[$item["size"]->value]}}</td>
+                                                            <td><img src="/{{$item['qrcode']}}" width="150" height="150" style="margin:10px " target="_blank"></td>
                                                             <td>{{$item->date_convert()}}</td>
                                                             <td>
                                                                 @can("update_locker_bank")

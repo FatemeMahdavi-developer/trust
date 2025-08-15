@@ -21,12 +21,12 @@ return [
 //        // OrderType::ONLINE_PAYMENT->name => 'پرداخت آنلاین',
 //        OrderType::BANK_FISH->name => 'فیش بانکی',
 //    ],
-//    PaymentType::class => [
-//        PaymentType::PENDING->name => 'در انتظار',
-//        PaymentType::SUCCESS->name => 'موفق',
-//        PaymentType::FAILED->name => 'ناموفق',
-//        PaymentType::REVERSE->name => 'بازگشت داده شد',
-//    ],
+    PaymentType::class => [
+        PaymentType::PENDING->name => 'در انتظار',
+        PaymentType::SUCCESS->name => 'موفق',
+        PaymentType::FAILED->name => 'ناموفق',
+        PaymentType::REVERSE->name => 'بازگشت داده شد',
+    ],
     SizeLocker::class=>[
         SizeLocker::BIG->name=>"بزرگ",
         SizeLocker::MIDDLE->name=>"متوسط",

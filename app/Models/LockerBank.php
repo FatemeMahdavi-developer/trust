@@ -20,7 +20,6 @@ class LockerBank extends Model
         "qrcode",
         "branch_id"
     ];
-
     protected $casts=[
         'size'=>SizeLocker::class
     ];
@@ -29,7 +28,6 @@ class LockerBank extends Model
     {
         return __('enums');
     }
-
     public function scopeFilter(Builder $builder, $params)
     {
         if (!empty($params['code'])) {
