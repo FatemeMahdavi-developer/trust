@@ -57,6 +57,7 @@ class boxController extends Controller
     public function store(box_request $request)
     {
         $inputs = $request->validated();
+    
         $inputs['admin_id'] = auth()->user()->id;
         box::create($inputs);
         return back()->with('success', __('common.messages.success', [

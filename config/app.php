@@ -206,9 +206,8 @@ return [
         pageServiceProvider::class,
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        
-        
 
+        App\Providers\PaymentServiceProvider::class,
     ],
 
     /*

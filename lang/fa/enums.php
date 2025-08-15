@@ -4,6 +4,7 @@ use App\Base\Entities\Enums\BoxState;
 use App\Base\Entities\Enums\BasketState;
 use App\Base\Entities\Enums\OrderType;
 use App\Base\Entities\Enums\PaymentType;
+use App\Base\Entities\Enums\TransactionStatusEnum;
 
 return [
     BoxState::class => [
@@ -17,7 +18,7 @@ return [
         BasketState::CANCEL->name => 'کنسل',
     ],
     OrderType::class => [
-        // OrderType::ONLINE_PAYMENT->name => 'پرداخت آنلاین',
+        OrderType::ONLINE_PAYMENT->name => 'پرداخت آنلاین',
         OrderType::BANK_FISH->name => 'فیش بانکی',
     ],
     PaymentType::class => [
@@ -25,5 +26,10 @@ return [
         PaymentType::SUCCESS->name => 'موفق',
         PaymentType::FAILED->name => 'ناموفق',
         PaymentType::REVERSE->name => 'بازگشت داده شد',
+    ],
+    TransactionStatusEnum::class => [
+        TransactionStatusEnum::NONE->name => 'در انتظار',
+        TransactionStatusEnum::SUCCESS->name => 'موفق',
+        TransactionStatusEnum::FAILED->name => 'ناموفق',
     ]
 ];

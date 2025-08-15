@@ -25,10 +25,10 @@ class OrderRequest extends FormRequest
     {
         $rules=[
             'kind_payment'=>['required',Rule::in(array_map(fn($case)=>$case->value,OrderType::cases()))],
-            'name'=>['required','string','min:1','max:255'],
-            'bank'=>['required','string','min:1','max:255'],
-            'account_number_id'=>['required','exists:account_numbers,id'],
-            'fish_number'=>['required','string','min:3','max:70'],
+            // 'name'=>['required','string','min:1','max:255'],
+            // 'bank'=>['required','string','min:1','max:255'],
+            // 'account_number_id'=>['required','exists:account_numbers,id'],
+            // 'fish_number'=>['required','string','min:3','max:70'],
         ];
         // if($this->kind_payment == OrderType::ONLINE_PAYMENT){
         //     unset($rules['name']);

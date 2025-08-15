@@ -32,6 +32,11 @@
                                     @component($prefix_component."form",["action"=>route('admin.setting.store')])
                                         @slot("content")
                                             @component($prefix_component."input",['name'=>'google_analytics_code','title'=>'کد گوگل آنالیتیکس','value'=>app('setting')['google_analytics_code'] ?? "",'class'=>'w-50'])@endcomponent
+                                            @component($prefix_component."card",["title"=>"آیتم های پرداخت"])
+                                            @slot("card_content")
+                                                @component($prefix_component."input",['name'=>'gateway','title'=>'درگاه پرداخت','value'=>app('setting')['gateway'] ?? "",'class'=>'w-50'])@endcomponent
+                                            @endslot
+                                            @endcomponent
                                             @component($prefix_component."card",["title"=>"آیتم های فوتر سایت"])
                                                 @slot("card_content")
                                                     @component($prefix_component."input",['name'=>'tell_footer','title'=>'تلفن','value'=>app('setting')['tell_footer'] ?? "",'class'=>'w-50'])@endcomponent
@@ -67,7 +72,7 @@
                                                 @component($prefix_component."card",["title"=>$module_value])
                                                     @slot("card_content")
                                                         @component($prefix_component."input",['name'=>$module_key.'_title','title'=>"عنوان",'value'=>app('setting')[$module_key.'_title'] ?? "",'class'=>'w-50'])@endcomponent
-                                                        @component($prefix_component."upload_file",['name'=>$module_key.'_pic','title'=>'تصویر ','value'=>app('setting')[$module_key.'_pic'] ?? "",'class'=>'w-50'])@endcomponent 
+                                                        @component($prefix_component."upload_file",['name'=>$module_key.'_pic','title'=>'تصویر ','value'=>app('setting')[$module_key.'_pic'] ?? "",'class'=>'w-50'])@endcomponent
                                                         @component($prefix_component."upload_file",['name'=>$module_key.'_pic_mobile','title'=>'تصویر موبایل (310x300)','value'=>app('setting')[$module_key.'_pic_mobile'] ?? "",'class'=>'w-50'])@endcomponent
                                                         {{-- @component($prefix_component."upload_file",['name'=>$module_key.'_video','title'=>'ویدیو','value'=>app('setting')[$module_key.'_video'] ?? "",'class'=>'w-50'])@endcomponent --}}
                                                         {{-- @component($prefix_component."upload_file",['name'=>$module_key.'_video_mobile','title'=>'ویدیو موبایل','value'=>app('setting')[$module_key.'_video_mobile'] ?? "",'class'=>'w-50'])@endcomponent --}}
