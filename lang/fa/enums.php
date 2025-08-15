@@ -7,20 +7,20 @@ use App\Base\Entities\Enums\PaymentType;
 use App\Base\Entities\Enums\SizeLocker;
 
 return [
-//    BoxState::class => [
-//        BoxState::EMPTY->name => 'خالی',
-//        BoxState::FILL->name => 'پر',
-//        BoxState::RESERVED->name => 'رزرو شده',
-//    ],
-//    BasketState::class => [
-//        BasketState::REGISTRATION->name => 'ثبت',
-//        BasketState::PREPARATION->name => 'اماده سازی',
-//        BasketState::CANCEL->name => 'کنسل',
-//    ],
-//    OrderType::class => [
-//        // OrderType::ONLINE_PAYMENT->name => 'پرداخت آنلاین',
-//        OrderType::BANK_FISH->name => 'فیش بانکی',
-//    ],
+    BoxState::class => [
+        BoxState::EMPTY->name => 'خالی',
+        BoxState::FILL->name => 'پر',
+        BoxState::RESERVED->name => 'رزرو شده',
+    ],
+    BasketState::class => [
+        BasketState::REGISTRATION->name => 'ثبت',
+        BasketState::PREPARATION->name => 'اماده سازی',
+        BasketState::CANCEL->name => 'کنسل',
+    ],
+    OrderType::class => [
+        // OrderType::ONLINE_PAYMENT->name => 'پرداخت آنلاین',
+        OrderType::BANK_FISH->name => 'فیش بانکی',
+    ],
     PaymentType::class => [
         PaymentType::PENDING->name => 'در انتظار',
         PaymentType::SUCCESS->name => 'موفق',

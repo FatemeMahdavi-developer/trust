@@ -140,24 +140,7 @@ if (!function_exists('to_english_numbers')) {
 
 //
 //
-// if (!function_exists('check_mobile')) {
-//     function check_mobile($mobile)
-//     {
-//         $paramsPatternMap = [
-//             'zero_code' => '/^(00989){1}[0-9]{9}+$/',
-//             'plus' => '/^(\+989){1}[0-9]{9}+$/',
-//             'code' => '/^(989){1}[0-9]{9}+$/',
-//             'zero' => '/^(09){1}[0-9]{9}+$/',
-//             'without_zero' => '/^(9){1}[0-9]{9}+$/',
-//         ];
-//         foreach ($paramsPatternMap as $pattern) {
-//             if (preg_match($pattern, $mobile)) {
-//                 return $pattern;
-//             }
-//         }
-//         return false;
-//     }
-// }
+
 
 if (!function_exists('check_mobile')) {
     function check_mobile($mobile)

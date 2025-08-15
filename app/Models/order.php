@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Base\Entities\Enums\OrderType;
+use App\Base\Entities\Enums\TransactionStatusEnum;
 use App\Trait\date_convert;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,15 +23,21 @@ class order extends Model
         'type',
         'size_title',
         'price',
-        'number_box',
+        'box_id',
         'kind_payment',
         'state',
-        'ref_number'
+        'ref_number',
+        'pay_way'
     ];
 
     protected $casts = [
-        'state' => OrderType::class,
+        'state' => TransactionStatusEnum::class,
     ];
+
+    public function transaction()
+    {
+        return $this->morphOne(Transaction::class,'transactionable');
+    }
 
     public function enumsLang(): array
     {

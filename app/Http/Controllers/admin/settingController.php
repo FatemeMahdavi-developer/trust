@@ -26,6 +26,7 @@ class settingController extends Controller
     }
 
     public function store(setting_request $request){
+
         DB::beginTransaction();
         foreach ($request->all() as $key => $value) {
             if(is_object($value)){
@@ -36,6 +37,10 @@ class settingController extends Controller
                 'value'=>$value
             ]);
         }
+
+        $setting = Setting::pluck('value', 'key')->toArray();
+        cache()->forever('setting', $setting);
+
         DB::commit();
         return back()->with('success', __('common.messages.success_edit',[
             'module' => $this->module_title

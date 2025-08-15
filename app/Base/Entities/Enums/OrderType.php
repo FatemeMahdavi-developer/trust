@@ -2,9 +2,9 @@
 
 namespace App\Base\Entities\Enums;
 
-enum OrderType: int
+enum OrderType: string
 {
-    // case ONLINE_PAYMENT = 1;
-    case BANK_FISH = 2;
+    case ONLINE_PAYMENT = 'online';
+    case BANK_FISH = 'fish';
 }
 

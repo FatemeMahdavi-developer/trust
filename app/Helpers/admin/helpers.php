@@ -2,6 +2,7 @@
 
 namespace App\Helpers\admin;
 
+use App\Base\Entities\Enums\UrlEnum;
 
 if(!function_exists('makeDefaultColumns')) {
     function makeDefaultColumns(\Illuminate\Database\Schema\Blueprint $table): void
@@ -96,10 +97,14 @@ if (!function_exists('sms')) {
      */
     function sms(string $mobile, string $text ='')
     {
-        $url = 'https://console.melipayamak.com/api/send/simple/2430fa09f85c406ab995197e30ad2db2';
-        $data = array('from' => '50002710075799', 'to' =>$mobile, 'text' =>$text);
+        $url = UrlEnum::MELI_PAYAMAK.'/'.UrlEnum::MELI_PAYAMAK_KEY();
+
+        $data = array('from' =>UrlEnum::MELI_PAYAMAk_PHONE_NUMBER(), 'to' =>$mobile, 'text' =>$text);
+
         $data_string = json_encode($data);
+
         $ch = curl_init($url);
+
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -108,8 +113,11 @@ if (!function_exists('sms')) {
           array('Content-Type: application/json',
                 'Content-Length: ' . strlen($data_string))
           );
+
         $result = curl_exec($ch);
+
         curl_close($ch);
+        
         return '';
     }
 }

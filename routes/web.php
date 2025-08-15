@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\site\bank_account_controller;
 use App\Http\Controllers\site\ContactController;
 use App\Http\Controllers\site\EmploymentController;
+use App\Http\Controllers\site\HomeController;
 use App\Http\Controllers\site\MultimediaController;
 use App\Http\Controllers\site\newsController;
 use App\Http\Controllers\site\order_controller;
@@ -120,5 +121,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
         Route::get('/cat/{video_cat:seo_url}',[VideoController::class,'index'])->name('index_cat');
         Route::get('/{video:seo_url}', [VideoController::class,'show'])->name('show');
     });
+
+    Route::any('order/callback/{paymentType}',[HomeController::class,'callBack']);
+
+    Route::get('order/checkout/{order}',[HomeController::class,'checkout']);
 
 // });

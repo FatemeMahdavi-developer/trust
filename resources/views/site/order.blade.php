@@ -80,11 +80,11 @@
                         <ul class="list-unstyled basketFinalBill">
                             <li>
                                 <div class="basketFinalBill__title">خرید شما</div>
-                                <div class="basketFinalBill__value">{{number_format($price,3)}} <span> تومان </span></div>
+                                <div class="basketFinalBill__value">{{number_format($price)}} <span> تومان </span></div>
                             </li>
                             <li class="basketFinalBill3">
                                 <div class="basketFinalBill__title">مجموع کل پرداختی شما</div>
-                                <div class="basketFinalBill__value">{{number_format($price,3)}}<span> تومان </span></div>
+                                <div class="basketFinalBill__value">{{number_format($price)}}<span> تومان </span></div>
                             </li>
                         </ul>
                     </div>
