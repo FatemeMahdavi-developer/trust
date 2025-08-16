@@ -318,6 +318,13 @@ return [
         'expired_at.0'=>'تاریخ تحویل',
         'expired_at.1'=>'ساعت تاریخ تحویل',
         'expired_at.2'=>'دقیقه تاریخ تحویل',
-        'kind_payment'=>'نوع پرداخت'
+        'kind_payment'=>'نوع پرداخت',
+        'company'=>'شرکت',
+        'economic_code'=>'کد اقتصادی',
+        'national_id'=>'شناسه ملی',
+        'tell2'=>'شماره تلفن ثابت',
+        'registration_number'=>'شماره ثبت',
+        'province2'=>'استان',
+        'city2'=>'شهر',
         ]
 ];

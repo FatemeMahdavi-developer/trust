@@ -43,7 +43,16 @@ class User extends Authenticatable
         'city',
         'address',
         'tell',
-        'have_box'
+        'have_box',
+        'legal_information_check',
+        'company',
+        'economic_code',
+        'national_id',
+        'tell2',
+        'registration_number',
+        'province2',
+        'city2',
+        'locker_bank_owner'
     ];
 
     /**

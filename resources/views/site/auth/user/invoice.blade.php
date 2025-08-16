@@ -4,32 +4,33 @@
     <link rel="stylesheet" href="{{asset('site/assets/css/pages/page-11-01.css')}}">
 @endsection
 @section('content')
-    <div class="page-profile">
-        <div class="container-fluid container-bread-crumb">
-            <div class="container-custom">
-                <div class="row">
-                    <div class="col">
-                        <h1 class="page-title">حساب کاربری</h1>
-                        <ul class="bread-crumb">
-                            <li><a href="#">صفحه اصلی</a></li>
-                            <li><a href="#">کامنت</a></li>
-                        </ul>
-                    </div>
+<div class="page-profile">
+    <div class="container-fluid container-bread-crumb">
+        <div class="container-custom">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-title">حساب کاربری</h1>
+                    <ul class="bread-crumb">
+                        <li><a href="#">صفحه اصلی</a></li>
+                        <li><a href="#">کامنت</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="container-fluid container-profile">
-            <div class="container-custom">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-12">
-                        @include("site.auth.partials.user_panel")
-                    </div>
-                    <div class="col-xl-9 col-lg-9 col-md-8 col-12">
-                        <div class="section-content-box">
-                            <div class="section-title">
-                                <span class="title">لیست سفارشات</span>
-                            </div>
-                            <div class="content-box content-box">
+    </div>
+    <div class="container-fluid container-profile">
+        <div class="container-custom">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-12">
+                    @include("site.auth.partials.user_panel")
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-8 col-12">
+                    <div class="section-content-box">
+                        <div class="section-title">
+                            <span class="title">لیست سفارشات</span>
+                        </div>
+                        <div class="content-box content-box">
+                            @if(isset($orders[0]))
                                 <div class="row">
                                     <div class="ordersTable">
                                         <table style="width: 100%;">
@@ -47,7 +48,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if(isset($orders[0]))
                                                 @foreach ($orders as $order)
                                                     <tr>
                                                         <td>{{$loop->iteration}}</td>
@@ -61,16 +61,18 @@
                                                         <td><a href="" class="order_view_tbl">مشاهده</a></td>
                                                     </tr>
                                                 @endforeach
-                                                @endif
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="alert alert-danger alert-not-found">تاکنون سفارشی ثبت نکرده اید</div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

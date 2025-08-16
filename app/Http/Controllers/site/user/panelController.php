@@ -50,6 +50,19 @@ class panelController extends Controller
     {
         $inputs = $request->validated();
         $inputs['date_birth'] = convert_to_timestamp($request->date_birth);
+
+        if(@$inputs['legal_information_check']!=1){
+            $inputs['legal_information_check']=0;
+
+            $inputs['company']='';
+            $inputs['economic_code']='';
+            $inputs['national_id']='';
+            $inputs['tell2']='';
+            $inputs['registration_number']='';
+            $inputs['province2']=null;
+            $inputs['city2']=null;
+        }
+
         auth()->user()->update($inputs);
         return back()->with("success", trans("common.msg.success"));
     }

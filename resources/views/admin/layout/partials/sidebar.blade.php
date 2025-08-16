@@ -60,6 +60,16 @@
                 </ul>
             </li>
             @endcanany
+            @canany(permission_access("user"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-edit"></i><span>کاربران</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'user')) d-block @endif">
+                    @can("read_user")
+                    <li><a class="nav-link" href="{{route("admin.user.index")}}">لیست کاربران</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
             @canany(permission_access("contactmap"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>محل شما روی نقشه</span></a>
@@ -161,17 +171,7 @@
                 </ul>
             </li>
             @endcanany
-            {{-- @canany(permission_access("user"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-edit"></i><span>کاربران</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'user')) d-block @endif">
-                    @can("read_user")
-                    <li><a class="nav-link" href="{{route("admin.user.index")}}">لیست کاربران</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
-            @canany(permission_access("menu"))
+              {{--@canany(permission_access("menu"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-list-ul"></i><span>منو</span></a>
                 <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'menu')) d-block @endif">
