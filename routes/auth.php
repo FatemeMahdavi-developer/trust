@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\site\InvoiceController;
-use App\Http\Controllers\site\LikeController;
 use App\Http\Controllers\site\RateController;
 use App\Http\Controllers\site\user\panelController;
 use Illuminate\Support\Facades\Route;
@@ -31,8 +30,7 @@ Route::middleware('auth')->as('user.')->group(function () {
     Route::get('comment',[panelController::class,'comment'])->name('comment');
     Route::post('change_pass',[panelController::class,'change_pass'])->name('change_pass');
     Route::get('like',[panelController::class,'like'])->name('like');
-    Route::post('like/{type}/{type_id?}',[LikeController::class,'store'])->name('like.store')->middleware(['access_like','auth']);
-    Route::post('rate/{type}/{type_id}',[RateController::class,'store'])->name('rate.store');   //->middleware('access_rate')
+    Route::post('rate/{type}/{type_id}',[RateController::class,'store'])->name('rate.store');
 
     Route::get('invoice',[panelController::class,'invoice'])->name('invoice');
     Route::get('unlocker',[panelController::class,'unlocker'])->name('unlocker');

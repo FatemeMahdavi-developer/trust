@@ -19,7 +19,7 @@ class Authorization
      */
     public function handle(Request $request, Closure $next,$permission_kind): Response
     {
-        if(auth()->user()->id=="1" || auth()->user()->role->permission->select('permission_kind')->where('permission_kind',$permission_kind)->count()){
+          if(auth()->user()->id=="1" || auth()->user()->role->permission->select('permission_kind')->where('permission_kind',$permission_kind)->count()){
             return $next($request);
         }
         return abort(401);

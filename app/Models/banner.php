@@ -17,7 +17,7 @@ class banner extends Model
 
     public function getTypeNameAttribute()
     {
-        return trans('common.banner_kind')[$this->type];
+        return trans('enums.banner_kind')[$this->type];
     }
 
     public function scopeFilter(Builder $builder, $params)

@@ -162,16 +162,37 @@
             </li>
             @endcanany
             @canany(permission_access("order"))
+                <li class="dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>سفارشات</span></a>
+                    <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'order')) d-block @endif">
+                        @can("read_order")
+                            <li><a class="nav-link" href="{{route("admin.order.index")}}">لیست سفارش ها</a></li>
+                            @endcan
+                    </ul>
+                </li>
+                @endcanany
+            @canany(permission_access("locker_bank"))
+                <li class="dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>دسته بندی کمد</span></a>
+                    <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'order')) d-block @endif">
+                        @can(permission_access("locker_bank"))
+                            <li><a class="nav-link" href="{{route("admin.locker-bank.create")}}">دسته بندی کمد جدید</a></li>
+                        @endcan
+                        <li><a class="nav-link" href="{{route("admin.locker-bank.index")}}">دسته بندی کمد ها</a></li>
+                    </ul>
+                </li>
+            @endcanany
+            @canany(permission_access("user"))
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>سفارشات</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'order')) d-block @endif">
-                    @can("read_order")
-                    <li><a class="nav-link" href="{{route("admin.order.index")}}">لیست سفارش ها</a></li>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-edit"></i><span>کاربران</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'user')) d-block @endif">
+                    @can("read_user")
+                    <li><a class="nav-link" href="{{route("admin.user.index")}}">لیست کاربران</a></li>
                     @endcan
                 </ul>
             </li>
             @endcanany
-              {{--@canany(permission_access("menu"))
+            {{--@canany(permission_access("menu"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-list-ul"></i><span>منو</span></a>
                 <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'menu')) d-block @endif">

@@ -326,5 +326,6 @@ return [
         'registration_number'=>'شماره ثبت',
         'province2'=>'استان',
         'city2'=>'شهر',
-        ]
+        'code'=>'کد',
+    ]
 ];

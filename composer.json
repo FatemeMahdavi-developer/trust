@@ -18,6 +18,7 @@
         "mcamara/laravel-localization": "^2.0",
         "mobiledetect/mobiledetectlib": "^4.8",
         "morilog/jalali": "3.*",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-sitemap": "^7.2",
         "staudenmeir/eloquent-has-many-deep": "^1.7"
     },
