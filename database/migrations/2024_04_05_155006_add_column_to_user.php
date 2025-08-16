@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string("confirm_code")->nullable();
             $table->string("username")->unique();
             $table->enum('state',['0','1'])->default('0');
-            $table->integer('province')->nullable();
-            $table->integer('city')->nullable();
+            $table->foreignId('province')->nullable()->constrained("provinces")->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('city')->nullable()->constrained("cities")->cascadeOnUpdate()->nullOnDelete();
             $table->string('national_code')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('address')->nullable();
@@ -39,8 +39,10 @@ return new class extends Migration
             $table->dropColumn("confirm_code");
             $table->dropColumn("username");
             $table->dropColumn("state");
-            $table->dropColumn("province");
-            $table->dropColumn("city");
+            $table->dropForeign(['province']);
+            $table->dropColumn('province');
+            $table->dropForeign(['city']);
+            $table->dropColumn('city');
             $table->dropColumn("national_code");
             $table->dropColumn("postal_code");
             $table->dropColumn("address");

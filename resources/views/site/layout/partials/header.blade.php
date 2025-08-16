@@ -39,12 +39,12 @@
                                 @endauth
                             </ul>
                         </div>
-                        <a  @auth href="javascript:void(0);"   @else href="{{route('auth.login')}}"  @endauth class="link-box"  id="cd_cart_trigger">
+                        {{-- <a  @auth href="javascript:void(0);"   @else href="{{route('auth.login')}}"  @endauth class="link-box"  id="cd_cart_trigger">
                             <img src="{{asset("site/assets/image/shopping-cart.svg")}}">
                             <i class="basket-num">
                                 0
                             </i>
-                        </a>
+                        </a> --}}
                     </div>
                 </header>
             </div>

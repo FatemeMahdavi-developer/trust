@@ -67,6 +67,24 @@ class UserController extends Controller
             $input["password"]=Hash::make($request->get("password"));
         }
         $input['date_birth'] = convert_to_timestamp($request->date_birth,"/");
+
+        if(@$input['legal_information_check']!=1){
+            $input['legal_information_check']=0;
+
+            $input['company']='';
+            $input['economic_code']='';
+            $input['national_id']='';
+            $input['tell2']='';
+            $input['registration_number']='';
+            $input['province2']=null;
+            $input['city2']=null;
+        }
+
+        if(@$input['locker_bank_owner']!=1){
+            $input['locker_bank_owner']=0;
+        }
+
+
         $user->update($input);
         return back()->with('success', __('common.messages.success_edit', [
             'module' => $this->module_title
