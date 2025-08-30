@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('box_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('size_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
             $table->string('state');
             $table->string('ip');
             $table->timestamps();

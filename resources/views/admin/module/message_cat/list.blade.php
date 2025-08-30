@@ -40,7 +40,6 @@
                                             <td>{{ $loop->iteration + $message_cats->firstItem() - 1 }}
                                             </td>
                                             <td>{{$message_cat["title"]}}</td>
-                                            {{-- <td><a href="{{route("admin.product.index",['catid'=>$message_cat['id']])}}">{{$message_cat->product->count('id')}}</a></td> --}}
                                             <td><a href=""> - </a></td>
                                             <td> @component($prefix_component."state_style",['id'=>$message_cat["id"],"column"=>'state','state'=>$message_cat["state"]])@endcomponent</td>
                                             <td><input type="text" value="{{$message_cat["order"]}}" class="input-order" name="order[{{$message_cat['id']}}]"></td>

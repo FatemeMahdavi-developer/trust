@@ -4,9 +4,6 @@ namespace App\Http\Controllers\site;
 
 use App\Http\Controllers\Controller;
 use App\Models\comment;
-use App\Models\product;
-use App\Models\like;
-use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
@@ -21,7 +18,7 @@ class LikeController extends Controller
             if($liketable->like()->where('user_id',auth()->id())->count()){
 
                 return json_encode(['error'=>'نظر شما قبلا ثبت شده است']);
-                
+
             }else{
                 if(request()->has('kind'))
                     $kind=request()->get('kind');
@@ -49,7 +46,7 @@ class LikeController extends Controller
     public function model($module)
     {
         $models = [
-            'product' => product::class,
+            // 'product' => product::class,
             'comment' => comment::class,
         ];
         return $models[$module];

@@ -23,6 +23,7 @@
                                     @component($prefix_component."input",['name'=>'code','title'=>'کد شعبه','value'=>$branch['code'],'class'=>'w-50'])@endcomponent
                                     @component($prefix_component."input",['name'=>'postal_code','title'=>'کد پستی','value'=>$branch['postal_code'],'class'=>'w-50'])@endcomponent
                                     @component($prefix_component."textarea",['name'=>'address','title'=>'آدرس','value'=>$branch['address'],'class'=>'w-50'])@endcomponent
+                                    @component($prefix_component."select",['name'=>'user_id','title'=>'اجاره کننده','class'=>'w-50','items'=>$users,'value_old'=>$branch["user_id"],'key'=>'id','value'=>'fullname'])@endcomponent
                                     @component($prefix_component."button",['title'=>'ارسال'])@endcomponent
                                 @endslot
                             @endcomponent

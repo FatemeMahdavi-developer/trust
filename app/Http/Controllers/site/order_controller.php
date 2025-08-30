@@ -10,17 +10,12 @@ use App\Base\Entities\Enums\TransactionStatusEnum;
 use App\Base\Entities\Enums\UrlEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\site\OrderRequest;
-use App\Models\account_number;
 use App\Models\basket;
 use App\Models\box;
 use App\Models\order;
-use App\Models\payment;
-use App\Models\Transaction;
-use App\Models\User;
 use App\Repositories\TransactionRepository;
 use App\Services\Payment\PaymentService;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -46,15 +41,18 @@ class order_controller extends Controller
     public function order()
     {
         $basket=basket::where(['user_id'=>Auth::user()->id,'state'=>BasketState::REGISTRATION])->first();
+
+        $price=$basket->calculatePrice();
+
         if(!is_null($basket)){
             $kind_payment=collect(enumAsOptions(OrderType::cases(),app(order::class)->enumsLang()))->pluck('label','value');
-            $account_numbers=account_number::pluck('name','id')->toArray();
+
+
             return view('site.order',[
                 'module_title'=>$this->module_title,
                 'module_pic'=>$this->module_pic,
                 'kind_payment'=>$kind_payment,
-                'price'=>$basket->size->price,
-                'account_numbers'=>$account_numbers
+                'price'=>$price
             ]);
         }else{
             return redirect()->route('reservation');
@@ -76,17 +74,15 @@ class order_controller extends Controller
 
         $inputs=$request->validated();
 
-        $basket=basket::where(['user_id'=>Auth::user()->id,'state'=>BasketState::REGISTRATION])->first();
+        $basket=basket::where(['user_id'=>Auth::user()->id,'state'=>BasketState::REGISTRATION])->with('lockerbank')->first();
 
         $inputs['type']='new';
         $inputs['basket_id']=$basket->id;
-        $inputs['size_id']=$basket->size_id;
         $inputs['user_id']=$basket->user_id;
         $inputs['pay_way']=PaymentPayWayEnum::DRAFT->value;
-        $inputs['size_title']=$basket->size->title;
-        $inputs['price']=$basket->size->price;
-        $inputs['box_id']=$basket->box->id;
-
+        $inputs['size']=$basket->lockerbank->size->value;
+        $inputs['price']=$basket->calculatePrice();
+        $inputs['box_id']=$basket->box_id;
         $inputs['state']=TransactionStatusEnum::NONE->value;
 
         $inputs['ref_number'] =$this->randomDigits(10);
@@ -104,7 +100,7 @@ class order_controller extends Controller
         $transaction=$this->transactionRepository->createTransactionForReturnOrder($order,
             [
                 'gateway' => $gateway,
-                'comment' => 'test', //todo: CheckOrderCryptoExpireTimeRule
+                'comment' => 'test', //todo:
                 'status' => TransactionStatusEnum::NONE->value,
                 'payment_at' => Carbon::now(),
                 'price' => $order->price,

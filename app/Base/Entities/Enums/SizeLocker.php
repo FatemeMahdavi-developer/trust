@@ -4,7 +4,7 @@ namespace App\Base\Entities\Enums;
 
 enum SizeLocker: string
 {
-    case SMALL = "SMALL";
+    case SMALL = "small";
     case MIDDLE = "middle";
     case BIG = "big";
 }

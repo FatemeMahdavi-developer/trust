@@ -37,12 +37,13 @@
                                                     </thead>
                                                     <tbody>
                                                     @foreach($box as $item)
+
                                                         <tr>
                                                             <th scope="row"><input type="checkbox" class="checkbox_item"  name="item[]" value="{{$item['id']}}"></th>
                                                             <td>{{ $loop->iteration + $box->firstItem() - 1 }}
                                                             <td>{{$item["title"]}}</td>
-                                                            <td>مدیر اصلی</td>
-                                                            <td>{{$item->size->title ?? ""}}</td>
+                                                            <td>{{$item->admin->fullname}}</td>
+                                                            <td>{{$sizes[$item->lockerBank->size->value]}}</td>
                                                             <td>{{$state[$item->state->value]}}</td>
                                                             <td><input type="text" value="{{$item["order"]}}" class="input-order" name="order[{{$item['id']}}]"></td>
                                                             {{-- <td>
@@ -88,7 +89,7 @@
                                     @component($prefix_component."form",['method'=>'get'])
                                         @slot("content")
                                             @component($prefix_component."input",['name'=>'title','title'=>'عنوان','value'=>request()->get("title"),'class'=>'w-50'])@endcomponent
-                                            @component($prefix_component."select_recursive",['name'=>'size_id','value'=>request()->get('size_id'),'options'=>$sizes,'label'=>'سایز','choose'=>true])@endcomponent
+                                            @component($prefix_component."select",['name'=>'locker_bank_id','value'=>request()->get('locker_bank_id'),'items'=>$lockerBanks,'title'=>'دسته بندی','key'=>'id','value'=>'full_name','class'=>'w-50'])@endcomponent
                                             <div class="my-3">
                                                 @component($prefix_component."button",['title'=>'جستجو'])@endcomponent
                                             </div>

@@ -137,7 +137,7 @@
                                             <div class="legal_information_content">
                                                 @if(auth()->user()->locker_bank_owner==1 && auth()->user()->legal_information_check==1)
                                                     <div class="alert alert-warning showDate text-center">
-                                                        درصورتی که احراز هویت شما جهت اجاره لاکر تایید شده باشد امکان ویرایش اطلاعات حقوقی وجود ندارد
+                                                         احراز هویت شما جهت اجاره لاکر تایید شده و امکان ویرایش اطلاعات حقوقی وجود ندارد
                                                     </div>
                                                 @endif
                                                 <div class="row m-0">
@@ -264,7 +264,7 @@
                                     language: "fa"
                                 })
                             } else {
-                                $("[name='city']").append("<option value=''>نتیجه ای یافت نشد</option>")
+                                $("[name='city']").html("<option value=''>نتیجه ای یافت نشد</option>")
                             }
                         },
                         error: function () {
@@ -301,7 +301,7 @@
                                     language: "fa"
                                 })
                             } else {
-                                $("[name='city2']").append("<option value=''>نتیجه ای یافت نشد</option>")
+                                $("[name='city2']").html("<option value=''>نتیجه ای یافت نشد</option>")
                             }
                         },
                         error: function () {

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\BranchRequest;
 use App\Models\Branch;
 use App\Models\contactmap;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -43,10 +44,14 @@ class BranchController extends Controller
     public function create()
     {
         $contactmap = contactmap::find('1');
+
+        $users=User::where('locker_bank_owner',1)->select('id','name','lastname')->get();
+
         return view($this->view . 'new', [
             'contactmap' => $contactmap,
             'module_title' => $this->module_title,
-            'module' => $this->module
+            'module' => $this->module,
+            'users'=>$users
         ]);
     }
 
@@ -55,15 +60,12 @@ class BranchController extends Controller
      */
     public function store(BranchRequest $request)
     {
-        Branch::create([
-            'lgmap'=>$request->lgmap,
-            'qgmap'=>$request->qgmap,
-            'name'=>$request->name,
-            'code'=>$request->code,
-            'postal_code'=>$request->postal_code,
-            'address'=>$request->address,
-            'admin_id'=>Auth::user()->id
-        ]);
+        $input=$request->validated();
+
+        $input['admin_id']=Auth::user()->id;
+
+        Branch::create($input);
+
         return back()->with('success', __('common.messages.success', [
             'module' => $this->module_title
         ]));
@@ -75,10 +77,13 @@ class BranchController extends Controller
     public function edit(string $id)
     {
         $branch = Branch::find($id);
+        $users=User::where('locker_bank_owner',1)->select('id','name','lastname')->get();
+
         return view($this->view . 'edit', [
             'module_title' => $this->module_title,
             'module' => $this->module,
             'branch' =>$branch,
+            'users'=>$users
         ]);
     }
 
@@ -92,9 +97,8 @@ class BranchController extends Controller
         $branch->update($input);
 
         return back()->with('success', __('common.messages.success_edit', [
-            'module' => $this->module_title
+            'module' => $this->module_title,
         ]));
-        
     }
 
     /**

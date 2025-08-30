@@ -7,7 +7,6 @@ use App\Base\Entities\Enums\OrderType;
 use App\Base\Entities\Enums\PaymentType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\order_request;
-use App\Http\Requests\admin\product_request;
 use App\Models\basket;
 use App\Models\order;
 use App\Models\payment;

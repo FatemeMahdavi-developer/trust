@@ -8,7 +8,6 @@ use App\Http\Requests\admin\content_request;
 use App\Models\content;
 use App\Models\news;
 use App\Models\page;
-use App\Models\product;
 use App\Trait\ResizeImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -190,7 +189,7 @@ class content_controller extends Controller
     {
         return [
             'news' => news::class,
-            'product' => product::class,
+            // 'product' => product::class,
             'page' => page::class,
         ];
     }

@@ -70,10 +70,7 @@
                                                   {{$order->basket->box->number_box}}
                                                 </td>
                                                 <td>
-                                                  <div class="text-time">{{$order->size->title}}</div>
-                                                </td>
-                                               <td>
-                                                    <div class="text-time">{{$order->size->note}}</div>
+                                                  <div class="text-time">{{$order->size->value}}</div>
                                                 </td>
                                                 <td>
                                                     <div class="text-time">{{$order->price}} تومان</div>
@@ -113,10 +110,8 @@
                                     <h4>جزییات پرداخت</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="alert text-center d-flex justify-content-between"> <span>نام واریز کننده :</span> {{$order->payment->name}}</div>
-                                    <div class="alert text-center d-flex justify-content-between"> <span>نام بانک :</span> {{$order->payment->bank}}</div>
-                                    <div class="alert text-center d-flex justify-content-between"> <span>واریز به حساب :</span> {{$order->payment->accountNumber->name}}</div>
-                                    <div class="alert text-center d-flex justify-content-between"> <span>شماره فیش :</span> {{$order->payment->fish_number}}</div>
+                                    {{-- <div class="alert text-center d-flex justify-content-between"> <span>نام واریز کننده :</span> {{$order->payment->name}}</div> --}}
+                                    {{-- <div class="alert text-center d-flex justify-content-between"> <span>شماره فیش :</span> {{$order->payment->fish_number}}</div> --}}
                                     @component($prefix_component.".form",['action'=>route('admin.order.update',['order'=>$order['id']]),'method'=>'post'])
                                         @slot("content")
                                             @method("put")

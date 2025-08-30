@@ -112,9 +112,14 @@
     justify-content: center;
     flex-direction: column;
     padding: 60px 0;
+    margin: 10px;
+    background-color: #9D1A15;
+    background-image: url("../../image/home-bg-category.jpg");
+    background-repeat: repeat;
+    border-radius: 10px;
     position: relative; }
     .page-home .container-category .category-item .title {
-      color: #000000;
+        color: #ffffff;
       font-size: 18px;
       font-weight: 700;
       margin-top: 15px; }
@@ -127,7 +132,7 @@
       background-image: url("../../image/home-bg-category.jpg");
       background-repeat: repeat; }
       .page-home .container-category .category-item:hover .title {
-        color: #ffffff; }
+        color: #000; }
       .page-home .container-category .category-item:hover svg, .page-home .container-category .category-item:hover svg path {
         fill: #ffffff !important; }
 
@@ -146,19 +151,19 @@
 /* *** page-home about */
 .page-home .container-about {
   background-color: #302C83;
-  position: relative;
-  background-image: url("../../image/about/bg-about-vision-03-02.png");
+  /* position: relative; */
+  background-image: url("../../image/about/lock.png");
   background-size: 350px;
   background-repeat: no-repeat;
   background-position: -60px bottom; }
-  .page-home .container-about:before {
+  /* .page-home .container-about:before {
     background-color: #000000;
     width: 50%;
     height: 100%;
     content: '';
     position: absolute;
     top: 0;
-    right: 0; }
+    right: 0; } */
   .page-home .container-about .col-video {
     display: inline-flex;
     align-items: center;

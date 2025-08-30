@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('admin_id')->constrained()->nullable()->onUpdate('cascade');
             $table->string('title')->nullable();
             $table->string('state')->default('empty');
-            $table->foreignId('size_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
             $table->string('number_box');
             $table->integer("order")->default("0");
             $table->softDeletes();

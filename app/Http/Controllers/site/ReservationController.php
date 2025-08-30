@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\site;
 
 use App\Base\Entities\Enums\BasketState;
+use App\Base\Entities\Enums\SizeLocker;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\site\ContacRequest;
 use App\Models\basket;
-use App\Models\order;
-use App\Models\size;
+use App\Models\box;
+use App\Models\Branch;
 use Illuminate\Support\Facades\Auth;
 use Morilog\Jalali\CalendarUtils;
+use function App\Helpers\admin\enumAsOptions;
+
 
 class ReservationController extends Controller
 {
@@ -24,19 +27,21 @@ class ReservationController extends Controller
     }
     public function reservation()
     {
-        $sizes = size::where('state','1');
-        $prices=$sizes->get(['title','price','note']);
-        $sizes=$sizes->get(['id','title']);
+
+        $branches=Branch::where('state','1')->whereHas('lockerbanks')->pluck('name','id')->toArray();
+        $sizes=collect(enumAsOptions(SizeLocker::cases(),app(box::class)->enumsLang()))->pluck('label','value');
+
         return view('site.reservation',[
             'module_title'=>$this->module_title,
             'module_pic'=>$this->module_pic,
             'sizes'=>$sizes,
-            'prices'=>$prices
+            'branches'=>$branches
         ]);
     }
 
     public function store(ContacRequest $request){
         $inputs=$request->validated();
+        // todo:
         if(Auth::user()->have_box==1){
             return back()->with('order_error','شما درحال حاضر کمد دارید');
         }

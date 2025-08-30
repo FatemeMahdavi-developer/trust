@@ -1,27 +1,19 @@
 <?php
 
-use App\Http\Controllers\admin\product_controller;
 use App\Http\Controllers\admin\province_city_controller;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\site\bank_account_controller;
 use App\Http\Controllers\site\ContactController;
-use App\Http\Controllers\site\EmploymentController;
 use App\Http\Controllers\site\HomeController;
 use App\Http\Controllers\site\MultimediaController;
 use App\Http\Controllers\site\newsController;
 use App\Http\Controllers\site\order_controller;
 use App\Http\Controllers\site\order_success_controller;
 use App\Http\Controllers\site\PhotoController;
-use App\Http\Controllers\site\productController;
 use App\Http\Controllers\site\ReservationController;
 use App\Http\Controllers\site\searchController;
 use App\Http\Controllers\site\select_box_controller;
+use App\Http\Controllers\site\select_size_controller;
 use App\Http\Controllers\site\VideoController;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-use Illuminate\View\View;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,10 +41,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
     Route::get("order",[order_controller::class,'order'])->name("order")->middleware('auth');
     Route::post("order",[order_controller::class,'store'])->name("order.store")->middleware('auth');
 
-    Route::post("bank_account",bank_account_controller::class)->name("bank_account");
     Route::get("order_success",[order_success_controller::class,'order_success'])->name("order_success")->middleware('auth');
 
+    Route::post("select_size",select_size_controller::class)->name("select_size");
     Route::post("select_box",select_box_controller::class)->name("select_box");
+
     Route::post("province_city", province_city_controller::class)->name("province_city");
 
     // Route::get('test',function(){
@@ -90,14 +83,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
         Route::get('/{news:seo_url}', [newsController::class, 'show'])->name('show');
         Route::post('/news_send_email/{id}', [newsController::class, 'mail'])->name('mail');
         Route::get('/{news:seo_url}/print', [newsController::class, 'show'])->name('print');
-    });
-
-    Route::prefix('/product')->as('product.')->group(function () {
-        Route::get('/', [productController::class,'index'])->name('index');
-        Route::get('/cat/{product_cat:seo_url}',[productController::class,'index'])->name('index_cat');
-        Route::get('/{product:seo_url}',[productController::class,'show'])->name('show');
-        Route::post('/product_send_email/{id}',[productController::class,'mail'])->name('mail');
-        Route::get('/{product:seo_url}/print',[productController::class,'show'])->name('print');
     });
 
     Route::prefix('comment/{type}/{module_id}')->middleware('auth')->middleware('access')->as('comment.')->group(function () {

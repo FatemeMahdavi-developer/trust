@@ -63,7 +63,7 @@
                                 })
                                 $("[name='city']").html(html)
                             } else {
-                                $("[name='city']").append("<option value=''>نتیجه ای یافت نشد</option>")
+                                $("[name='city']").html("<option value=''>نتیجه ای یافت نشد</option>")
                             }
                         },
                         error: function () {

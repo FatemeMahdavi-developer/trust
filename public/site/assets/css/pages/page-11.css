@@ -96,3 +96,212 @@
     margin-bottom: 20px; } }
 
 /*# sourceMappingURL=page-11.css.map */
+.card-container {
+    perspective: 1000px;
+    width: 400px;
+    height: 250px;
+}
+.bank-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(102deg, #302c83 0%, #637cae 50%, #302c83 100%);
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250"><defs><pattern id="circuit" patternUnits="userSpaceOnUse" width="40" height="40"><path d="M0 20h40M20 0v40" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="400" height="250" fill="url(%23circuit)"/></svg>');
+    opacity: 0.3;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px 10px;
+    color: white;
+}
+
+.bank-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bank-logo i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.bank-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.card-type {
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: white;
+}
+
+.card-number {
+    padding: 0 25px;
+    margin: 20px 0;
+}
+
+.card-number-display {
+    font-family: 'Courier New', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.sheba-number-display {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.card-holder-name {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.card-bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    right: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-info-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+}
+
+.card-info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.card-chip {
+    width: 45px;
+    height: 35px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    border-radius: 5px;
+    position: relative;
+    margin: 10px 0;
+}
+
+.card-chip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 25px;
+    background: linear-gradient(45deg, #f39c12, #e67e22);
+    border-radius: 3px;
+}
+
+.card-wave {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    border-radius: 50%;
+}
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    border: 2px solid #ecf0f1;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+}
+
+.btn-update {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+.contactless-icon {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        width: 350px;
+        height: 220px;
+    }
+    .card-number-display {
+        font-size: 20px;
+    }
+}

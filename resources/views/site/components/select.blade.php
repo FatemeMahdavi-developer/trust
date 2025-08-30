@@ -11,11 +11,19 @@
                         @else value="{{$value_item[$key]}}" @endif>@if(empty($value)){{$value_item}}@else{{$value_item[$value]}} @endif</option>
             @endforeach
         </select>
-        @error($name)<span class="text text-danger">{{$errors->first($name)}}</span>@enderror
+        @php
+        $errorName = $name;
+            if (preg_match('/\[\d*\]$/', $name)) {
+                $errorName = str_replace(['[', ']'],['.',''], $name);
+            }
+        @endphp
+        @error($errorName)<span class="text text-danger">{{$errors->first($errorName)}}</span>@enderror
+        {{-- @error($name)<span class="text text-danger">{{$errors->first($name)}}</span>@enderror --}}
     </div>
 </div>
+
 @if(!empty($value_old))
     <script>
-        $("select[name='{{$name}}']").val({{$value_old}});
+        $("select[name='{{$name}}']").val('{{$value_old}}');
     </script>
 @endif

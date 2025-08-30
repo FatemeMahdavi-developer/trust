@@ -33,6 +33,16 @@ Route::middleware('auth')->as('user.')->group(function () {
     Route::post('rate/{type}/{type_id}',[RateController::class,'store'])->name('rate.store');
 
     Route::get('invoice',[panelController::class,'invoice'])->name('invoice');
+    Route::get('price',[panelController::class,'lockerBankPrice'])->name('price');
+    Route::post('price',[panelController::class,'updatePriceOfLockerBank'])->name('updatePriceOfLockerBank');
+
+    Route::get('rent',[panelController::class,'lockerBankRent'])->name('rent');
+
+
+    Route::get('bank-account',[panelController::class,'bankAccount'])->name('bank-account');
+    Route::post('bank-account',[panelController::class,'StoreBankAccount'])->name('store-bank-account');
+
+
     Route::get('unlocker',[panelController::class,'unlocker'])->name('unlocker');
     Route::get('unlocker/{box}',[panelController::class,'unlocker_info'])->name('unlocker_info');
     Route::post('unlocker/data',[panelController::class,'opendoor'])->name('unlocker.door');

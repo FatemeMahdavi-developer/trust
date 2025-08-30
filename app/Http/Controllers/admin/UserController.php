@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\base\class\admin_controller;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\UserRequest;
+use App\Models\BankAccount;
 use App\Models\province;
 use App\Models\User;
 use App\Trait\convert_date_to_timestamp;
@@ -47,11 +48,15 @@ class UserController extends Controller
     {
         $user=User::find($id);
         $provinces = province::select('id', 'name')->where('state', '1')->get();
+
+        $myBankAccount=BankAccount::where('user_id',$id)->first();
+
         return view("admin.module.user.edit", [
             'module_title' => $this->module_title,
             'module' => $this->module,
             'user' => $user,
             'provinces' => $provinces,
+            'myBankAccount' => $myBankAccount
         ]);
     }
 

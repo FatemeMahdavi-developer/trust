@@ -1,11 +1,10 @@
 <?php
 namespace App\Console\Commands;
 
+use App\Models\Branch;
 use App\Models\gallery_cat;
 use App\Models\news;
 use App\Models\news_cat;
-use App\Models\product;
-use App\Models\product_cat;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\Sitemap;
@@ -39,11 +38,9 @@ class GenerateSitemap extends Command
         $modeles= [
             news::class,
             news_cat::class,
-            product::class,
-            product_cat::class,
             gallery_cat::class
         ];
-      
+
         foreach($modeles as $value){
             ($value)::get()->each(function ($item) use ($sitemap) {
                 $sitemap->add(Url::create(urldecode($item->url))

@@ -46,23 +46,6 @@
     </div>
 </div>
 
-<div class="modal fade modal-search" id="modal-search" tabindex="-1" aria-labelledby="modal-search" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form action="{{route("product.index")}}" class="form-site-search" id="search_string">
-                    <input type="text" name="keyword" id="keyword" class="search__input" placeholder="نام محصول مورد نظر خود را وارد نمایید"/>
-                    <button type="submit" name="form-site-search-submit">
-                        <i class="fi fi-rr-search icon"></i>
-                    </button>
-                </form>
-                <div class="site-search-result-box advanced_search">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="modal fade modal-video" id="modal-video" tabindex="-1" aria-labelledby="modal-video" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">

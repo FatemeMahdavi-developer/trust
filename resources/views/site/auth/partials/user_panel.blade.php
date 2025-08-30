@@ -10,6 +10,26 @@
     </div>
     <ul class="menu">
         <li><a href="{{route('user.panel')}}" @if(str_contains($view_name,"-user-panel"))class="active"@endif><i class="fi fi-rr-apps icon"></i>{{__("msg.panel.dashbord")}}</a></li>
+        @if(auth()->user()->locker_bank_owner==1)
+        <li>
+            <a href="{{route('user.price')}}" @if(str_contains($view_name,"price"))class="active"@endif>
+                <i class="fi fi-rr-heart icon"></i>
+                لیست قیمت لاکر بانک ها
+            </a>
+        </li>
+        <li>
+            <a href="{{route('user.rent')}}" @if(str_contains($view_name,"rent"))class="active"@endif>
+                <i class="fi fi-rr-heart icon"></i>
+                لیست اجاره ها
+            </a>
+        </li>
+        <li>
+            <a href="{{route('user.bank-account')}}" @if(str_contains($view_name,"bank-account"))class="active"@endif>
+                <i class="fi fi-rr-heart icon"></i>
+                حساب بانکی
+            </a>
+        </li>
+        @endif
         <li>
             <a href="{{route('user.invoice')}}" @if(str_contains($view_name,"invoice"))class="active"@endif>
                 <i class="fi fi-rr-heart icon"></i>

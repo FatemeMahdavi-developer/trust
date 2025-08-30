@@ -52,10 +52,9 @@
                                                     <tr>
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$order->basket->box->title}}</td>
-                                                        <td>{{$order->size->title}}</td>
+                                                        <td>{{$order->size->value}}</td>
                                                         <td>{{number_format($order->price)}} تومان</td>
-                                                        <td>{{$kind_payment[$order->state->value]}}</td>
-                                                        <td>{{$state_payment[$order->payment->state->value]}}</td>
+                                                        <td>{{$order->kind_payment->value}}</td>
                                                         <td>{{$order->ref_number}}</td>
                                                         <td style="direction:ltr;">{{$order->date_convert()}}</td>
                                                         <td><a href="" class="order_view_tbl">مشاهده</a></td>

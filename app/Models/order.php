@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Base\Entities\Enums\OrderType;
+use App\Base\Entities\Enums\SettlementStatusOfOrder;
+use App\Base\Entities\Enums\SizeLocker;
 use App\Base\Entities\Enums\TransactionStatusEnum;
 use App\Trait\date_convert;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,11 +20,9 @@ class order extends Model
 
     protected $fillable=[
         'basket_id',
-        'size_id',
         'user_id',
-        'payment_id',
         'type',
-        'size_title',
+        'size',
         'price',
         'box_id',
         'kind_payment',
@@ -32,6 +33,9 @@ class order extends Model
 
     protected $casts = [
         'state' => TransactionStatusEnum::class,
+        'size'=>SizeLocker::class,
+        'kind_payment'=>OrderType::class,
+        'settlement_status'=>SettlementStatusOfOrder::class
     ];
 
     public function transaction()
@@ -55,17 +59,12 @@ class order extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
-    public function size(){
-        return $this->belongsTo(size::class,'size_id');
-    }
-
     public function basket(){
         return $this->belongsTo(basket::class,'basket_id');
     }
 
-    public function payment(){
-        return $this->belongsTo(payment::class,'payment_id');
+    public function box(){
+        return $this->belongsTo(box::class,'box_id');
     }
-
 
 }

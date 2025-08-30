@@ -60,7 +60,6 @@
                                         @slot("content")
                                             @component($prefix_component."input",['name'=>'main_slider_count','title'=>'تعداد اسلایدر صفحه اصلی','value'=>app('setting')['main_slider_count'] ?? "",'class'=>'w-50'])@endcomponent
                                             @component($prefix_component."input",['name'=>'news_count','title'=>'تعداد اخبار','value'=>app('setting')['news_count'] ?? "",'class'=>'w-50'])@endcomponent
-                                            @component($prefix_component."input",['name'=>'product_count','title'=>'تعداد محصولات','value'=>app('setting')['product_count'] ?? "",'class'=>'w-50'])@endcomponent
                                             @component($prefix_component."button",['title'=>'ارسال'])@endcomponent
                                         @endslot
                                     @endcomponent

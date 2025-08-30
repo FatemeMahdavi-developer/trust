@@ -16,10 +16,10 @@ class box extends Model
     protected $fillable=[
         'title',
         'admin_id',
-        'size_id',
         'state',
         'order',
-        'number_box'
+        'number_box',
+        'locker_bank_id'
     ];
 
 
@@ -35,18 +35,21 @@ class box extends Model
 
     public function scopeFilter(Builder $builder, $params)
     {
-        if(!empty($params['size_id'])){
-            $builder->where("size_id",$params["size_id"]);
-        }
         if (!empty($params['title'])) {
             $builder->where('title', 'like', '%' . $params['title'] . '%');
         }
-
+        if (!empty($params['locker_bank_id'])) {
+            $builder->where('locker_bank_id',$params['locker_bank_id']);
+        }
         return $builder;
     }
 
-    public function size(){
-        return $this->belongsTo(size::class,'size_id');
+    public function lockerBank(){
+        return $this->belongsTo(lockerBank::class,'locker_bank_id');
+    }
+
+    public function admin(){
+        return $this->belongsTo(admin::class,'admin_id')->select('id','fullname');
     }
 
 }

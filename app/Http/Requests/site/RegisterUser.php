@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests\site;
 
-use App\Models\User;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterUser extends FormRequest

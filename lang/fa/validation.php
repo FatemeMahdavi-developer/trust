@@ -311,6 +311,7 @@ return [
         'box_id'=>'کمد',
         'bank'=>'بانک',
         'account_number'=>'شماره حساب',
+        'bank_name'=>'نام بانک',
         'card_number'=>'شماره کارت',
         'account_number_id'=>'شماره حساب',
         'fish_number'=>'شماره فیش',
@@ -327,5 +328,6 @@ return [
         'province2'=>'استان',
         'city2'=>'شهر',
         'code'=>'کد',
+        'pricing_type'=>'نوع اجاره'
     ]
 ];

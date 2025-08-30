@@ -4,6 +4,8 @@ use App\Base\Entities\Enums\BoxState;
 use App\Base\Entities\Enums\BasketState;
 use App\Base\Entities\Enums\OrderType;
 use App\Base\Entities\Enums\PaymentType;
+use App\Base\Entities\Enums\PricingType;
+use App\Base\Entities\Enums\SettlementStatusOfOrder;
 use App\Base\Entities\Enums\SizeLocker;
 
 return [
@@ -18,8 +20,8 @@ return [
         BasketState::CANCEL->name => 'کنسل',
     ],
     OrderType::class => [
-        // OrderType::ONLINE_PAYMENT->name => 'پرداخت آنلاین',
-        OrderType::BANK_FISH->name => 'فیش بانکی',
+        OrderType::ONLINE_PAYMENT->name => 'پرداخت آنلاین'
+        // OrderType::BANK_FISH->name => 'فیش بانکی',
     ],
     PaymentType::class => [
         PaymentType::PENDING->name => 'در انتظار',
@@ -31,5 +33,14 @@ return [
         SizeLocker::BIG->name=>"بزرگ",
         SizeLocker::MIDDLE->name=>"متوسط",
         SizeLocker::SMALL->name=>"کوچک"
-    ]
+    ],
+    PricingType::class=>[
+        PricingType::HOURLY->name=>"ساعتی",
+        PricingType::DAILY->name=>"روزانه",
+        PricingType::MONTHLY->name=>"ماهانه"
+    ],
+    SettlementStatusOfOrder::class=>[
+        SettlementStatusOfOrder::PENDING->name=>"در انتظار پرداخت",
+        SettlementStatusOfOrder::SETTLED->name=>"تسویه شده"
+    ],
 ];

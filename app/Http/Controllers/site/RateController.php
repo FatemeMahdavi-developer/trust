@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\site;
 
 use App\Http\Controllers\Controller;
-use App\Models\comment;
 use App\Models\news;
-use App\Models\product;
 use Illuminate\Http\Request;
 
 class RateController extends Controller
@@ -34,7 +32,7 @@ class RateController extends Controller
     {
         $models = [
             'news' => news::class,
-            'product' => product::class
+            // 'product' => product::class
         ];
         return $models[$module];
     }

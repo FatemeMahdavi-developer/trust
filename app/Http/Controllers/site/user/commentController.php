@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\site\commentRequest;
 use App\Models\comment;
 use App\Models\news;
-use App\Models\product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -39,7 +38,7 @@ class commentController extends Controller
     {
         $models= [
             'news' => news::class,
-            'product' => product::class
+            // 'product' => product::class
         ];
         return $models[$model];
     }

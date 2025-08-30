@@ -29,7 +29,7 @@ class box_request extends FormRequest
         return [
             'title' => ['required', 'string', 'min:1', 'max:255'],
             'number_box' => ['required', 'string', 'min:1', 'max:255'],
-            'size_id' => ['required', 'integer','exists:sizes,id'],
+            'locker_bank_id' => ['required', 'integer','exists:locker_banks,id'],
             'state' => ['required'],
         ];
     }

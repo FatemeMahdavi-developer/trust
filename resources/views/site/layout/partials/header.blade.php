@@ -4,7 +4,7 @@
             <div class="col">
                 <header class="page-header">
                     <div class="col-right">
-                        <a href="{{asset("/")}}" class="logo"><img src="{{asset('site/assets/image/logoo.png')}}"  @if($site_title) alt="{{$site_title}}" @endif/></a>
+                        <a href="{{asset("/")}}" class="logo"><img src="{{asset('site/assets/image/logo.png')}}"  @if($site_title) alt="{{$site_title}}" @endif/></a>
                     </div>
                     <div class="col-left">
                         <button class="link-box btn-mobile-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobile-side-menu" aria-controls="mobile-side-menu"><span class="icon fi fi-rr-menu-burger"></span></button>
@@ -55,7 +55,7 @@
 <div class="container-fluid container-menu">
     <div class="container-custom">
         <div class="row">
-            @if(isset($header_menu[0]))
+            @if(isset($header_menu))
             <div class="col">
                 <ul class="menu">
                     @foreach($header_menu as $item)

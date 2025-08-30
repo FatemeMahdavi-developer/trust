@@ -195,7 +195,7 @@ li {
     right: 0;
     z-index: -1; }
   .container-header:after {
-    background-color: #9D1A15;
+    background-color: #007aff;
     height: 100%;
     width: 50%;
     content: '';
@@ -217,13 +217,13 @@ li {
         width: 80%;
         max-width: 180px; }
     .container-header .page-header .col-left {
-      background-color: #9D1A15;
+      background-color: #007aff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       position: relative; }
       .container-header .page-header .col-left:before {
-        background-color: #9D1A15;
+        background-color: #007aff;
         height: 100%;
         width: 100%;
         content: '';
@@ -359,8 +359,8 @@ li {
         display: inline-flex;
         align-items: center;
         white-space: nowrap; }
-        .container-menu .menu .level-1 a:hover {
-          color: #9D1A15; }
+        /* .container-menu .menu .level-1 a:hover {
+          color: #9D1A15; } */
         .container-menu .menu .level-1 a .home-icon {
           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='20' viewBox='0 0 25 20'%3E%3Cg id='noun-home-1560057' transform='translate(-126.004 -100.797)'%3E%3Cpath id='Path_51' data-name='Path 51' d='M138.487 100.8a.671.671 0 0 0-.371.127L126.241 110.3a.647.647 0 0 0-.107.889.657.657 0 0 0 .889.1l11.484-9.063 11.484 9.063a.629.629 0 0 0 .781-.986L138.9 100.924a.714.714 0 0 0-.41-.127Zm-7.793 8.408-1.25.986v9.98h0a.625.625 0 0 0 .625.625h5.938a.625.625 0 0 0 .625-.625v-3.75a1.875 1.875 0 1 1 3.75 0v3.75h0a.625.625 0 0 0 .625.625h5.937a.625.625 0 0 0 .625-.625v-9.98l-1.25-.986v10.342h-4.688v-3.125a3.125 3.125 0 0 0-6.25 0v3.125h-4.687V109.206Z' fill='%23ffffff'/%3E%3C/g%3E%3C/svg%3E");
           width: 25px;
@@ -372,7 +372,7 @@ li {
       .container-menu .menu .level-1:last-child {
         margin-left: 0; }
       .container-menu .menu .level-1.active a {
-        color: #9D1A15;
+        /* color: #9D1A15; */
         position: relative; }
         .container-menu .menu .level-1.active a.has-level-2:before {
           line-height: 7px;
@@ -826,8 +826,8 @@ li {
         color: #ffffff;
         font-size: 14px;
         font-weight: 400; }
-        .container-footer .col-links ul li a:hover {
-          color: #9D1A15; }
+        /* .container-footer .col-links ul li a:hover {
+          color: #9D1A15; } */
   .container-footer .col-contact-data ul {
     padding: 0;
     margin: 0; }
@@ -842,8 +842,8 @@ li {
         color: #ffffff;
         font-size: 14px;
         font-weight: 400; }
-        .container-footer .col-contact-data ul li a:hover {
-          color: #9D1A15; }
+        /* .container-footer .col-contact-data ul li a:hover {
+          color: #9D1A15; } */
         .container-footer .col-contact-data ul li a.tel {
           font-family: 'IranSans'; }
   .container-footer .col-newsletter form {
@@ -898,8 +898,8 @@ li {
       direction: ltr; }
       .container-footer .copy-right-designer .copy-right a {
         color: #ffffff; }
-        .container-footer .copy-right-designer .copy-right a:hover {
-          color: #9D1A15; }
+        /* .container-footer .copy-right-designer .copy-right a:hover {
+          color: #9D1A15; } */
     .container-footer .copy-right-designer .designer {
       position: relative;
       z-index: 1; }
@@ -922,8 +922,8 @@ li {
           color: #ffffff;
           font-size: 12px;
           font-weight: 400; }
-          .container-footer .copy-right-designer .designer .designer-des a:hover {
-            color: #9D1A15; }
+          /* .container-footer .copy-right-designer .designer .designer-des a:hover {
+            color: #9D1A15; } */
       .container-footer .copy-right-designer .designer:hover .designer-des {
         width: 240px; }
 
@@ -1590,7 +1590,9 @@ input[type='radio'] {
     .section-tabs .tab-item:nth-child(2) {
       margin: 0 10px; }
     .section-tabs .tab-item .title {
-      font-size: 12px; } }
+      font-size: 12px; }
+    .page-home .container-page-slider .page-slider-items .item .title {
+        font-size: 17px !important;}}
 /* *** modal-video */
 .modal-video video {
   width: 100%; }

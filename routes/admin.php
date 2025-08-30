@@ -1,14 +1,11 @@
 <?php
 
-use App\Http\Controllers\admin\accountNumberController;
 use App\Http\Controllers\admin\bannerController;
 use App\Http\Controllers\admin\boxController;
 use App\Http\Controllers\admin\BranchController;
 use App\Http\Controllers\admin\comment_controller;
 use App\Http\Controllers\admin\ContactMapController;
 use App\Http\Controllers\admin\content_controller;
-use App\Http\Controllers\admin\employment_controller;
-use App\Http\Controllers\admin\employment_section_controller;
 use App\Http\Controllers\admin\instagramController;
 use App\Http\Controllers\admin\LockerBankController;
 use App\Http\Controllers\admin\manager_controller;
@@ -18,21 +15,15 @@ use App\Http\Controllers\admin\message_controller;
 use App\Http\Controllers\admin\news_cat_controller;
 use App\Http\Controllers\admin\news_controller;
 use App\Http\Controllers\admin\order_controller;
-use App\Http\Controllers\admin\permission_controller;
-use App\Http\Controllers\admin\premission;
-use App\Http\Controllers\admin\product_cat_controller;
-use App\Http\Controllers\admin\product_controller;
 use App\Http\Controllers\admin\province_city_controller;
 use App\Http\Controllers\admin\roleController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\pagesController;
 use App\Http\Controllers\admin\photo_cat_controller;
 use App\Http\Controllers\admin\photo_controller;
-use App\Http\Controllers\admin\sizeController;
 use App\Http\Controllers\admin\submenu_controller;
 use App\Http\Controllers\admin\video_cat_controller;
 use App\Http\Controllers\admin\video_controller;
-use Illuminate\Support\Facades\Redirect;
 use \Illuminate\Support\Facades\Route;
 
 include "auth_admin.php";
@@ -69,13 +60,6 @@ Route::middleware("auth:admin")->group(function () {
     Route::post("menu/action_all", [menuController::class, "action_all"])->name("menu.action_all");
     Route::post("menu/submenu",submenu_controller::class)->name("menu.submenu");
 
-    Route::resource("product_cat",product_cat_controller::class)->except("show");
-    Route::post("product_cat/action_all",[product_cat_controller::class,"action_all"])->name("product_cat.action_all");
-
-
-    Route::resource("product",product_controller::class)->except("show");
-    Route::post("product/action_all",[product_controller::class,"action_all"])->name("product.action_all");
-
     Route::resource("user",UserController::class)->except("show","create","store");
     Route::post("user/action_all",[UserController::class,"action_all"])->name("user.action_all");
 
@@ -110,24 +94,8 @@ Route::middleware("auth:admin")->group(function () {
     Route::resource("video",video_controller::class)->except("show");
     Route::post("video/action_all", [video_controller::class, "action_all"])->name("video.action_all");
 
-    // *** employment
-    Route::resource("employment_section",employment_section_controller::class)->except("show");
-    Route::post("employment_section/action_all",[employment_section_controller::class,'action_all'])->name("employment_section.action_all");
-    Route::resource('employment',employment_controller::class)->except(['show','create','store','update']);
-    Route::post("employment/action_all",[employment_controller::class,'action_all'])->name('employment.action_all');
-    Route::get('employment/excel',[employment_controller::class,'excel'])->name('employment.excel');
-    Route::get('/employment/{id:id}/print', [employment_controller::class,'print'])->name('employment.print');
-    // employment ***
-
-    Route::resource("size",sizeController::class)->except("show");
-    Route::post("size/action_all", [sizeController::class, "action_all"])->name("size.action_all");
-
-
     Route::resource("box",boxController::class)->except("show");
     Route::post("box/action_all", [boxController::class, "action_all"])->name("box.action_all");
-
-    Route::resource("account_number",accountNumberController::class)->except("show");
-    Route::post("account_number/action_all", [accountNumberController::class, "action_all"])->name("account_number.action_all");
 
     Route::resource("order",order_controller::class)->except(["create","store","show"]);
     Route::post("order/action_all",[order_controller::class,"action_all"])->name("order.action_all");

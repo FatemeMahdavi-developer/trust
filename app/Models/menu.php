@@ -16,13 +16,13 @@ class menu extends Model
     protected $table="menu";
     protected $appends = ['type_name','link','alt_image'];
     protected $fillable = [
-        'title', 
-        'pic', 
-        'type', 
-        'alt_pic', 
-        'state', 
+        'title',
+        'pic',
+        'type',
+        'alt_pic',
+        'state',
         'order',
-        'open_type', 
+        'open_type',
         'catid',
         'select_page',
         'url',
@@ -79,7 +79,7 @@ class menu extends Model
 
     public function sub_menus_site(){
         // "id","title","catid","select_page","pages","url"
-        return $this->hasMany(menu::class,'catid')->where("state","1");
+        return $this->hasMany(menu::class,'catid')->where("state","1")->orderByRaw("`order` ASC,`id` DESC");
     }
 
 }

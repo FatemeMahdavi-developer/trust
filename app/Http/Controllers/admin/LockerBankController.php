@@ -34,6 +34,7 @@ class LockerBankController extends Controller
         $lockerBank = LockerBank::filter($request->all())->paginate(5);
         $branches=Branch::all();
         $size=collect(enumAsOptions(SizeLocker::cases(),app(LockerBank::class)->enumsLang()))->pluck('label','value');
+        
         return view($this->view . 'list', [
             'module_title' => $this->module_title,
             'module' => $this->module,
@@ -118,7 +119,7 @@ class LockerBankController extends Controller
 
         $directory = public_path('qrcodes');
         if (!file_exists($directory)) {
-            mkdir($directory, 0755, true);
+            mkdir($directory, 0755,true);
         }
 
         $filename = time() . '.png';

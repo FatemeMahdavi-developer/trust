@@ -19,7 +19,7 @@
                                     @component($prefix_component."input",['name'=>'title','title'=>'عنوان','value'=>$box['title'],'class'=>'w-50'])@endcomponent
                                     @component($prefix_component."input",['name'=>'number_box','title'=>'کد محصول','value'=>$box['number_box'],'class'=>'w-50'])@endcomponent
                                     @component($prefix_component."select",['name'=>'state','title'=>'وضعیت','class'=>'w-50','items'=>$state,'value_old'=>$box['state']])@endcomponent
-                                    @component($prefix_component."select_recursive",['name'=>'size_id','options'=>$sizes,'label'=>'سایز','value'=>$box['size_id'],'choose'=>true])@endcomponent
+                                    @component($prefix_component."select",['name'=>'locker_bank_id','title'=>'دسته بندی','class'=>'w-50','items'=>$lockerBanks,'value_old'=>$box["locker_bank_id"],'key'=>'id','value'=>'full_name'])@endcomponent
                                     @component($prefix_component."button",['title'=>'ارسال'])@endcomponent
                                 @endslot
                             @endcomponent

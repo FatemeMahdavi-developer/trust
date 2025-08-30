@@ -26,6 +26,7 @@ class Branch extends Model
         'code',
         'address',
         'postal_code',
+        'user_id'
     ];
 
     public function scopeFilter(Builder $builder, $params)
@@ -34,6 +35,11 @@ class Branch extends Model
             $builder->where('name', 'like', '%' . $params['name'] . '%');
         }
         return $builder;
+    }
+
+    public function lockerbanks()
+    {
+        return $this->hasMany(LockerBank::class);
     }
 
 }

@@ -4,10 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\base\class\admin_controller;
 use App\Base\Entities\Enums\BoxState;
+use App\Base\Entities\Enums\SizeLocker;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\box_request;
 use App\Models\box;
-use App\Models\size;
+use App\Models\LockerBank;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,8 +31,10 @@ class boxController extends Controller
 
     public function index(Request $request)
     {
-        $box = box::filter($request->all())->orderBy('id','DESC')->paginate(5);
-        $sizes = size::all();
+        $box = box::filter($request->all())->with(['lockerBank','admin'])->orderBy('id','DESC')->paginate(5);
+        $lockerBanks = LockerBank::select('id','code','size')->get();
+        $sizes=collect(enumAsOptions(SizeLocker::cases(),app(box::class)->enumsLang()))->pluck('label','value');
+
         $state=collect(enumAsOptions(BoxState::cases(),app(box::class)->enumsLang()))->pluck('label','value');
         return view($this->view . 'list', [
             'module_title' => $this->module_title,
@@ -39,25 +42,26 @@ class boxController extends Controller
             'box' => $box,
             'state' => $state,
             'sizes' => $sizes,
+            'lockerBanks' => $lockerBanks
         ]);
     }
 
     public function create()
     {
-        $sizes = size::all();
+        $lockerBanks = LockerBank::select('id','code','size')->get();
         $state=collect(enumAsOptions(BoxState::cases(),app(box::class)->enumsLang()))->pluck('label','value');
         return view($this->view . "new", [
             'module_title' => $this->module_title,
-            'sizes' => $sizes,
             'state' => $state,
             'module' => $this->module,
+            'lockerBanks' => $lockerBanks,
         ]);
     }
 
     public function store(box_request $request)
     {
         $inputs = $request->validated();
-    
+
         $inputs['admin_id'] = auth()->user()->id;
         box::create($inputs);
         return back()->with('success', __('common.messages.success', [
@@ -70,11 +74,12 @@ class boxController extends Controller
     {
         $box = box::find($id);
         $state=collect(enumAsOptions(BoxState::cases(),app(box::class)->enumsLang()))->pluck('label','value');
-        $sizes = size::all();
+        $lockerBanks = LockerBank::select('id','code','size')->get();
+
         return view($this->view . 'edit', [
             'box' => $box,
             'module_title' => $this->module_title,
-            'sizes' => $sizes,
+            'lockerBanks' => $lockerBanks,
             'state' => $state,
             'module' => $this->module,
         ]);

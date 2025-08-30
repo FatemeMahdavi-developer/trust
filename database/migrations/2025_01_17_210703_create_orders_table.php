@@ -1,5 +1,6 @@
 <?php
 
+use App\Base\Entities\Enums\SizeLocker;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,11 +15,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('basket_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('size_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
             $table->string('pay_way')->nullable();
             $table->string('type');
-            $table->string('size_title');
+            $table->enum('size', array_map(fn($case) => $case->value, SizeLocker::cases()));
             $table->string('price');
             $table->foreignId('box_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('set null');
             $table->string('kind_payment');

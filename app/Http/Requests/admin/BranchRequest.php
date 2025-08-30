@@ -33,6 +33,7 @@ class BranchRequest extends FormRequest
             'code' => ['required', 'string', 'min:1', 'max:255'],
             'postal_code' => ['required', 'string','size:10'],
             'address' => ['required','string','min:3','max:255'],
+            'user_id' => ['nullable','integer','exists:users,id'],
         ];
     }
 }

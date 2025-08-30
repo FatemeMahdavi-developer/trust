@@ -5,6 +5,12 @@
             <label>{{$title}}</label>
         @endif
         <input type="{{$type}}" name="{{$name}}" class="form-input {{$class}}" @if($placeholder) placeholder="{{$placeholder}}" @endif  @if($autocomplete) autocomplete="off" @endif value="{{$value}}"/>
-        @error($name)<span class="text text-danger">{{$errors->first($name)}}</span>@enderror
+        @php
+            $errorName = $name;
+            if (preg_match('/\[\d*\]$/', $name)) {
+                $errorName = str_replace(['[', ']'],['.',''], $name);
+            }
+        @endphp
+        @error($errorName)<span class="text text-danger">{{$errors->first($errorName)}}</span>@enderror
     </div>
 </div>

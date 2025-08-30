@@ -48,7 +48,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="bank_fish">
+                    {{-- <div class="bank_fish">
                         <div class="row">
                             @component('site.components.input',['name'=>'name','placeholder'=>'نام واریز کننده','value'=>old('name')])@endcomponent
                             @component('site.components.input',['name'=>'bank','placeholder'=>'نام بانک','value'=>old('bank')])@endcomponent
@@ -60,7 +60,7 @@
                             </div>
                             @component('site.components.input',['name'=>'fish_number','placeholder'=>'شماره فیش','value'=>old('fish_number')])@endcomponent
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-btn">
                             <button type="submit" class="btn-custom">ارسال</button>
@@ -102,32 +102,10 @@
     $(document).ready(function() {
         $("[name='kind_payment']").on('change', function () {
             $(".online_payment,.bank_fish").toggleClass("d-none",true);
-            if($(this).val() == 1) {
+            if($(this).val() == "online") {
                 $(".online_payment").toggleClass("d-none",false);
-            }else if($(this).val() == 2) {
+            }else if($(this).val() == "fish") {
                 $(".bank_fish").toggleClass("d-none",false);
-            }
-        }).trigger("change");
-
-        $("#bankacount_info").html('');
-        $("[name='account_number_id']").on('change', function () {
-            if($(this).val().length > 0) {
-                $.ajax({
-                    url: "{{route("bank_account")}}",
-                    method: "post",
-                    dataType: "json",
-                    data: {
-                        '_token': $("input[name='_token']").val(),
-                        'account_number_id': $(this).val()
-                    },
-                    success: function (result) {
-                        $("#bankacount_info").html(`شماره حساب : <span dir="ltr"> `+result['account_number']+` </span>
-                        <br>شماره کارت : <span dir="ltr"> `+result['card_number']+`
-                        </span> <br>بانک : `+result['bank'])
-                    }
-                })
-            }else{
-                $("#bankacount_info").html('');
             }
         }).trigger("change");
     })

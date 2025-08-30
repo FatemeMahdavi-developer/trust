@@ -4,29 +4,30 @@ namespace App\Http\Controllers\site\user;
 
 use App\Base\Entities\Enums\OrderType;
 use App\Base\Entities\Enums\PaymentType;
+use App\Base\Entities\Enums\PricingType;
+use App\Base\Entities\Enums\SettlementStatusOfOrder;
+use App\Base\Entities\Enums\SizeLocker;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\openluckRequest;
-use App\Http\Requests\otpRequest;
 use App\Http\Requests\site\change_profile_user_request;
+use App\Http\Requests\Site\StoreUserBankAccountRequest;
+use App\Http\Requests\site\updatePriceOfLockerBank;
+use App\Models\BankAccount;
 use App\Models\box;
+use App\Models\LockerBank;
 use App\Models\OpenLock;
 use App\Models\order;
-use App\Models\payment;
-use App\Models\product;
 use App\Trait\seo_site;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
-use Morilog\Jalali\Jalalian;
 
 use function App\Helpers\admin\enumAsOptions;
 
 class panelController extends Controller
 {
-
     use seo_site;
 
     public function index()
@@ -62,6 +63,7 @@ class panelController extends Controller
             $inputs['province2']=null;
             $inputs['city2']=null;
         }
+
 
         auth()->user()->update($inputs);
         return back()->with("success", trans("common.msg.success"));
@@ -103,7 +105,6 @@ class panelController extends Controller
         $module = "like";
         $module_title = app("setting")->get($module . "_title") ?: trans("modules.module_name_site." . $module);
         $module_pic = app('setting')->get($module . "_pic");
-        $product = '';
         return view("site.auth.user.like", compact('module_title', 'module_pic'));
 
     }
@@ -111,18 +112,16 @@ class panelController extends Controller
 
     public function invoice(Request $request)
     {
-        $orders = order::where('user_id', auth::user()->id)->orderBy('id', 'desc')->get();
+        $orders = order::where(['user_id'=> auth::user()->id,'state'=>'success'])->orderBy('id', 'desc')->get();
         $kind_payment = collect(enumAsOptions(OrderType::cases(), app(order::class)->enumsLang()))->pluck('label', 'value')->toArray();
 
-        $state_payment = collect(enumAsOptions(PaymentType::cases(), app(payment::class)->enumsLang()))->pluck('label', 'value')->toArray();
-
-        return view('site.auth.user.invoice', compact(['orders', 'kind_payment', 'state_payment']));
+        return view('site.auth.user.invoice', compact(['orders', 'kind_payment']));
     }
 
     public function unlocker()
     {
         $module = "unlocker";
-        $orders = order::where('user_id', auth::user()->id)->whereHas("payment", function ($pay) {
+        $orders = order::where('user_id', auth::user()->id)->whereHas("transaction", function ($pay) {
             $pay->where("state", PaymentType::SUCCESS);
         })->orderBy('id', 'desc')->get();
         $module_title = app("setting")->get($module . "_title") ?: trans("modules.module_name_site." . $module);
@@ -166,6 +165,86 @@ class panelController extends Controller
         }else{
             return response()->json(["error"=>"خطا در انجام عملیات"]);
         }
+    }
+
+    public function lockerBankPrice()
+    {
+        $lockerBanks = LockerBank::whereHas('branch',function ($query) {
+            $query->where('user_id',auth()->id());
+        })
+        ->with(['branch' => function ($query) {
+            $query->select('id', 'name', 'user_id');
+        }])
+        ->get();
+
+        $size=collect(enumAsOptions(SizeLocker::cases(),app(LockerBank::class)->enumsLang()))->pluck('label','value');
+        $pricingType=collect(enumAsOptions(PricingType::cases(),app(LockerBank::class)->enumsLang()))->pluck('label','value');
+
+        return view('site.auth.user.price',[
+            'lockerBanks'=>$lockerBanks,
+            'size'=> $size,
+            'pricingType'=>$pricingType
+        ]);
+    }
+
+    public function updatePriceOfLockerBank(updatePriceOfLockerBank $request)
+    {
+        foreach ($request->price as $lockerBankId => $price) {
+
+            $lockerBank = LockerBank::where('id', $lockerBankId)
+                ->whereHas('branch', function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+                ->first();
+            if ($lockerBank) {
+                $lockerBank->update(['price' => $price,'pricing_type'=>$request->pricing_type[$lockerBankId]]);
+            }
+        }
+        return back()->with("success", trans("common.msg.success"));
+    }
+
+    public function lockerBankRent()
+    {
+        $orders=order::where('state','success')
+        ->whereHas('box.lockerBank.branch', function ($query) {
+            $query->where('user_id', auth()->id());
+        })
+        ->with([
+            'box.lockerBank.branch:id,name,user_id'
+        ])
+        ->get();
+
+        $size=collect(enumAsOptions(SizeLocker::cases(),app(LockerBank::class)->enumsLang()))->pluck('label','value');
+
+        $settlementStatus=collect(enumAsOptions(SettlementStatusOfOrder::cases(),app(order::class)->enumsLang()))->pluck('label','value');
+
+        return view('site.auth.user.rent',[
+            'orders'=>$orders,
+            'size'=> $size,
+            'settlementStatus'=>$settlementStatus
+        ]);
+    }
+
+    public function bankAccount()
+    {
+        $module = "bank-account";
+        $module_title = app("setting")->get($module . "_title") ?: trans("modules.module_name_site." . $module);
+        $module_pic = app('setting')->get($module . "_pic");
+
+        $myBankAccount=bankAccount::where('user_id',Auth()->id())->first();
+
+        return view("site.auth.user.bank-account", compact('module_title', 'module_pic','myBankAccount'));
+    }
+
+
+    public function StoreBankAccount(StoreUserBankAccountRequest $request){
+
+        $inputs=$request->validated();
+        $inputs['user_id']=Auth::id();
+
+       BankAccount::create($inputs);
+       //todo: waiting for admin approval
+        return back()->with("success", trans("common.msg.success"));
     }
 
     public function logout(Request $request)

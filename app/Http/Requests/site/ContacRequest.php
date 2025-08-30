@@ -23,8 +23,9 @@ class ContacRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'branch_id'=>['required','integer','exists:branches,id'],
+            'locker_bank_id'=>['required','integer','exists:locker_banks,id'],
             'box_id'=>['required','integer','exists:boxes,id'],
-            'size_id'=>['required','integer','exists:sizes,id'],
             "expired_at.0" => ['required','date_format:Y/m/d'],
             "expired_at.1" => ['required','integer','min:0','max:23'],
             "expired_at.2" => ['required','integer','min:0','max:59'],

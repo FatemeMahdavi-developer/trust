@@ -70,29 +70,6 @@
                 </ul>
             </li>
             @endcanany
-            @canany(permission_access("contactmap"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>محل شما روی نقشه</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'contactmap')) d-block @endif">
-                    @can("update_contactmap")
-                    <li><a class="nav-link" href="{{route("admin.contactmap.edit")}}">لوکیشن</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
-            @canany(permission_access("branch"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fab fa-instagram"></i><span>شعب</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'branch')) d-block @endif">
-                    @can("create_branch")
-                    <li><a class="nav-link" href="{{route("admin.branch.create")}}">شعبه جدید</a></li>
-                    @endcan
-                    @can("read_branch")
-                    <li><a class="nav-link" href="{{route("admin.branch.index")}}">لیست شعب</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
             @canany(permission_access("message"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-phone"></i><span>تماس با ما</span></a>
@@ -122,18 +99,50 @@
                 </ul>
             </li>
             @endcanany
-            @canany(permission_access("size"))
+            @canany(permission_access("contactmap"))
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>سایز کمد</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'size')) d-block @endif">
-                    @can("create_size")
-                    <li><a class="nav-link" href="{{route("admin.size.create")}}">سایز جدید</a></li>
-                    @endcan
-                    @can("read_size")
-                    <li><a class="nav-link" href="{{route("admin.size.index")}}">لیست سایز ها</a></li>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>محل شما روی نقشه</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'contactmap')) d-block @endif">
+                    @can("update_contactmap")
+                    <li><a class="nav-link" href="{{route("admin.contactmap.edit")}}">لوکیشن</a></li>
                     @endcan
                 </ul>
             </li>
+            @endcanany
+
+            @canany(permission_access("order"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>سفارشات</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'order')) d-block @endif">
+                    @can("read_order")
+                        <li><a class="nav-link" href="{{route("admin.order.index")}}">لیست سفارش ها</a></li>
+                        @endcan
+                </ul>
+            </li>
+            @endcanany
+            @canany(permission_access("branch"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fab fa-instagram"></i><span>شعب</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'branch')) d-block @endif">
+                    @can("create_branch")
+                    <li><a class="nav-link" href="{{route("admin.branch.create")}}">شعبه جدید</a></li>
+                    @endcan
+                    @can("read_branch")
+                    <li><a class="nav-link" href="{{route("admin.branch.index")}}">لیست شعب</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
+            @canany(permission_access("locker_bank"))
+                <li class="dropdown">
+                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>دسته بندی کمد</span></a>
+                    <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'order')) d-block @endif">
+                        @can(permission_access("locker_bank"))
+                            <li><a class="nav-link" href="{{route("admin.locker-bank.create")}}">دسته بندی کمد جدید</a></li>
+                        @endcan
+                        <li><a class="nav-link" href="{{route("admin.locker-bank.index")}}">دسته بندی کمد ها</a></li>
+                    </ul>
+                </li>
             @endcanany
             @canany(permission_access("box"))
             <li class="dropdown">
@@ -148,63 +157,6 @@
                 </ul>
             </li>
             @endcanany
-            @canany(permission_access("account_number"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>شماره حساب</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'account_number')) d-block @endif">
-                    @can("create_account_number")
-                    <li><a class="nav-link" href="{{route("admin.account_number.create")}}">شماره حساب جدید</a></li>
-                    @endcan
-                    @can("read_account_number")
-                    <li><a class="nav-link" href="{{route("admin.account_number.index")}}">لیست شماره حساب ها</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
-            @canany(permission_access("order"))
-                <li class="dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>سفارشات</span></a>
-                    <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'order')) d-block @endif">
-                        @can("read_order")
-                            <li><a class="nav-link" href="{{route("admin.order.index")}}">لیست سفارش ها</a></li>
-                            @endcan
-                    </ul>
-                </li>
-                @endcanany
-            @canany(permission_access("locker_bank"))
-                <li class="dropdown">
-                    <a href="#" class="nav-link has-dropdown"><i class="fas fa-images"></i><span>دسته بندی کمد</span></a>
-                    <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'order')) d-block @endif">
-                        @can(permission_access("locker_bank"))
-                            <li><a class="nav-link" href="{{route("admin.locker-bank.create")}}">دسته بندی کمد جدید</a></li>
-                        @endcan
-                        <li><a class="nav-link" href="{{route("admin.locker-bank.index")}}">دسته بندی کمد ها</a></li>
-                    </ul>
-                </li>
-            @endcanany
-            @canany(permission_access("user"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-edit"></i><span>کاربران</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'user')) d-block @endif">
-                    @can("read_user")
-                    <li><a class="nav-link" href="{{route("admin.user.index")}}">لیست کاربران</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
-            {{--@canany(permission_access("menu"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-list-ul"></i><span>منو</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'menu')) d-block @endif">
-                    @can("create_menu")
-                    <li><a class="nav-link" href="{{route("admin.menu.create")}}">منو جدید</a></li>
-                    @endcan
-                    @can("read_menu")
-                    <li><a class="nav-link" href="{{route("admin.menu.index")}}">لیست منو ها</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
             @canany(permission_access("page"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-list-alt"></i><span>صفحات</span></a>
@@ -214,6 +166,19 @@
                     @endcan
                     @can("read_page")
                     <li><a class="nav-link" href="{{route("admin.page.index")}}">لیست صفحه ها</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
+            @canany(permission_access("instagram"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fab fa-instagram"></i><span>اینستاگرام</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'instagram')) d-block @endif">
+                    @can("create_instagram")
+                    <li><a class="nav-link" href="{{route("admin.instagram.create")}}">اینستاگرام جدید</a></li>
+                    @endcan
+                    @can("read_instagram")
+                    <li><a class="nav-link" href="{{route("admin.instagram.index")}}">لیست اینستاگرام</a></li>
                     @endcan
                 </ul>
             </li>
@@ -244,7 +209,20 @@
                 </ul>
             </li>
             @endcanany
-            @canany(permission_access("comment"))
+         @canany(permission_access("menu"))
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-list-ul"></i><span>منو</span></a>
+                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'menu')) d-block @endif">
+                    @can("create_menu")
+                    <li><a class="nav-link" href="{{route("admin.menu.create")}}">منو جدید</a></li>
+                    @endcan
+                    @can("read_menu")
+                    <li><a class="nav-link" href="{{route("admin.menu.index")}}">لیست منو ها</a></li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
+               {{--@canany(permission_access("comment"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-comment-dots"></i><span>نظرات</span></a>
                 <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'comment')) d-block @endif">
@@ -254,45 +232,8 @@
                 </ul>
             </li>
             @endcanany
-            @canany(permission_access("instagram"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fab fa-instagram"></i><span>اینستاگرام</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'instagram')) d-block @endif">
-                    @can("create_instagram")
-                    <li><a class="nav-link" href="{{route("admin.instagram.create")}}">اینستاگرام جدید</a></li>
-                    @endcan
-                    @can("read_instagram")
-                    <li><a class="nav-link" href="{{route("admin.instagram.index")}}">لیست اینستاگرام</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
-            @canany(permission_access("product_cat"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-layer-group"></i><span>دسته بندی محصولات</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'product_cat')) d-block @endif">
-                    @can("create_product_cat")
-                    <li><a class="nav-link" href="{{route("admin.product_cat.create")}}">دسته بندی محصول جدید</a></li>
-                    @endcan
-                    @can("read_product_cat")
-                    <li><a class="nav-link" href="{{route("admin.product_cat.index")}}">لیست دسته بندی محصولات</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
-            @canany(permission_access("product"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-clipboard-list"></i><span> محصولات</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'product')) d-block @endif">
-                    @can("create_product")
-                    <li><a class="nav-link" href="{{route("admin.product.create")}}">محصول جدید</a></li>
-                    @endcan
-                    @can("read_product")
-                    <li><a class="nav-link" href="{{route("admin.product.index")}}">لیست محصولات</a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
+
+
             @canany(permission_access("photo_cat"))
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-images"></i><span>دسته بندی تصاویر</span></a>
@@ -345,29 +286,7 @@
                 </ul>
             </li>
             @endcanany
-            @canany(permission_access("employment_section"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-video"></i><span>بخش استخدام</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'employment_section')) d-block @endif">
-                    @can("create_employment_section")
-                        <li><a class="nav-link" href="{{route("admin.employment_section.create")}}">بخش جدید</a></li>
-                    @endcan
-                    @can("read_employment_section")
-                        <li><a class="nav-link" href="{{route("admin.employment_section.index")}}">لیست بخش های استخدام </a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany
-            @canany(permission_access("employment"))
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-video"></i><span>استخدام</span></a>
-                <ul class="dropdown-menu @if(str_contains(request()->route()->getName(),'employment')) d-block @endif">
-                    @can("read_employment")
-                        <li><a class="nav-link" href="{{route("admin.employment.index")}}">لیست استخدام </a></li>
-                    @endcan
-                </ul>
-            </li>
-            @endcanany --}}
+    --}}
         </ul>
     </aside>
 </div>

@@ -8,11 +8,11 @@ use App\Base\Entities\Enums\PaymentPayWayEnum;
 use App\Base\Entities\Enums\TransactionStatusEnum;
 use App\Base\Entities\Enums\UrlEnum;
 use App\Http\Controllers\Controller;
+use App\Models\banner;
 use App\Models\box;
 use App\Models\instagram;
 use App\Models\news;
 use App\Models\order;
-use App\Models\product;
 use App\Repositories\TransactionRepository;
 use App\Services\Payment\PaymentService;
 use Carbon\Carbon;
@@ -30,11 +30,11 @@ class HomeController extends Controller
 
     public function main()
     {
-        $product=product::where('state_main', '1')->where('state', '1')->orderByRaw(" `order` ASC,`id` DESC ")->with(['product_cat'])->limit('5')->get(['title','seo_url','pic','alt_pic','catid','price']);
-        $news = news::where('state_main', '1')->where('state', '1')->where('validity_date', '<=', Carbon::now()->format('Y/m/d H:i:s'))->orderBy('order', 'desc')->with(['news_cat'])->limit('5')->get(['title', 'note', 'pic', 'catid','validity_date']);
-        $instagram_posts = instagram::where('state_main', '1')->where('state', '1')->orderBy('order', 'desc')->limit('5')->get();
+        $banners=banner::where('state','1')->get();
+        $news = news::where('state_main', '1')->where('state', '1')->where('validity_date', '<=', Carbon::now()->format('Y/m/d H:i:s'))->orderBy('order', 'desc')->with(['news_cat'])->limit('5')->get(['title','seo_url','note', 'pic', 'catid','validity_date']);
+        $instagram_posts = instagram::where('state_main', '1')->where('state', '1')->orderBy('order', 'desc')->limit('10')->get();
 
-        return view('site.main', compact('product','news','instagram_posts'));
+        return view('site.main', compact('news','instagram_posts','banners'));
     }
 
     public function about(){
